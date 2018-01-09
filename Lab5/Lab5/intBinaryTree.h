@@ -24,4 +24,10 @@ public:
 	void printPreOrder(node* node);
 	void printInOrder(node* node);
 	void deleteSubTree(node* head);
+	void deleteNode(node* node);
+	node* findParent(int childData,node* subtree = nullptr);//default subtree is root
+	bool isParent(node* parent, int childData);
+	bool isNode(node* check, int data);
+	node* getNode(int data, node* subtree = nullptr);
+	node* getSmallestInSubTree(node* node);
 };

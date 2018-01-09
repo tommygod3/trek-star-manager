@@ -39,7 +39,19 @@ void intBinaryTree::deleteSubTree(node* head)
 		}
 		else
 		{
-			delete head;
+			node* parent = findParent(head->data);
+			if (parent->leftChild == head)
+			{
+				parent->leftChild = nullptr;
+				delete head;
+				return;
+			}
+			if (parent->rightChild == head)
+			{
+				parent->rightChild = nullptr;
+				delete head;
+				return;
+			}
 		}
 	}
 }
@@ -150,4 +162,174 @@ void intBinaryTree::printInOrder(node* node)
 	std::cout << node->data << " " << std::endl;
 
 	printInOrder(node->rightChild);
+}
+
+void intBinaryTree::deleteNode(node* nodeD)
+{
+	if ((isEmpty(nodeD->leftChild)) && (isEmpty(nodeD->rightChild)))
+	{
+		deleteSubTree(nodeD);
+		return;
+	}
+	if ((isEmpty(nodeD->leftChild))!=(!isEmpty(nodeD->rightChild)))
+	{
+		node* parent = findParent(nodeD->data);
+		if (parent->leftChild == nodeD)
+		{
+			if (!isEmpty(nodeD->leftChild))
+			{
+				parent->leftChild = nodeD->leftChild;
+			}
+			if (!isEmpty(nodeD->rightChild))
+			{
+				parent->leftChild = nodeD->rightChild;
+			}
+			delete nodeD;
+			return;
+		}
+		if (parent->rightChild == nodeD)
+		{
+			if (!isEmpty(nodeD->leftChild))
+			{
+				parent->rightChild = nodeD->leftChild;
+			}
+			if (!isEmpty(nodeD->rightChild))
+			{
+				parent->rightChild = nodeD->rightChild;
+			}
+			delete nodeD;
+			return;
+		}
+	}
+	if ((!isEmpty(nodeD->leftChild)) && (!isEmpty(nodeD->rightChild)))
+	{
+		//
+		return;
+	}
+}
+
+intBinaryTree::node* intBinaryTree::getSmallestInSubTree(node* node)
+{
+	if (node->leftChild == nullptr)
+	{
+		return node;
+	}
+	else
+	{
+		return getSmallestInSubTree(node->leftChild);
+	}
+}
+
+bool intBinaryTree::isParent(node* parent, int childData)
+{
+	if ((parent->leftChild) != nullptr)
+	{
+		if (parent->leftChild->data == childData)
+		{
+			return 1;
+		}
+	}
+	if ((parent->rightChild) != nullptr)
+	{
+		if (parent->rightChild->data == childData)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+bool intBinaryTree::isNode(node* check, int data)
+{
+	if ((check->data) == data)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+intBinaryTree::node* intBinaryTree::findParent(int childData, node* subtree)
+{
+	node* parent = subtree;
+	node* parent1;
+	if (subtree == nullptr)
+	{
+		parent = root;
+	}
+	parent1 = parent;
+
+	if (isParent(parent, childData))
+	{
+		return parent;
+	}
+	if (parent->leftChild != nullptr)
+	{
+		if ((((parent->leftChild->leftChild) != nullptr) || ((parent->leftChild->rightChild) != nullptr)) && ((parent == subtree) || (parent == root)))
+		{
+			parent = findParent(childData, parent->leftChild);
+			if (isParent(parent, childData))
+			{
+				return parent;
+			}
+			else
+			{
+				parent = parent1;
+			}
+		}
+	}
+	if (parent->rightChild != nullptr)
+	{
+		if ((((parent->rightChild->leftChild) != nullptr) || ((parent->rightChild->rightChild) != nullptr)) && ((parent == subtree) || (parent == root)))
+		{
+			parent = findParent(childData, parent->rightChild);
+			if (isParent(parent, childData))
+			{
+				return parent;
+			}
+			else
+			{
+				parent = parent1;
+			}
+		}
+	}
+}
+
+intBinaryTree::node* intBinaryTree::getNode(int data,node* subtree)
+{
+	node* search = subtree;
+	node* search1;
+	if (subtree == nullptr)
+	{
+		search = root;
+	}
+	search1 = search;
+	
+	if (isNode(search, data))
+	{
+		return search;
+	}
+	if ((search->leftChild) != nullptr)
+	{
+		search = getNode(data, search->leftChild);
+		if (isNode(search, data))
+		{
+			return search;
+		}
+		else
+		{
+			search = search1;
+		}
+	}
+	if ((search->rightChild) != nullptr)
+	{
+		search = getNode(data, search->rightChild);
+		if (isNode(search, data))
+		{
+			return search;
+		}
+		else
+		{
+			search = search1;
+		}
+	}
 }
