@@ -171,7 +171,7 @@ void intBinaryTree::deleteNode(node* nodeD)
 		deleteSubTree(nodeD);
 		return;
 	}
-	if ((isEmpty(nodeD->leftChild))!=(!isEmpty(nodeD->rightChild)))
+	if ((isEmpty(nodeD->leftChild))!=(isEmpty(nodeD->rightChild)))
 	{
 		node* parent = findParent(nodeD->data);
 		if (parent->leftChild == nodeD)
@@ -203,8 +203,21 @@ void intBinaryTree::deleteNode(node* nodeD)
 	}
 	if ((!isEmpty(nodeD->leftChild)) && (!isEmpty(nodeD->rightChild)))
 	{
-		//
-		return;
+		node* switcher = getSmallestInSubTree(nodeD->rightChild);
+		node* parent = findParent(switcher->data);
+		nodeD->data = switcher->data;
+		if (parent->leftChild == switcher)
+		{
+			parent->leftChild = nullptr;
+			delete switcher;
+			return;
+		}
+		if (parent->rightChild == switcher)
+		{
+			parent->rightChild = nullptr;
+			delete switcher;
+			return;
+		}
 	}
 }
 
