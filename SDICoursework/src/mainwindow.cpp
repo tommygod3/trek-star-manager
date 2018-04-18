@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 MainWindow::~MainWindow()
@@ -20,12 +21,13 @@ void MainWindow::on_toAddEditProjects_clicked()
 
 void MainWindow::on_toBrowseProjects_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(3);
+    ui->frame_4->setVisible(false);
 }
 
 void MainWindow::on_toMaintenance_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainWindow::on_homeButton1_clicked()
@@ -41,4 +43,96 @@ void MainWindow::on_homeButton2_clicked()
 void MainWindow::on_homeButton3_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_homeButton4_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_toAddMaterials_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_radioButton_2_clicked()
+{
+    ui->label_22->setVisible(false);
+    ui->lineEdit_14->setVisible(false);
+}
+
+void MainWindow::on_radioButton_clicked()
+{
+    ui->label_22->setVisible(true);
+    ui->lineEdit_14->setVisible(true);
+}
+
+void MainWindow::on_radioButton_3_clicked()
+{
+    ui->label_22->setVisible(true);
+    ui->lineEdit_14->setVisible(true);
+}
+
+void MainWindow::on_radioButton_11_clicked()
+{
+    ui->frame->setVisible(false);
+    ui->frame_2->setVisible(false);
+    ui->frame_3->setVisible(false);
+    ui->pushButton_3->setGeometry(610,250,130,40);
+    ui->comboBox_3->clear();
+    ui->comboBox_3->addItem("Cardboard box");
+    ui->comboBox_3->addItem("Plastic box");
+}
+
+void MainWindow::on_radioButton_9_clicked()
+{
+    ui->frame->setVisible(true);
+    ui->frame_2->setVisible(false);
+    ui->frame_3->setVisible(false);
+    ui->pushButton_3->setGeometry(610,250,130,40);
+    ui->comboBox_3->clear();
+    ui->comboBox_3->addItem("Plastic box");
+
+}
+
+void MainWindow::on_radioButton_10_clicked()
+{
+    ui->frame->setVisible(true);
+    ui->frame_2->setVisible(false);
+    ui->frame_3->setVisible(false);
+    ui->pushButton_3->setGeometry(610,250,130,40);
+    ui->comboBox_3->clear();
+    ui->comboBox_3->addItem("Plastic box");
+}
+
+void MainWindow::on_radioButton_13_clicked()
+{
+    ui->frame->setVisible(true);
+    ui->frame_2->setVisible(true);
+    ui->frame_3->setVisible(true);
+    ui->frame_3->setGeometry(430,380,131,111);
+    ui->pushButton_3->setGeometry(610,450,130,40);
+    ui->comboBox_3->clear();
+    ui->comboBox_3->addItem("Plastic box");
+}
+
+void MainWindow::on_radioButton_12_clicked()
+{
+    ui->frame->setVisible(true);
+    ui->frame_2->setVisible(false);
+    ui->frame_3->setVisible(true);
+    ui->frame_3->setGeometry(430,250,131,111);
+    ui->pushButton_3->setGeometry(610,320,130,40);
+    ui->comboBox_3->clear();
+    ui->comboBox_3->addItem("Cardboard box");
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->frame_4->setVisible(true);
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->frame_4->setVisible(true);
 }
