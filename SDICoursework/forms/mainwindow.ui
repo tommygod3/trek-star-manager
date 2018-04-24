@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="homePage">
      <widget class="QLabel" name="label">
@@ -159,7 +159,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_15">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>170</y>
         <width>100</width>
         <height>35</height>
@@ -177,7 +177,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>270</y>
         <width>130</width>
         <height>20</height>
@@ -192,7 +192,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_7">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>340</y>
         <width>130</width>
         <height>20</height>
@@ -207,7 +207,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>130</y>
         <width>130</width>
         <height>20</height>
@@ -222,7 +222,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_11">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>340</y>
         <width>130</width>
         <height>20</height>
@@ -240,7 +240,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>450</y>
         <width>100</width>
         <height>35</height>
@@ -258,7 +258,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_19">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>380</y>
         <width>111</width>
         <height>35</height>
@@ -276,7 +276,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_18">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>310</y>
         <width>131</width>
         <height>35</height>
@@ -294,7 +294,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_4">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>410</y>
         <width>130</width>
         <height>20</height>
@@ -312,7 +312,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_6">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>270</y>
         <width>130</width>
         <height>20</height>
@@ -327,7 +327,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_17">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>240</y>
         <width>121</width>
         <height>35</height>
@@ -345,7 +345,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_8">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>410</y>
         <width>130</width>
         <height>20</height>
@@ -360,7 +360,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_9">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>200</y>
         <width>130</width>
         <height>20</height>
@@ -375,7 +375,7 @@ Project Manager</string>
      <widget class="QPlainTextEdit" name="plainTextEdit_3">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>480</y>
         <width>130</width>
         <height>60</height>
@@ -385,7 +385,7 @@ Project Manager</string>
      <widget class="QPlainTextEdit" name="plainTextEdit_2">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>480</y>
         <width>130</width>
         <height>60</height>
@@ -395,7 +395,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_2">
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>390</x>
         <y>130</y>
         <width>90</width>
         <height>20</height>
@@ -413,7 +413,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>130</y>
         <width>90</width>
         <height>20</height>
@@ -431,7 +431,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_16">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>450</y>
         <width>100</width>
         <height>35</height>
@@ -449,7 +449,7 @@ Project Manager</string>
      <widget class="QPlainTextEdit" name="plainTextEdit">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>480</y>
         <width>130</width>
         <height>60</height>
@@ -459,7 +459,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>450</y>
         <width>100</width>
         <height>35</height>
@@ -477,7 +477,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>310</y>
         <width>100</width>
         <height>35</height>
@@ -495,7 +495,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>380</y>
         <width>100</width>
         <height>35</height>
@@ -513,7 +513,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_13">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>200</y>
         <width>130</width>
         <height>20</height>
@@ -531,7 +531,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_5">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>200</y>
         <width>130</width>
         <height>20</height>
@@ -546,7 +546,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_10">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>270</y>
         <width>130</width>
         <height>20</height>
@@ -561,7 +561,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_3">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>130</y>
         <width>90</width>
         <height>20</height>
@@ -579,7 +579,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>310</y>
         <width>100</width>
         <height>35</height>
@@ -597,7 +597,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>240</y>
         <width>100</width>
         <height>35</height>
@@ -615,7 +615,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_21">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>100</y>
         <width>121</width>
         <height>35</height>
@@ -633,7 +633,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>100</y>
         <width>100</width>
         <height>35</height>
@@ -651,7 +651,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_20">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>170</y>
         <width>121</width>
         <height>35</height>
@@ -669,7 +669,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>240</y>
         <width>100</width>
         <height>35</height>
@@ -687,7 +687,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>170</y>
         <width>100</width>
         <height>35</height>
@@ -705,7 +705,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_12">
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>480</x>
         <y>410</y>
         <width>130</width>
         <height>20</height>
@@ -723,7 +723,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>340</y>
         <width>130</width>
         <height>20</height>
@@ -738,7 +738,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>120</x>
         <y>380</y>
         <width>100</width>
         <height>35</height>
@@ -756,8 +756,8 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_14">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>260</y>
+        <x>660</x>
+        <y>130</y>
         <width>130</width>
         <height>20</height>
        </rect>
@@ -771,8 +771,8 @@ Project Manager</string>
      <widget class="QLabel" name="label_22">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>230</y>
+        <x>660</x>
+        <y>100</y>
         <width>111</width>
         <height>35</height>
        </rect>
@@ -827,7 +827,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_37">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>170</y>
         <width>100</width>
         <height>35</height>
@@ -845,7 +845,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_24">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>340</y>
         <width>130</width>
         <height>20</height>
@@ -863,7 +863,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_25">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>410</y>
         <width>130</width>
         <height>20</height>
@@ -881,7 +881,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_9">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>100</y>
         <width>50</width>
         <height>20</height>
@@ -899,7 +899,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_10">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>150</x>
         <y>130</y>
         <width>90</width>
         <height>20</height>
@@ -917,7 +917,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_26">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>340</y>
         <width>130</width>
         <height>20</height>
@@ -935,7 +935,7 @@ Project Manager</string>
      <widget class="QComboBox" name="comboBox_2">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>270</y>
         <width>130</width>
         <height>20</height>
@@ -970,7 +970,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_27">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>270</y>
         <width>130</width>
         <height>20</height>
@@ -988,7 +988,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_38">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>380</y>
         <width>100</width>
         <height>35</height>
@@ -1006,7 +1006,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_11">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>130</y>
         <width>50</width>
         <height>20</height>
@@ -1024,7 +1024,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_39">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>240</y>
         <width>100</width>
         <height>35</height>
@@ -1042,7 +1042,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_28">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>410</y>
         <width>130</width>
         <height>20</height>
@@ -1060,7 +1060,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_40">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>450</y>
         <width>100</width>
         <height>35</height>
@@ -1078,7 +1078,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_12">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>290</x>
         <y>100</y>
         <width>131</width>
         <height>20</height>
@@ -1096,7 +1096,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_41">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>310</y>
         <width>100</width>
         <height>35</height>
@@ -1114,7 +1114,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_42">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>310</y>
         <width>100</width>
         <height>35</height>
@@ -1132,7 +1132,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_43">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>170</y>
         <width>100</width>
         <height>35</height>
@@ -1150,7 +1150,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_44">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>380</y>
         <width>100</width>
         <height>35</height>
@@ -1168,7 +1168,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_29">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>200</y>
         <width>130</width>
         <height>20</height>
@@ -1186,7 +1186,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_45">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>240</y>
         <width>100</width>
         <height>35</height>
@@ -1204,7 +1204,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_46">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>70</y>
         <width>121</width>
         <height>35</height>
@@ -1222,7 +1222,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_30">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>200</y>
         <width>130</width>
         <height>20</height>
@@ -1240,7 +1240,7 @@ Project Manager</string>
      <widget class="QRadioButton" name="radioButton_13">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>150</x>
         <y>100</y>
         <width>125</width>
         <height>20</height>
@@ -1258,7 +1258,7 @@ Project Manager</string>
      <widget class="QLineEdit" name="lineEdit_31">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>90</x>
         <y>480</y>
         <width>130</width>
         <height>20</height>
@@ -1276,7 +1276,7 @@ Project Manager</string>
      <widget class="QFrame" name="frame">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>500</x>
         <y>100</y>
         <width>311</width>
         <height>111</height>
@@ -1392,7 +1392,7 @@ Project Manager</string>
      <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>500</x>
         <y>250</y>
         <width>311</width>
         <height>111</height>
@@ -1464,7 +1464,7 @@ Project Manager</string>
      <widget class="QFrame" name="frame_3">
       <property name="geometry">
        <rect>
-        <x>430</x>
+        <x>500</x>
         <y>380</y>
         <width>131</width>
         <height>111</height>
@@ -1508,7 +1508,7 @@ Project Manager</string>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>610</x>
+        <x>680</x>
         <y>450</y>
         <width>130</width>
         <height>40</height>
@@ -1526,7 +1526,7 @@ Project Manager</string>
      <widget class="QLabel" name="label_53">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>450</y>
         <width>100</width>
         <height>35</height>
@@ -1544,7 +1544,7 @@ Project Manager</string>
      <widget class="QComboBox" name="comboBox_3">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>270</x>
         <y>480</y>
         <width>130</width>
         <height>20</height>
@@ -1777,7 +1777,7 @@ available</string>
        <rect>
         <x>400</x>
         <y>90</y>
-        <width>73</width>
+        <width>111</width>
         <height>30</height>
        </rect>
       </property>
