@@ -12,3 +12,5 @@ Makefile*
 *build-*
 *{*
 *debug/*
+# Ignore VS files
+**/.vs/
