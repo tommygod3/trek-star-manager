@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <widget class="QLabel" name="labelTitle">
@@ -1808,6 +1808,46 @@ available</string>
         <height>181</height>
        </rect>
       </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>0</red>
+            <green>255</green>
+            <blue>127</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -1839,7 +1879,7 @@ Project</string>
          <x>0</x>
          <y>20</y>
          <width>731</width>
-         <height>71</height>
+         <height>41</height>
         </rect>
        </property>
       </widget>
@@ -1858,7 +1898,7 @@ Project</string>
         </font>
        </property>
        <property name="text">
-        <string>View
+        <string>View/Edit
 Project</string>
        </property>
       </widget>
@@ -1874,10 +1914,31 @@ Project</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
         <string>Project Results</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="buttonBrowseProjAddMaterial">
+       <property name="geometry">
+        <rect>
+         <x>750</x>
+         <y>120</y>
+         <width>85</width>
+         <height>45</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Add
+Material</string>
        </property>
       </widget>
      </widget>
@@ -1890,6 +1951,73 @@ Project</string>
         <height>181</height>
        </rect>
       </property>
+      <property name="palette">
+       <palette>
+        <active>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>49</green>
+            <blue>8</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </active>
+        <inactive>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>49</green>
+            <blue>8</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </inactive>
+        <disabled>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>49</green>
+            <blue>8</blue>
+           </color>
+          </brush>
+         </colorrole>
+         <colorrole role="Window">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>49</green>
+            <blue>8</blue>
+           </color>
+          </brush>
+         </colorrole>
+        </disabled>
+       </palette>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -1900,7 +2028,7 @@ Project</string>
        <property name="geometry">
         <rect>
          <x>750</x>
-         <y>120</y>
+         <y>70</y>
          <width>85</width>
          <height>45</height>
         </rect>
@@ -1921,30 +2049,11 @@ Material</string>
          <x>0</x>
          <y>20</y>
          <width>731</width>
-         <height>71</height>
+         <height>41</height>
         </rect>
        </property>
       </widget>
       <widget class="QPushButton" name="buttonBrowseProjEditMaterial">
-       <property name="geometry">
-        <rect>
-         <x>750</x>
-         <y>70</y>
-         <width>85</width>
-         <height>45</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Edit
-Material</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="buttonBrowseProjAddMaterial">
        <property name="geometry">
         <rect>
          <x>750</x>
@@ -1959,7 +2068,7 @@ Material</string>
         </font>
        </property>
        <property name="text">
-        <string>Add
+        <string>View/Edit
 Material</string>
        </property>
       </widget>
@@ -1975,6 +2084,8 @@ Material</string>
        <property name="font">
         <font>
          <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="text">
