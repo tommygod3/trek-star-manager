@@ -9,9 +9,9 @@ namespace SDI
 	class controller
 	{
 	public:
-		vector<project*> projects;
+		vector<project*> projectList;
 		controller();
-
+		unsigned long getNextProjectId();
 	
 
 

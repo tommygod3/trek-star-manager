@@ -73,7 +73,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\project.h">
-      <Filter>Generated Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\material.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

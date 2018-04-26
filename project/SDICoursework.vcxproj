@@ -65,12 +65,12 @@
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\include\;$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>..\src\</SourcePath>
+    <IncludePath>$(WindowsSDK_IncludePath);$(VC_IncludePath);$(SolutionDir)..\include\</IncludePath>
+    <SourcePath>$(SolutionDir)..\src\</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\include\;$(WindowsSDK_IncludePath);</IncludePath>
-    <SourcePath>..\src\</SourcePath>
+    <IncludePath>$(WindowsSDK_IncludePath);$(VC_IncludePath);$(SolutionDir)..\include\</IncludePath>
+    <SourcePath>$(SolutionDir)..\src\</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -223,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\controller.h" />
+    <ClInclude Include="..\include\material.h" />
     <ClInclude Include="..\include\project.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

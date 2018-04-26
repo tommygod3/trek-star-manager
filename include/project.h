@@ -1,19 +1,18 @@
 #ifndef PROJECT_H
 #define PROJECT_H
 
-#include <string>
-#include <vector>
+#include "material.h"
 
 namespace SDI
 {
-	using std::vector;
-	using std::string;
-
 	class project
 	{
 	private:
-		//Private member variables that make up project
+		//Unique ID to identify project
 		unsigned long projectId;
+		//Vector of the projects associated materials
+		vector<material*> projectMaterials;
+		//Inputted by user:
 		string title;
 		string summary;
 		string genre;
@@ -31,6 +30,7 @@ namespace SDI
 		string setDecorator;
 		string costumeDesigner;
 		vector<string> cast;
+		unsigned int ticketSales = 0;
 
 	public:
 		//Constructor setting project id
@@ -54,6 +54,7 @@ namespace SDI
 		string getSetDecorator();
 		string getCostumeDesigner();
 		vector<string> getCast();
+		unsigned int getTicketSales();
 		//Setters:
 		void setProjectId(unsigned long idIn);
 		void setTitle(string titleIn);
@@ -73,6 +74,9 @@ namespace SDI
 		void setSetDecorator(string setDecoratorIn);
 		void setCostumeDesigner(string costumeDesignerIn);
 		void setCast(vector<string> castIn);
+		void setTicketSales(unsigned int ticketSalesIn);
+		//Calculations:
+		unsigned long getNextMaterialId();
 	};
 }
 
