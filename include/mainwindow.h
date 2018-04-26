@@ -33,8 +33,6 @@ private slots:
 
     void on_homeButton4_clicked();
 
-    void on_toAddMaterials_clicked();
-
     void on_radioButton_2_clicked();
 
     void on_radioButton_clicked();
@@ -54,6 +52,32 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
+
+    void on_pushButton_11_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_homeButton1_2_clicked();
+
+    void on_homeButton2_2_clicked();
+
+    void on_pushButton_9_clicked();
+
+    void on_radioButton_4_clicked();
+
+    void on_radioButton_6_clicked();
+
+    void on_radioButton_5_clicked();
+
+    void on_radioButton_14_clicked();
+
+    void on_radioButton_15_clicked();
+
+    void on_radioButton_17_clicked();
+
+    void on_radioButton_16_clicked();
+
+    void on_radioButton_18_clicked();
 
 private:
     Ui::MainWindow *ui;
