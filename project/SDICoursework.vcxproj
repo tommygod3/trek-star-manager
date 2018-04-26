@@ -193,6 +193,7 @@
     <ClCompile Include="..\src\controller.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mainwindow.cpp" />
+    <ClCompile Include="..\src\material.cpp" />
     <ClCompile Include="..\src\project.cpp" />
   </ItemGroup>
   <ItemGroup>

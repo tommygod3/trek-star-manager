@@ -10,8 +10,6 @@ namespace SDI
 	private:
 		//Unique ID to identify project
 		unsigned long projectId;
-		//Vector of the projects associated materials
-		vector<material*> projectMaterials;
 		//Inputted by user:
 		string title;
 		string summary;
@@ -33,6 +31,10 @@ namespace SDI
 		unsigned int ticketSales = 0;
 
 	public:
+		//Vector of the projects associated materials
+		vector<material*> myMaterials;
+		//Index of material we are editting
+		unsigned int currentMaterialIndex;
 		//Constructor setting project id
 		project(unsigned long id);
 		//Getters:
@@ -77,6 +79,7 @@ namespace SDI
 		void setTicketSales(unsigned int ticketSalesIn);
 		//Calculations:
 		unsigned long getNextMaterialId();
+		void setCurrentMaterial(unsigned int materialId);
 	};
 }
 

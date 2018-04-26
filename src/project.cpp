@@ -274,9 +274,9 @@ namespace SDI
 	//Calculations:
 	unsigned long project::getNextMaterialId()
 	{
-		if (projectMaterials.size() > 0)
+		if (myMaterials.size() > 0)
 		{
-			return (projectMaterials.at(projectMaterials.size() - 1)->getMaterialId()) + 1 + getProjectId();
+			return (myMaterials.at(myMaterials.size() - 1)->getMaterialId()) + 1 + getProjectId();
 		}
 		else
 		{
@@ -284,5 +284,14 @@ namespace SDI
 		}
 	}
 
-
+	void project::setCurrentMaterial(unsigned int materialId)
+	{
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			if (myMaterials.at(i)->getMaterialId() == materialId)
+			{
+				currentMaterialIndex = i;
+			}
+		}
+	}
 }

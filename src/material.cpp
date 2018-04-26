@@ -1,5 +1,3 @@
-#include <stdexcept>
-
 #include "material.h"
 
 namespace SDI
