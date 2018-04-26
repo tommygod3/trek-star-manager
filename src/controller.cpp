@@ -5,16 +5,17 @@ namespace SDI
 	controller::controller()
 	{
 		//Load in existing
-		populateListOfProjects("../data/projectlist.txt");
+		populateListOfProjects();
 	}
 
 	controller::~controller()
 	{
 		//Save existing
+		saveListOfProjectsToDisk();
 	}
 
 	//Load in existing projects from file
-	void controller::populateListOfProjects(string projectsFilename)
+	void controller::populateListOfProjects()
 	{
 		std::ifstream projectsIn(projectsFilename);
 		string parser;
@@ -36,6 +37,10 @@ namespace SDI
 	}
 
 	//Save existing projects to file
+	void controller::saveListOfProjectsToDisk()
+	{
+
+	}
 
 	//Calculations:
 	unsigned long controller::getNextProjectId()

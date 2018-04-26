@@ -9,8 +9,11 @@ namespace SDI
 	class controller
 	{
 	private:
+		const string projectsFilename = "../data/projectlist.txt";
 		//Load in projects:
-		void populateListOfProjects(string projectsFilename);
+		void populateListOfProjects();
+		//Save currently stored projects
+		void saveListOfProjectsToDisk();
 
 	public:
 		//Constructor:
