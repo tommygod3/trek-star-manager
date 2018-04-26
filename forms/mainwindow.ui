@@ -26,8 +26,8 @@
     <property name="currentIndex">
      <number>6</number>
     </property>
-    <widget class="QWidget" name="homePage">
-     <widget class="QLabel" name="label">
+    <widget class="QWidget" name="pageHome">
+     <widget class="QLabel" name="labelTitle">
       <property name="geometry">
        <rect>
         <x>50</x>
@@ -46,7 +46,7 @@
 Project Manager</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="toAddEditProjects">
+     <widget class="QPushButton" name="buttonToAddProjects">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -64,7 +64,7 @@ Project Manager</string>
        <string>Add Projects</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="toBrowseProjects">
+     <widget class="QPushButton" name="buttonToBrowseProjects">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -82,7 +82,7 @@ Project Manager</string>
        <string>Browse Projects</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="toMaintenance">
+     <widget class="QPushButton" name="buttonToMaintenance">
       <property name="geometry">
        <rect>
         <x>600</x>
@@ -101,8 +101,8 @@ Project Manager</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="addProjectsPage">
-     <widget class="QLabel" name="label_2">
+    <widget class="QWidget" name="pageAddProj">
+     <widget class="QLabel" name="labelAddProjHeading">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -120,7 +120,7 @@ Project Manager</string>
        <string>Add Projects</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="homeButton1">
+     <widget class="QPushButton" name="buttonAddProjHome">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -138,7 +138,7 @@ Project Manager</string>
        <string>Home</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_15">
+     <widget class="QLabel" name="labelAddProjEditor">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -156,7 +156,7 @@ Project Manager</string>
        <string>Editor</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="textAddProjGenre">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -171,7 +171,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_7">
+     <widget class="QLineEdit" name="textAddProjDirector">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -186,7 +186,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="textAddProjTitle">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -201,7 +201,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_11">
+     <widget class="QLineEdit" name="textAddProjSetDecorator">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -219,7 +219,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="labelAddProjFilmingLocations">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -237,7 +237,7 @@ Project Manager</string>
        <string>Filming Locations</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_19">
+     <widget class="QLabel" name="labelAddProjCostumeDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -255,7 +255,7 @@ Project Manager</string>
        <string>Costume Designer</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_18">
+     <widget class="QLabel" name="labelAddProjSetDecorator">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -273,7 +273,7 @@ Project Manager</string>
        <string>Set Decorator</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="textAddProjLanguage">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -291,7 +291,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="textAddProjProducer">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -306,7 +306,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QLabel" name="label_17">
+     <widget class="QLabel" name="labelAddProjProductionDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -324,7 +324,7 @@ Project Manager</string>
        <string>Production Designer</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_8">
+     <widget class="QLineEdit" name="textAddProjWriter">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -339,7 +339,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_9">
+     <widget class="QLineEdit" name="textAddProjEditor">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -354,7 +354,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_3">
+     <widget class="QPlainTextEdit" name="textAddProjCast">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -364,7 +364,7 @@ Project Manager</string>
        </rect>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_2">
+     <widget class="QPlainTextEdit" name="textAddProjKeywords">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -374,7 +374,7 @@ Project Manager</string>
        </rect>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_2">
+     <widget class="QRadioButton" name="radioButtonAddProjUnreleased">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -392,7 +392,7 @@ Project Manager</string>
        <string>Unreleased</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton">
+     <widget class="QRadioButton" name="radioButtonAddProjReleased">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -410,7 +410,7 @@ Project Manager</string>
        <string>Released</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_16">
+     <widget class="QLabel" name="labelAddProjCast">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -428,7 +428,7 @@ Project Manager</string>
        <string>Cast</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
+     <widget class="QPlainTextEdit" name="textAddProjFilmingLocations">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -438,7 +438,7 @@ Project Manager</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="labelAddProjKeywords">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -456,7 +456,7 @@ Project Manager</string>
        <string>Keywords</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="labelAddProjReleaseDate">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -474,7 +474,7 @@ Project Manager</string>
        <string>Release Date</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_14">
+     <widget class="QLabel" name="labelAddProjWriter">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -492,7 +492,7 @@ Project Manager</string>
        <string>Writer</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_13">
+     <widget class="QLineEdit" name="textAddProjSummary">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -510,7 +510,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_10">
+     <widget class="QLineEdit" name="textAddProjProductionDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -525,7 +525,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_3">
+     <widget class="QRadioButton" name="radioButtonAddProjNowPlaying">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -543,7 +543,7 @@ Project Manager</string>
        <string>Now Playing</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_13">
+     <widget class="QLabel" name="labelAddProjDirector">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -561,7 +561,7 @@ Project Manager</string>
        <string>Director</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="labelAddProjGenre">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -579,7 +579,7 @@ Project Manager</string>
        <string>Genre</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_21">
+     <widget class="QLabel" name="labelAddProjProjectStatus">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -597,7 +597,7 @@ Project Manager</string>
        <string>Project Status</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="labelAddProjTitle">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -615,7 +615,7 @@ Project Manager</string>
        <string>Title</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_20">
+     <widget class="QLabel" name="labelAddProjSummary">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -633,7 +633,7 @@ Project Manager</string>
        <string>Summary</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_11">
+     <widget class="QLabel" name="labelAddProjProducer">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -651,7 +651,7 @@ Project Manager</string>
        <string>Producer</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="labelAddProjRuntime">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -669,7 +669,7 @@ Project Manager</string>
        <string>Runtime</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_12">
+     <widget class="QLineEdit" name="textAddProjCostumeDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -687,7 +687,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="labelAddProjLanguage">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -705,7 +705,7 @@ Project Manager</string>
        <string>Language</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_22">
+     <widget class="QLabel" name="labelAddProjTicketSale">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -723,7 +723,7 @@ Project Manager</string>
        <string>Weekly Ticket Sale</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="buttonAddProjectsSave">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -741,7 +741,7 @@ Project Manager</string>
        <string>Save</string>
       </property>
      </widget>
-     <widget class="QTimeEdit" name="timeEdit_3">
+     <widget class="QTimeEdit" name="timeAddProjRuntime">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -751,7 +751,7 @@ Project Manager</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit_2">
+     <widget class="QDateEdit" name="dateAddProjReleaseDate">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -761,7 +761,7 @@ Project Manager</string>
        </rect>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox">
+     <widget class="QSpinBox" name="spinBoxAddProjTicketSale">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -772,8 +772,8 @@ Project Manager</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="addMaterialsPage">
-     <widget class="QPushButton" name="homeButton2">
+    <widget class="QWidget" name="pageAddMaterials">
+     <widget class="QPushButton" name="buttonHomeAddMaterials">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -791,7 +791,7 @@ Project Manager</string>
        <string>Home</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_36">
+     <widget class="QLabel" name="labelAddMaterialsHeading">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -809,7 +809,7 @@ Project Manager</string>
        <string>Add Materials</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_37">
+     <widget class="QLabel" name="labelAddMaterialsTitle">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -827,7 +827,7 @@ Project Manager</string>
        <string>Title</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_24">
+     <widget class="QLineEdit" name="textAddMaterialsLanguage">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -845,7 +845,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_25">
+     <widget class="QLineEdit" name="textAddMaterialsSubtitles">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -863,7 +863,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_9">
+     <widget class="QRadioButton" name="radioButtonAddMaterialsDVD">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -881,7 +881,7 @@ Project Manager</string>
        <string>DVD</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_10">
+     <widget class="QRadioButton" name="radioButtonAddMaterialsBluray">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -899,7 +899,7 @@ Project Manager</string>
        <string>Blu-ray</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_2">
+     <widget class="QComboBox" name="comboAddMaterialsAudioFormat">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -934,7 +934,7 @@ Project Manager</string>
        </property>
       </item>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_27">
+     <widget class="QLineEdit" name="textAddMaterialsFormat">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -952,7 +952,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_38">
+     <widget class="QLabel" name="labelAddMaterialsRetailPrice">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -970,7 +970,7 @@ Project Manager</string>
        <string>Retail Price</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_11">
+     <widget class="QRadioButton" name="radioButtonAddMaterialsVHS">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -988,7 +988,7 @@ Project Manager</string>
        <string>VHS</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_39">
+     <widget class="QLabel" name="labelAddMaterialsFormat">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1006,7 +1006,7 @@ Project Manager</string>
        <string>Format</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_40">
+     <widget class="QLabel" name="labelAddMaterialsFrameAspect">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1024,7 +1024,7 @@ Project Manager</string>
        <string>Frame Aspect</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_12">
+     <widget class="QRadioButton" name="radioButtonAddMaterialsCombo">
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -1042,7 +1042,7 @@ Project Manager</string>
        <string>Combo box sets</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_41">
+     <widget class="QLabel" name="labelAddMaterialsLanguage">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1060,7 +1060,7 @@ Project Manager</string>
        <string>Language</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_42">
+     <widget class="QLabel" name="labelAddMaterialsRuntime">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1078,7 +1078,7 @@ Project Manager</string>
        <string>Runtime</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_43">
+     <widget class="QLabel" name="labelAddMaterialsIDNumber">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1096,7 +1096,7 @@ Project Manager</string>
        <string>ID Number</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_44">
+     <widget class="QLabel" name="labelAddMaterialsSubtitles">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1114,7 +1114,7 @@ Project Manager</string>
        <string>Subtitles</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_29">
+     <widget class="QLineEdit" name="textAddMaterialsTitle">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1132,7 +1132,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_45">
+     <widget class="QLabel" name="labelAddMaterialsAudioFormat">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1150,7 +1150,7 @@ Project Manager</string>
        <string>Audio Format</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_46">
+     <widget class="QLabel" name="labelAddMaterialsType">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1168,7 +1168,7 @@ Project Manager</string>
        <string>Material Type</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_30">
+     <widget class="QLineEdit" name="textAddMaterialsIDNumbe">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1186,7 +1186,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_13">
+     <widget class="QRadioButton" name="radioButtonAddMaterialsDoubleDVD">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -1204,7 +1204,7 @@ Project Manager</string>
        <string>Double-sided DVD</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_31">
+     <widget class="QLineEdit" name="textAddMaterialsFrameAspect">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1222,7 +1222,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="frameAddMaterialsAdditional">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -1237,7 +1237,7 @@ Project Manager</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPlainTextEdit" name="plainTextEdit_4">
+      <widget class="QPlainTextEdit" name="textAddMaterialsBonusFeatures">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -1247,7 +1247,7 @@ Project Manager</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_48">
+      <widget class="QLabel" name="labelAddMaterialsAdditionalLang">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1265,7 +1265,7 @@ Project Manager</string>
         <string>Additional Languages</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_49">
+      <widget class="QLabel" name="labelAddMaterialsAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1283,7 +1283,7 @@ Project Manager</string>
         <string>Additional Subtitles</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_32">
+      <widget class="QLineEdit" name="textAddMaterialsAdditionalLang">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1301,7 +1301,7 @@ Project Manager</string>
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="label_47">
+      <widget class="QLabel" name="labelAddMaterialsBonusFeatures">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -1319,7 +1319,7 @@ Project Manager</string>
         <string>Bonus Features</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_34">
+      <widget class="QLineEdit" name="textAddMaterialsAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1338,7 +1338,7 @@ Project Manager</string>
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame_2">
+     <widget class="QFrame" name="frameAddMaterialsSides">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -1353,7 +1353,7 @@ Project Manager</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="label_50">
+      <widget class="QLabel" name="labelAddMaterialsFirstSide">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1371,7 +1371,7 @@ Project Manager</string>
         <string>First Side Details</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="plainTextEdit_6">
+      <widget class="QPlainTextEdit" name="textAddMaterialsSecondSide">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -1381,7 +1381,7 @@ Project Manager</string>
         </rect>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="plainTextEdit_5">
+      <widget class="QPlainTextEdit" name="textAddMaterialsFirstSide">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1391,7 +1391,7 @@ Project Manager</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_51">
+      <widget class="QLabel" name="labelAddMaterialsSecondSide">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -1410,7 +1410,7 @@ Project Manager</string>
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame_3">
+     <widget class="QFrame" name="frameAddMaterialsSidesMovieList">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -1425,7 +1425,7 @@ Project Manager</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPlainTextEdit" name="plainTextEdit_7">
+      <widget class="QPlainTextEdit" name="textAddMaterialsMovieList">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1435,7 +1435,7 @@ Project Manager</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_52">
+      <widget class="QLabel" name="labelAddMaterialsMovieList">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1454,7 +1454,7 @@ Project Manager</string>
        </property>
       </widget>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="buttonAddMaterialsSave">
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -1472,7 +1472,7 @@ Project Manager</string>
        <string>Save</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_53">
+     <widget class="QLabel" name="labelAddMaterialsPackaging">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1490,7 +1490,7 @@ Project Manager</string>
        <string>Packaging</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_3">
+     <widget class="QComboBox" name="comboAddMaterialsPackaging">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -1520,7 +1520,7 @@ Project Manager</string>
        </property>
       </item>
      </widget>
-     <widget class="QTimeEdit" name="timeEdit_2">
+     <widget class="QTimeEdit" name="timeAddMaterialsRuntime">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1530,7 +1530,7 @@ Project Manager</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox">
+     <widget class="QDoubleSpinBox" name="spinBoxAddMaterialsRetailPrice">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -1544,8 +1544,8 @@ Project Manager</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="browseProjectsPage">
-     <widget class="QLabel" name="label_3">
+    <widget class="QWidget" name="pageBrowseProjects">
+     <widget class="QLabel" name="labelBrowseProjHeading">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1563,7 +1563,7 @@ Project Manager</string>
        <string>Browse Projects</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="homeButton3">
+     <widget class="QPushButton" name="buttonHomeBrowseProj">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -1581,7 +1581,7 @@ Project Manager</string>
        <string>Home</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_23">
+     <widget class="QLineEdit" name="textBrowseProjSearchByActor">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1596,7 +1596,7 @@ Project Manager</string>
        </font>
       </property>
      </widget>
-     <widget class="QLabel" name="label_33">
+     <widget class="QLabel" name="labelBrowseProjSearchByProj">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -1614,7 +1614,7 @@ Project Manager</string>
        <string>Search by Project Title</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_34">
+     <widget class="QLabel" name="labelBrowseProjSearchByActor">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1632,7 +1632,7 @@ Project Manager</string>
        <string>Search by Actor</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_22">
+     <widget class="QLineEdit" name="textBrowseProjSearchByProj">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -1650,7 +1650,7 @@ Project Manager</string>
        <string/>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_13">
+     <widget class="QCheckBox" name="checkBoxBrowseProjCombo">
       <property name="geometry">
        <rect>
         <x>610</x>
@@ -1669,7 +1669,7 @@ Project Manager</string>
 available</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_11">
+     <widget class="QCheckBox" name="checkBoxBrowseProjBluray">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -1688,7 +1688,7 @@ available</string>
 available</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_35">
+     <widget class="QLabel" name="labelBrowseProjAdditonalFilters">
       <property name="geometry">
        <rect>
         <x>400</x>
@@ -1706,7 +1706,7 @@ available</string>
        <string>Additional Filters</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_9">
+     <widget class="QCheckBox" name="checkBoxBrowseProjVHS">
       <property name="geometry">
        <rect>
         <x>730</x>
@@ -1725,7 +1725,7 @@ available</string>
 available</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_10">
+     <widget class="QCheckBox" name="checkBoxBrowseProjDoubleDVD">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -1744,7 +1744,7 @@ available</string>
 available</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_12">
+     <widget class="QCheckBox" name="checkBoxBrowseProjDVD">
       <property name="geometry">
        <rect>
         <x>400</x>
@@ -1763,7 +1763,7 @@ available</string>
 available</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="buttonBrowseProjSearchByProj">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -1781,7 +1781,7 @@ available</string>
        <string>Search</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="buttonBrowseProjSearchByActor">
       <property name="geometry">
        <rect>
         <x>220</x>
@@ -1799,7 +1799,7 @@ available</string>
        <string>Search</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_4">
+     <widget class="QFrame" name="frameBrowseProjProj">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -1814,7 +1814,7 @@ available</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="pushButton_6">
+      <widget class="QPushButton" name="buttonBrowseProjDeleteProj">
        <property name="geometry">
         <rect>
          <x>750</x>
@@ -1833,7 +1833,7 @@ available</string>
 Project</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBox">
+      <widget class="QComboBox" name="comboBrowseProjProjResults">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1843,7 +1843,7 @@ Project</string>
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="buttonBrowseProjViewProj">
        <property name="geometry">
         <rect>
          <x>750</x>
@@ -1862,7 +1862,7 @@ Project</string>
 Project</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_54">
+      <widget class="QLabel" name="labelBrowseProjProjResults">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1881,7 +1881,7 @@ Project</string>
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame_5">
+     <widget class="QFrame" name="frameBrowseProjMaterials">
       <property name="geometry">
        <rect>
         <x>40</x>
@@ -1896,7 +1896,7 @@ Project</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="pushButton_8">
+      <widget class="QPushButton" name="buttonBrowseProjDeleteMaterial">
        <property name="geometry">
         <rect>
          <x>750</x>
@@ -1915,7 +1915,7 @@ Project</string>
 Material</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="comboBox_4">
+      <widget class="QComboBox" name="comboBrowseProjProjMaterials">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1925,7 +1925,7 @@ Material</string>
         </rect>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_9">
+      <widget class="QPushButton" name="buttonBrowseProjEditMaterial">
        <property name="geometry">
         <rect>
          <x>750</x>
@@ -1944,7 +1944,7 @@ Material</string>
 Material</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="pushButton_11">
+      <widget class="QPushButton" name="buttonBrowseProjAddMaterial">
        <property name="geometry">
         <rect>
          <x>750</x>
@@ -1963,7 +1963,7 @@ Material</string>
 Material</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_55">
+      <widget class="QLabel" name="labelBrowseProjProjMaterials">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -1983,8 +1983,8 @@ Material</string>
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="maintenancePage">
-     <widget class="QLabel" name="label_4">
+    <widget class="QWidget" name="pageMaintenace">
+     <widget class="QLabel" name="labelMaintenanceHeading">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2002,7 +2002,7 @@ Material</string>
        <string>Maintenace Mode</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="homeButton4">
+     <widget class="QPushButton" name="buttonHomeMaintenance">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -2022,7 +2022,7 @@ Material</string>
      </widget>
     </widget>
     <widget class="QWidget" name="editProjectPage">
-     <widget class="QLineEdit" name="lineEdit_15">
+     <widget class="QLineEdit" name="textEditProjGenre">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2037,7 +2037,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QLabel" name="label_23">
+     <widget class="QLabel" name="labelEditProjCostumeDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2055,7 +2055,7 @@ Material</string>
        <string>Costume Designer</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_16">
+     <widget class="QLineEdit" name="textEditProjSetDecorator">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2073,7 +2073,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_8">
+     <widget class="QPlainTextEdit" name="textEditProjCast">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2083,7 +2083,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_17">
+     <widget class="QLineEdit" name="textEditProjDirector">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2098,7 +2098,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QLabel" name="label_24">
+     <widget class="QLabel" name="labelEditProjProducer">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2116,7 +2116,7 @@ Material</string>
        <string>Producer</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_25">
+     <widget class="QLabel" name="labelEditProjProjectStatus">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2134,7 +2134,7 @@ Material</string>
        <string>Project Status</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_18">
+     <widget class="QLineEdit" name="textEditProjProducer">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2149,7 +2149,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QLabel" name="label_26">
+     <widget class="QLabel" name="labelEditProjReleaseDate">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2167,7 +2167,7 @@ Material</string>
        <string>Release Date</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_27">
+     <widget class="QLabel" name="labelEditProjTicketSale">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -2185,7 +2185,7 @@ Material</string>
        <string>Weekly Ticket Sale</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_28">
+     <widget class="QLabel" name="labelEditProjHeading">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2203,7 +2203,7 @@ Material</string>
        <string>Edit Projects</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_19">
+     <widget class="QLineEdit" name="textEditProjSummary">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2221,7 +2221,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_29">
+     <widget class="QLabel" name="labelEditProjSetDecorator">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2239,7 +2239,7 @@ Material</string>
        <string>Set Decorator</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_30">
+     <widget class="QLabel" name="labelEditProjWriter">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2257,7 +2257,7 @@ Material</string>
        <string>Writer</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_20">
+     <widget class="QLineEdit" name="textEditProjProductionDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2272,7 +2272,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_4">
+     <widget class="QRadioButton" name="radioButtonEditProjNowPlaying">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2290,7 +2290,7 @@ Material</string>
        <string>Now Playing</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_31">
+     <widget class="QLabel" name="labelEditProjKeywords">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2308,7 +2308,7 @@ Material</string>
        <string>Keywords</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_32">
+     <widget class="QLabel" name="labelEditProjTitle">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2326,7 +2326,7 @@ Material</string>
        <string>Title</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_5">
+     <widget class="QRadioButton" name="radioButtonEditProjReleased">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2344,7 +2344,7 @@ Material</string>
        <string>Released</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_56">
+     <widget class="QLabel" name="labelEditProjCast">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2362,7 +2362,7 @@ Material</string>
        <string>Cast</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_57">
+     <widget class="QLabel" name="labelEditProjDirector">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2380,7 +2380,7 @@ Material</string>
        <string>Director</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_21">
+     <widget class="QLineEdit" name="textEditProjEditor">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2395,7 +2395,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QLabel" name="label_58">
+     <widget class="QLabel" name="labelEditProjFilimingLocations">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2413,7 +2413,7 @@ Material</string>
        <string>Filming Locations</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_33">
+     <widget class="QLineEdit" name="textEditProjTitle">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2428,7 +2428,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_6">
+     <widget class="QRadioButton" name="radioButtonEditProjUneleased">
       <property name="geometry">
        <rect>
         <x>390</x>
@@ -2446,7 +2446,7 @@ Material</string>
        <string>Unreleased</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_59">
+     <widget class="QLabel" name="labelEditProjEditor">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2464,7 +2464,7 @@ Material</string>
        <string>Editor</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_60">
+     <widget class="QLabel" name="labelEditProjGenre">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2482,7 +2482,7 @@ Material</string>
        <string>Genre</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_61">
+     <widget class="QLabel" name="labelEditProjRuntime">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2500,7 +2500,7 @@ Material</string>
        <string>Runtime</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="buttonEditProjSave">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -2518,7 +2518,7 @@ Material</string>
        <string>Save</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_62">
+     <widget class="QLabel" name="labelEditProjProductionDesginer">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2536,7 +2536,7 @@ Material</string>
        <string>Production Designer</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_63">
+     <widget class="QLabel" name="labelEditProjSummary">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2554,7 +2554,7 @@ Material</string>
        <string>Summary</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_9">
+     <widget class="QPlainTextEdit" name="textEditProjFilmingLocations">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2564,7 +2564,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="label_64">
+     <widget class="QLabel" name="labelEditProjLanguage">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2582,7 +2582,7 @@ Material</string>
        <string>Language</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_38">
+     <widget class="QLineEdit" name="textEditProjWriter">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2597,7 +2597,7 @@ Material</string>
        </font>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_39">
+     <widget class="QLineEdit" name="textEditProjLanguage">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2615,7 +2615,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="homeButton1_2">
+     <widget class="QPushButton" name="buttonHomeEditProj">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -2633,7 +2633,7 @@ Material</string>
        <string>Home</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_40">
+     <widget class="QLineEdit" name="textEditProjCostumeDesigner">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -2651,7 +2651,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit_10">
+     <widget class="QPlainTextEdit" name="textEditProjKeywords">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2661,7 +2661,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QTimeEdit" name="timeEdit_4">
+     <widget class="QTimeEdit" name="timeEditProjRuntime">
       <property name="geometry">
        <rect>
         <x>300</x>
@@ -2671,7 +2671,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDateEdit" name="dateEdit">
+     <widget class="QDateEdit" name="dateEditProjReleaseDate">
       <property name="geometry">
        <rect>
         <x>120</x>
@@ -2681,7 +2681,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox_2">
+     <widget class="QSpinBox" name="spinBoxEditProjTicketSale">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -2693,7 +2693,7 @@ Material</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page">
-     <widget class="QLineEdit" name="lineEdit_42">
+     <widget class="QLineEdit" name="textEditMaterialSubtitles">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -2711,7 +2711,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_10">
+     <widget class="QPushButton" name="buttonEditMaterialsSave">
       <property name="geometry">
        <rect>
         <x>680</x>
@@ -2729,7 +2729,7 @@ Material</string>
        <string>Save</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_65">
+     <widget class="QLabel" name="VlabelEditMaterialsFrameAspect">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -2747,7 +2747,7 @@ Material</string>
        <string>Frame Aspect</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_6">
+     <widget class="QFrame" name="frameEditMaterialsSides">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -2762,7 +2762,7 @@ Material</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="label_66">
+      <widget class="QLabel" name="labelEditMaterialsFirstSide">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2780,7 +2780,7 @@ Material</string>
         <string>First Side Details</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="plainTextEdit_11">
+      <widget class="QPlainTextEdit" name="textEditMaterialSecondSide">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -2790,7 +2790,7 @@ Material</string>
         </rect>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="plainTextEdit_12">
+      <widget class="QPlainTextEdit" name="textEditMaterialFirstSide">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2800,7 +2800,7 @@ Material</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_67">
+      <widget class="QLabel" name="labelEditMaterialsSecondSide">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -2819,7 +2819,7 @@ Material</string>
        </property>
       </widget>
      </widget>
-     <widget class="QRadioButton" name="radioButton_14">
+     <widget class="QRadioButton" name="radioButtonlEditMaterialsDVD">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -2837,7 +2837,7 @@ Material</string>
        <string>DVD</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_68">
+     <widget class="QLabel" name="labelEditMaterialsType">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -2855,7 +2855,7 @@ Material</string>
        <string>Material Type</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_5">
+     <widget class="QComboBox" name="comboEditMaterialAudioFormat">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -2890,7 +2890,7 @@ Material</string>
        </property>
       </item>
      </widget>
-     <widget class="QRadioButton" name="radioButton_15">
+     <widget class="QRadioButton" name="radioButtonlEditMaterialsDoubleDVD">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -2908,7 +2908,7 @@ Material</string>
        <string>Double-sided DVD</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_69">
+     <widget class="QLabel" name="labelEditMaterialsHeading">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2926,7 +2926,7 @@ Material</string>
        <string>Edit Materials</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_16">
+     <widget class="QRadioButton" name="radioButtonlEditMaterialsVHS">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -2944,7 +2944,7 @@ Material</string>
        <string>VHS</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_44">
+     <widget class="QLineEdit" name="textEditMaterialLanguage">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -2962,7 +2962,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_45">
+     <widget class="QLineEdit" name="textEditMaterialFormat">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -2980,7 +2980,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_17">
+     <widget class="QRadioButton" name="radioButtonlEditMaterialsCombo">
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -2998,7 +2998,7 @@ Material</string>
        <string>Combo box sets</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_70">
+     <widget class="QLabel" name="labelEditMaterialsRetailPrice">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3016,7 +3016,7 @@ Material</string>
        <string>Retail Price</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButton_18">
+     <widget class="QRadioButton" name="radioButtonlEditMaterialBluray">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -3034,7 +3034,7 @@ Material</string>
        <string>Blu-ray</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_46">
+     <widget class="QLineEdit" name="textlEditMaterialIDNumber">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3052,7 +3052,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_71">
+     <widget class="QLabel" name="labelEditMaterialsLanguage">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3070,7 +3070,7 @@ Material</string>
        <string>Language</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox_6">
+     <widget class="QComboBox" name="comboEditMaterialPackaging">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3100,7 +3100,7 @@ Material</string>
        </property>
       </item>
      </widget>
-     <widget class="QLabel" name="label_72">
+     <widget class="QLabel" name="labelEditMaterialsAudioFormat">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3118,7 +3118,7 @@ Material</string>
        <string>Audio Format</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_73">
+     <widget class="QLabel" name="labelEditMaterialsFormat">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3136,7 +3136,7 @@ Material</string>
        <string>Format</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_74">
+     <widget class="QLabel" name="labelEditMaterialsPackaging">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3154,7 +3154,7 @@ Material</string>
        <string>Packaging</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_47">
+     <widget class="QLineEdit" name="textEditMaterialTitle">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3172,7 +3172,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QPushButton" name="homeButton2_2">
+     <widget class="QPushButton" name="buttonHomeEditMaterials">
       <property name="geometry">
        <rect>
         <x>810</x>
@@ -3190,7 +3190,7 @@ Material</string>
        <string>Home</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_75">
+     <widget class="QLabel" name="labelEditMaterialsIDNumber">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3208,7 +3208,7 @@ Material</string>
        <string>ID Number</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_76">
+     <widget class="QLabel" name="labelEditMaterialsRuntime">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3226,7 +3226,7 @@ Material</string>
        <string>Runtime</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_7">
+     <widget class="QFrame" name="frameEditMaterialsMovieList">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -3241,7 +3241,7 @@ Material</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPlainTextEdit" name="plainTextEdit_13">
+      <widget class="QPlainTextEdit" name="textEditMaterialMovieList">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3251,7 +3251,7 @@ Material</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_77">
+      <widget class="QLabel" name="labelEditMaterialsMovieList">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3270,7 +3270,7 @@ Material</string>
        </property>
       </widget>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_48">
+     <widget class="QLineEdit" name="textEditMaterialFrameAspect">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3288,7 +3288,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLabel" name="label_78">
+     <widget class="QLabel" name="labelEditMaterialsTitle">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3306,7 +3306,7 @@ Material</string>
        <string>Title</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_79">
+     <widget class="QLabel" name="labelEditMaterialsSubtitles">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3324,7 +3324,7 @@ Material</string>
        <string>Subtitles</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_8">
+     <widget class="QFrame" name="frameEditMaterialsAdditional">
       <property name="geometry">
        <rect>
         <x>500</x>
@@ -3339,7 +3339,7 @@ Material</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPlainTextEdit" name="plainTextEdit_14">
+      <widget class="QPlainTextEdit" name="textEditMaterialBonusFeatures">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -3349,7 +3349,7 @@ Material</string>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_80">
+      <widget class="QLabel" name="labelEditMaterialsAdditionalLang">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3367,7 +3367,7 @@ Material</string>
         <string>Additional Languages</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_81">
+      <widget class="QLabel" name="labelEditMaterialsAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3385,7 +3385,7 @@ Material</string>
         <string>Additional Subtitles</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_49">
+      <widget class="QLineEdit" name="textEditMaterialAdditionalLang">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3403,7 +3403,7 @@ Material</string>
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="label_82">
+      <widget class="QLabel" name="labelEditMaterialsBonusFeatures">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -3421,7 +3421,7 @@ Material</string>
         <string>Bonus Features</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_50">
+      <widget class="QLineEdit" name="textEditMaterialAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3440,7 +3440,7 @@ Material</string>
        </property>
       </widget>
      </widget>
-     <widget class="QTimeEdit" name="timeEdit">
+     <widget class="QTimeEdit" name="timeEditMaterialRuntime">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3450,7 +3450,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+     <widget class="QDoubleSpinBox" name="spinBoxEditMaterialRetailPrice">
       <property name="geometry">
        <rect>
         <x>90</x>
