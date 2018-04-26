@@ -19,41 +19,66 @@ public:
 	SDI::controller* backend;
 
 private slots:
-    void on_toAddEditProjects_clicked();
+    void on_buttonToAddProjects_clicked();
 
-    void on_toBrowseProjects_clicked();
+    void on_buttonToBrowseProjects_clicked();
 
-    void on_toMaintenance_clicked();
+    void on_buttonToMaintenance_clicked();
 
-    void on_homeButton1_clicked();
+    void on_buttonAddProjHome_clicked();
 
-    void on_homeButton2_clicked();
+    void on_buttonHomeAddMaterials_clicked();
 
-    void on_homeButton3_clicked();
+    void on_buttonHomeBrowseProj_clicked();
 
-    void on_homeButton4_clicked();
+    void on_buttonHomeMaintenance_clicked();
 
-    void on_toAddMaterials_clicked();
+    void on_radioButtonAddProjUnreleased_clicked();
 
-    void on_radioButton_2_clicked();
+    void on_radioButtonAddProjReleased_clicked();
 
-    void on_radioButton_clicked();
+    void on_radioButtonAddProjNowPlaying_clicked();
 
-    void on_radioButton_3_clicked();
+    void on_radioButtonAddMaterialsVHS_clicked();
 
-    void on_radioButton_11_clicked();
+    void on_radioButtonAddMaterialsDVD_clicked();
 
-    void on_radioButton_9_clicked();
+    void on_radioButtonAddMaterialsBluray_clicked();
 
-    void on_radioButton_10_clicked();
+    void on_radioButtonAddMaterialsDoubleDVD_clicked();
 
-    void on_radioButton_13_clicked();
+    void on_radioButtonAddMaterialsCombo_clicked();
 
-    void on_radioButton_12_clicked();
+    void on_buttonBrowseProjSearchByProj_clicked();
 
-    void on_pushButton_clicked();
+    void on_buttonBrowseProjSearchByActor_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_buttonBrowseProjAddMaterial_clicked();
+
+    void on_buttonBrowseProjViewProj_clicked();
+
+    void on_buttonHomeEditProj_clicked();
+
+    void on_buttonHomeEditMaterials_clicked();
+
+    void on_buttonBrowseProjEditMaterial_clicked();
+
+    void on_radioButtonEditProjNowPlaying_clicked();
+
+    void on_radioButtonEditProjUneleased_clicked();
+
+    void on_radioButtonEditProjReleased_clicked();
+
+    void on_radioButtonlEditMaterialsDVD_clicked();
+
+    void on_radioButtonlEditMaterialsDoubleDVD_clicked();
+
+    void on_radioButtonlEditMaterialsCombo_clicked();
+
+    void on_radioButtonlEditMaterialsVHS_clicked();
+
+    void on_radioButtonlEditMaterialBluray_clicked();
+
 
 private:
     Ui::MainWindow *ui;
