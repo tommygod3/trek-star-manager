@@ -8,11 +8,11 @@ namespace SDI
 	
 	class controller
 	{
-	private:
-		vector<project*> projects;
-
-
 	public:
+		vector<project*> projects;
+		controller();
+
+	
 
 
 	};

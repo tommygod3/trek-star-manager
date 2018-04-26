@@ -43,7 +43,10 @@
     <ClCompile Include="..\src\mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="project.cpp">
+    <ClCompile Include="..\src\project.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,8 +69,11 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="project.h">
+    <ClInclude Include="..\include\controller.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\project.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -64,6 +64,14 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">SDICoursework</TargetName>
     <IgnoreImportLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</IgnoreImportLibrary>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\include\;$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>..\src\</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\include\;$(WindowsSDK_IncludePath);</IncludePath>
+    <SourcePath>..\src\</SourcePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>.;.\..\include;$(QTDIR)\include;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtCore;.\release;\include;$(QTDIR)\mkspecs\win32-msvc;.\..\build\GeneratedFiles\$(ConfigurationName);.\..\build\GeneratedFiles;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -182,9 +190,10 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\controller.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mainwindow.cpp" />
-    <ClCompile Include="project.cpp" />
+    <ClCompile Include="..\src\project.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\include\mainwindow.h">
@@ -213,7 +222,8 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="project.h" />
+    <ClInclude Include="..\include\controller.h" />
+    <ClInclude Include="..\include\project.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -9,14 +9,18 @@ OBJECTS_DIR += ../build
 
 SOURCES += \
         ../src/main.cpp \
-        ../src/mainwindow.cpp
+        ../src/mainwindow.cpp \
+        ../src/controller.cpp \
+        ../src/project.cpp
 
 INCLUDEPATH += ../include
 
 DEPENDPATH += ../include
 
 HEADERS += \
-        ../include/mainwindow.h
+        ../include/mainwindow.h \
+        ../include/controller.h \
+        ../include/project.h
 
 FORMS += \
         ../forms/mainwindow.ui
