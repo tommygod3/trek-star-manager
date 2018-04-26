@@ -33,10 +33,12 @@ namespace SDI
 	public:
 		//Vector of the projects associated materials
 		vector<material*> myMaterials;
-		//Index of material we are editting
+		//Index of material we are editing
 		unsigned int currentMaterialIndex;
 		//Constructor setting project id
-		project(unsigned long id);
+		project(unsigned long id, bool exists);
+		//Load in variables from file
+		void loadIn(string projectFilename);
 		//Getters:
 		unsigned long getProjectId();
 		string getTitle();
@@ -65,21 +67,25 @@ namespace SDI
 		void setReleaseDate(string releaseDateIn);
 		void setLanguage(string languageIn);
 		void setFilmingLocations(vector<string> filmingLocationsIn);
+		void addFilmingLocation(string filmingLocationIn);
 		void setProjectStatus(unsigned int projectStatusIn);
 		void setRuntime(string runtimeIn);
 		void setProducer(string producerIn);
 		void setDirector(string directorIn);
 		void setWriter(string writerIn);
 		void setKeywords(vector<string> keywordsIn);
+		void addKeyword(string keywordIn);
 		void setEditor(string editorIn);
 		void setProductionDesigner(string productionDesignerIn);
 		void setSetDecorator(string setDecoratorIn);
 		void setCostumeDesigner(string costumeDesignerIn);
 		void setCast(vector<string> castIn);
+		void addCast(string castIn);
 		void setTicketSales(unsigned int ticketSalesIn);
 		//Calculations:
 		unsigned long getNextMaterialId();
 		void setCurrentMaterial(unsigned int materialId);
+		void setFromFile(string inFromFile, unsigned int attribute);
 	};
 }
 

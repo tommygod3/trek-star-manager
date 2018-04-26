@@ -2,9 +2,61 @@
 
 namespace SDI
 {
-	material::material(unsigned long idIn)
+	material::material(unsigned long idIn, bool exists)
 	{
 		this->setMaterialId(idIn);
+		if (exists)
+		{
+			loadIn("../data/material" + std::to_string(idIn) + ".txt");
+		}
+	}
+
+	void material::loadIn(string materialFilename)
+	{
+		std::ifstream materialIn(materialFilename);
+
+		string parser;
+		getline(materialIn, parser);
+
+		if (parser == "")
+		{
+			throw std::runtime_error("Error loading in material info, project name: " + std::to_string(materialId));
+		}
+
+		string deliminator = ",";
+		size_t position = 0;
+		string attributeIn;
+		unsigned int counter = 0;
+		vector<int> posOfVecs = { 10,12,15 };
+
+		while ((position = parser.find(deliminator)) != std::string::npos)
+		{
+			attributeIn = parser.substr(0, position);
+			if (std::find(posOfVecs.begin(), posOfVecs.end(), counter) != posOfVecs.end())
+			{
+				int currentAttribute = counter;
+				int quantity = std::stoi(attributeIn);
+				parser.erase(0, position + deliminator.length());
+				for (unsigned int i = 0; i < quantity; i++)
+				{
+
+					position = parser.find(deliminator);
+					attributeIn = parser.substr(0, position);
+					setFromFile(attributeIn, currentAttribute);
+					parser.erase(0, position + deliminator.length());
+				}
+				position = parser.find(deliminator);
+				attributeIn = parser.substr(0, position);
+				counter++;
+				if (counter > 15)
+				{
+					break;
+				}
+			}
+			setFromFile(attributeIn, counter);
+			parser.erase(0, position + deliminator.length());
+			counter++;
+		}
 	}
 
 	//Getters:
@@ -43,7 +95,7 @@ namespace SDI
 		return language;
 	}
 
-	string material::getRetailPrice()
+	unsigned int material::getRetailPrice()
 	{
 		return retailPrice;
 	}
@@ -68,14 +120,14 @@ namespace SDI
 		return additionalLanguages;
 	}
 
-	vector<string> material::getAdditionalSubtitles()
-	{
-		return additionalSubtitles;
-	}
-
 	string material::getBonusFeatures()
 	{
 		return bonusFeatures;
+	}
+
+	vector<string> material::getAdditionalSubtitles()
+	{
+		return additionalSubtitles;
 	}
 
 	string material::getSideOneDetails()
@@ -153,12 +205,8 @@ namespace SDI
 		language = languageIn;
 	}
 
-	void material::setRetailPrice(string retailPriceIn)
+	void material::setRetailPrice(unsigned int retailPriceIn)
 	{
-		if (retailPriceIn.size() == 0)
-		{
-			throw std::invalid_argument("Retail price selection invalid: input empty");
-		}
 		retailPrice = retailPriceIn;
 	}
 
@@ -194,9 +242,9 @@ namespace SDI
 		additionalLanguages = additionalLaguagesIn;
 	}
 
-	void material::setAdditionalSubtitles(vector<string> additionalSubtitlesIn)
+	void material::addAdditionalLanguage(string additionalLaguageIn)
 	{
-		additionalSubtitles = additionalSubtitlesIn;
+		additionalLanguages.push_back(additionalLaguageIn);
 	}
 
 	void material::setBonusFeatures(string bonusFeaturesIn)
@@ -206,6 +254,16 @@ namespace SDI
 			throw std::invalid_argument("Bonus features selection invalid: input empty");
 		}
 		bonusFeatures = bonusFeaturesIn;
+	}
+
+	void material::setAdditionalSubtitles(vector<string> additionalSubtitlesIn)
+	{
+		additionalSubtitles = additionalSubtitlesIn;
+	}
+
+	void material::addAdditionalSubtitle(string additionalSubtitleIn)
+	{
+		additionalSubtitles.push_back(additionalSubtitleIn);
 	}
 
 	void material::setSideOneDetails(string sideOneDetailsIn)
@@ -233,5 +291,70 @@ namespace SDI
 			throw std::invalid_argument("Movie list selection invalid: input empty");
 		}
 		movieList = movieListIn;
+	}
+
+	void material::addToMovieList(string movieIn)
+	{
+		if (movieIn.size() == 0)
+		{
+			throw std::invalid_argument("Movie selection invalid: input empty");
+		}
+		movieList.push_back(movieIn);
+	}
+
+	//Calc functions:
+	void material::setFromFile(string inFromFile, unsigned int attribute)
+	{
+		switch (attribute)
+		{
+		case 0:
+			setMaterialType(std::stoi(inFromFile));
+			break;
+		case 1:
+			setTitle(inFromFile);
+			break;
+		case 2:
+			setFormat(inFromFile);
+			break;
+		case 3:
+			setAudioFormat(inFromFile);
+			break;
+		case 4:
+			setRuntime(inFromFile);
+			break;
+		case 5:
+			setLanguage(inFromFile);
+			break;
+		case 6:
+			setRetailPrice(std::stoi(inFromFile));
+			break;
+		case 7:
+			setSubtitles(inFromFile);
+			break;
+		case 8:
+			setFrameAspect(inFromFile);
+			break;
+		case 9:
+			setPackaging(inFromFile);
+			break;
+		case 10:
+			addAdditionalLanguage(inFromFile);
+			break;
+		case 11:
+			setBonusFeatures(inFromFile);
+			break;
+		case 12:
+			addAdditionalSubtitle(inFromFile);
+			break;
+		case 13:
+			setSideOneDetails(inFromFile);
+			break;
+		case 14:
+			setSideTwoDetails(inFromFile);
+			break;
+		case 15:
+			addToMovieList(inFromFile);
+			break;
+		}
 	}
 }

@@ -2,10 +2,64 @@
 
 namespace SDI
 {
-	project::project(unsigned long id)
+	project::project(unsigned long id, bool exists)
 	{
 		this->setProjectId(id);
+		if (exists)
+		{
+			loadIn("../data/project" + std::to_string(id) + ".txt");
+		}
 	}
+
+	void project::loadIn(string projectFilename)
+	{
+		std::ifstream detailsIn(projectFilename);
+
+		string parser;
+		getline(detailsIn, parser);
+
+		if (parser == "")
+		{
+			throw std::runtime_error("Error loading in project info, project name: " + std::to_string(projectId));
+		}
+
+		string deliminator = ",";
+		size_t position = 0;
+		string attributeIn;
+		unsigned int counter = 0;
+		vector<int> posOfVecs = { 5,11,16,18 };
+
+		while ((position = parser.find(deliminator)) != std::string::npos) 
+		{
+			attributeIn = parser.substr(0, position);
+			if (std::find(posOfVecs.begin(), posOfVecs.end(), counter) != posOfVecs.end())
+			{
+				int currentAttribute = counter;
+				int quantity = std::stoi(attributeIn);
+				parser.erase(0, position + deliminator.length());
+				for (unsigned int i = 0; i < quantity; i++)
+				{
+					
+					position = parser.find(deliminator);
+					attributeIn = parser.substr(0, position);
+					setFromFile(attributeIn, currentAttribute);
+					parser.erase(0, position + deliminator.length());
+				}
+				position = parser.find(deliminator);
+				attributeIn = parser.substr(0, position);
+				counter++;
+				if (counter > 18)
+				{
+					break;
+				}
+			}
+			setFromFile(attributeIn, counter);
+			parser.erase(0, position + deliminator.length());
+			counter++;
+		}
+	}
+
+
 
 	//Getter functions:
 	unsigned long project::getProjectId()
@@ -163,6 +217,15 @@ namespace SDI
 		filmingLocations = filmingLocationsIn;
 	}
 
+	void project::addFilmingLocation(string filmingLocationIn)
+	{
+		if (filmingLocationIn.size() == 0)
+		{
+			throw std::invalid_argument("Filming location selection invalid: input empty");
+		}
+		filmingLocations.push_back(filmingLocationIn);
+	}
+
 	void project::setProjectStatus(unsigned int projectStatusIn)
 	{
 		if (projectStatusIn > 3)
@@ -217,6 +280,15 @@ namespace SDI
 		keywords = keywordsIn;
 	}
 
+	void project::addKeyword(string keywordIn)
+	{
+		if (keywordIn.size() == 0)
+		{
+			throw std::invalid_argument("Keywords selection invalid: input empty");
+		}
+		keywords.push_back(keywordIn);
+	}
+
 	void project::setEditor(string editorIn)
 	{
 		if (editorIn.size() == 0)
@@ -262,11 +334,20 @@ namespace SDI
 		cast = castIn;
 	}
 
+	void project::addCast(string castIn)
+	{
+		if (castIn.size() == 0)
+		{
+			throw std::invalid_argument("Cast selection invalid: input empty");
+		}
+		cast.push_back(castIn);
+	}
+
 	void project::setTicketSales(unsigned int ticketSalesIn)
 	{
 		if (projectStatus != 2)
 		{
-			throw std::invalid_argument("Ticket sales selection invalid: cannot set ticket sales when not \"Now Playing\"");
+			//throw std::invalid_argument("Ticket sales selection invalid: cannot set ticket sales when not \"Now Playing\"");
 		}
 		ticketSales = ticketSalesIn;
 	}
@@ -292,6 +373,71 @@ namespace SDI
 			{
 				currentMaterialIndex = i;
 			}
+		}
+	}
+
+	void project::setFromFile(string inFromFile, unsigned int attribute)
+	{
+		switch (attribute)
+		{
+		case 0: 
+			setTitle(inFromFile);
+			break;
+		case 1: 
+			setSummary(inFromFile);
+			break;
+		case 2: 
+			setGenre(inFromFile);
+			break;
+		case 3:
+			setReleaseDate(inFromFile);
+			break;
+		case 4:
+			setLanguage(inFromFile);
+			break;
+		case 5:
+			addFilmingLocation(inFromFile);
+			break;
+		case 6:
+			setProjectStatus(std::stoi(inFromFile));
+			break;
+		case 7:
+			setRuntime(inFromFile);
+			break;
+		case 8:
+			setProducer(inFromFile);
+			break;
+		case 9:
+			setDirector(inFromFile);
+			break;
+		case 10:
+			setWriter(inFromFile);
+			break;
+		case 11:
+			addKeyword(inFromFile);
+			break;
+		case 12:
+			setEditor(inFromFile);
+			break;
+		case 13:
+			setProductionDesigner(inFromFile);
+			break;
+		case 14:
+			setSetDecorator(inFromFile);
+			break;
+		case 15:
+			setCostumeDesigner(inFromFile);
+			break;
+		case 16:
+			addCast(inFromFile);
+			break;
+		case 17:
+			setTicketSales(std::stoul(inFromFile));
+			break;
+		case 18:
+			material * readMaterial = new material(std::stoi(inFromFile), true);
+			myMaterials.push_back(readMaterial);
+			break;
 		}
 	}
 }

@@ -5,6 +5,7 @@ namespace SDI
 	controller::controller()
 	{
 		//Load in existing
+		populateListOfProjects("../data/projectlist.txt");
 	}
 
 	controller::~controller()
@@ -13,6 +14,26 @@ namespace SDI
 	}
 
 	//Load in existing projects from file
+	void controller::populateListOfProjects(string projectsFilename)
+	{
+		std::ifstream projectsIn(projectsFilename);
+		string parser;
+		getline(projectsIn, parser);
+		if (parser == "")
+		{
+			return;
+		}
+		string deliminator = ",";
+		size_t position = 0;
+		string projectIn;
+		while ((position = parser.find(deliminator)) != std::string::npos) 
+		{
+			projectIn = parser.substr(0, position);
+			project* projectRead = new project(std::stol(projectIn),true);
+			projectList.push_back(projectRead);
+			parser.erase(0, position + deliminator.length());
+		}
+	}
 
 	//Save existing projects to file
 

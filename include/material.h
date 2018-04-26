@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <stdexcept>
+#include <fstream>
 
 namespace SDI
 {
@@ -14,26 +15,29 @@ namespace SDI
 	{
 	private:
 		unsigned long materialId;
+		//0 = DVD, 1 = DS-DVD, 2 = Boxset, 3 = VHS, 4 = Bluray
 		unsigned int materialType;
 		string title;
 		string format;
 		string audioFormat;
 		string runtime;
 		string language;
-		string retailPrice;
+		unsigned int retailPrice;
 		string subtitles;
 		string frameAspect;
 		string packaging;
 		vector<string> additionalLanguages;
-		vector<string> additionalSubtitles;
 		string bonusFeatures;
+		vector<string> additionalSubtitles;
 		string sideOneDetails;
 		string sideTwoDetails;
 		vector<string> movieList;
 
 	public:
 		//Constructor to set id
-		material(unsigned long idIn);
+		material(unsigned long idIn, bool exists);
+		//Function to load in from file
+		void loadIn(string materialFilename);
 		//Getters:
 		unsigned long getMaterialId();
 		unsigned int getMaterialType();
@@ -42,13 +46,13 @@ namespace SDI
 		string getAudioFormat();
 		string getRuntime();
 		string getLanguage();
-		string getRetailPrice();
+		unsigned int getRetailPrice();
 		string getSubtitles();
 		string getFrameAspect();
 		string getPackaging();
 		vector<string> getAdditionalLanguages();
-		vector<string> getAdditionalSubtitles();
 		string getBonusFeatures();
+		vector<string> getAdditionalSubtitles();
 		string getSideOneDetails();
 		string getSideTwoDetails();
 		vector<string> getMovieList();
@@ -60,16 +64,21 @@ namespace SDI
 		void setAudioFormat(string audioFormatIn);
 		void setRuntime(string runtimeIn);
 		void setLanguage(string laguageIn);
-		void setRetailPrice(string retailPriceIn);
+		void setRetailPrice(unsigned int retailPriceIn);
 		void setSubtitles(string subtitlesIn);
 		void setFrameAspect(string frameAspectIn);
 		void setPackaging(string packagingIn);
 		void setAdditionalLanguages(vector<string> additionalLaguagesIn);
-		void setAdditionalSubtitles(vector<string> additionalSubtitlesIn);
+		void addAdditionalLanguage(string additionalLaguageIn);
 		void setBonusFeatures(string bonusFeaturesIn);
+		void setAdditionalSubtitles(vector<string> additionalSubtitlesIn);
+		void addAdditionalSubtitle(string additionalSubtitleIn);
 		void setSideOneDetails(string sideOneDetailsIn);
 		void setSideTwoDetails(string sideTwoDetailsIn);
 		void setMovieList(vector<string> movieListIn);
+		void addToMovieList(string movieIn);
+		//Calculations:
+		void setFromFile(string inFromFile, unsigned int attribute);
 	};
 }
 
