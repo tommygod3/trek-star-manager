@@ -5,11 +5,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
+	this->setFixedSize(900, 600);
+	backend = new SDI::controller();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+	delete backend;
 }
 
 void MainWindow::on_buttonToAddProjects_clicked()
