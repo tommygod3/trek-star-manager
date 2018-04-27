@@ -15,7 +15,10 @@ namespace SDI
 	material::~material()
 	{
 		//Save existing
-		saveOut();
+		if (toBeSaved)
+		{
+			saveOut();
+		}
 	}
 
 	void material::loadIn()
@@ -94,6 +97,12 @@ namespace SDI
 			materialOut << movieList.at(i) << csv;
 		}
 		materialOut.close();
+	}
+
+	void material::removeThisMaterial()
+	{
+		remove(materialFilename.c_str());
+		toBeSaved = 0;
 	}
 
 	//Getters:

@@ -31,6 +31,8 @@ namespace SDI
 		string costumeDesigner;
 		vector<string> cast;
 		unsigned int ticketSales = 0;
+		//If this will be saved
+		bool toBeSaved = 1;
 
 	public:
 		//Vector of the projects associated materials
@@ -45,6 +47,8 @@ namespace SDI
 		void loadIn();
 		//Save variables to a file
 		void saveOut();
+		//Remove this project
+		void removeThisProject();
 		//Getters:
 		unsigned long long getProjectId();
 		string getTitle();

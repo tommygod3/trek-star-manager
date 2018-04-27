@@ -15,7 +15,11 @@ namespace SDI
 	project::~project()
 	{
 		//Save existing
-		saveOut();
+		if (toBeSaved)
+		{
+			saveOut();
+		}
+		
 		//Free up memory held by list
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
@@ -105,6 +109,16 @@ namespace SDI
 			projectOut << myMaterials.at(i)->getMaterialId() << csv;
 		}
 		projectOut.close();
+	}
+
+	void project::removeThisProject()
+	{
+		remove(projectFilename.c_str());
+		toBeSaved = 0;
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			myMaterials.at(i)->removeThisMaterial();
+		}
 	}
 
 	//Getter functions:

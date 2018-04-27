@@ -27,9 +27,15 @@ namespace SDI
 		//Get vector of all project ids in alphabetical order of title
 		vector<unsigned long long> getAlphabeticProjects();
 		//Get vector of all project ids filtering by project name and given an id list
-		vector<unsigned long long> getAlphabeticProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn);
+		vector<unsigned long long> getProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn);
+		//Get vector of all project ids filtering by actor and given an id list
+		vector<unsigned long long> getProjectsActorFilter(string actorFilter, vector<unsigned long long>& listIn);
 		//Enter id get back name
 		string getNameFromId(unsigned long long id);
+		//Enter id get back actors
+		vector<string> getActorsFromId(unsigned long long id);
+		//Remove project with id
+		void removeProject(unsigned long long id);
 		
 		//Calculations:
 		unsigned long long getNextProjectId();

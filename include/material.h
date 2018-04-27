@@ -39,6 +39,8 @@ namespace SDI
 		string sideOneDetails;
 		string sideTwoDetails;
 		vector<string> movieList;
+		//Whether this should be saved
+		bool toBeSaved = 1;
 
 	public:
 		//Constructor to set id
@@ -49,6 +51,8 @@ namespace SDI
 		void loadIn();
 		//Function to save to file
 		void saveOut();
+		//Function to delete material
+		void removeThisMaterial();
 		//Getters:
 		unsigned long long getMaterialId();
 		unsigned int getMaterialType();

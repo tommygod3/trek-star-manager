@@ -84,7 +84,7 @@ namespace SDI
 		return ids;
 	}
 
-	vector<unsigned long long> controller::getAlphabeticProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn)
+	vector<unsigned long long> controller::getProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn)
 	{
 		vector<unsigned long long> filteredIds;
 		for (unsigned int i = 0; i < listIn.size(); i++)
@@ -92,6 +92,25 @@ namespace SDI
 			if (getNameFromId(listIn.at(i)).find(titleFilter) != string::npos)
 			{
 				filteredIds.push_back(listIn.at(i));
+			}
+		}
+		return filteredIds;
+	}
+
+	vector<unsigned long long> controller::getProjectsActorFilter(string actorFilter, vector<unsigned long long>& listIn)
+	{
+		vector<unsigned long long> filteredIds;
+		for (unsigned int i = 0; i < listIn.size(); i++)
+		{
+			vector<string> cast = getActorsFromId(listIn.at(i));
+			unsigned long long added;
+			for (unsigned int j = 0; j < cast.size(); j++)
+			{
+				if ((cast.at(j).find(actorFilter) != string::npos)&&(added!= listIn.at(i)))
+				{
+					filteredIds.push_back(listIn.at(i));
+					added = listIn.at(i);
+				}
 			}
 		}
 		return filteredIds;
@@ -107,6 +126,29 @@ namespace SDI
 			}
 		}
 		return "";
+	}
+
+	vector<string> controller::getActorsFromId(unsigned long long id)
+	{
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			if (projectList.at(i)->getProjectId() == id)
+			{
+				return projectList.at(i)->getCast();
+			}
+		}
+		return vector<string>();
+	}
+
+	void controller::removeProject(unsigned long long id)
+	{
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			if (projectList.at(i)->getProjectId() == id)
+			{
+				projectList.at(i)->removeThisProject();
+			}
+		}
 	}
 
 	//Calculations:

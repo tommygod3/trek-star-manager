@@ -134,14 +134,40 @@ void MainWindow::on_radioButtonAddMaterialsCombo_clicked()
 
 void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 {
-
-	
-	
+	//Filter by actor
+	ui->comboBrowseProjProjResults->clear();
+	std::vector<unsigned long long> idAlpha = backend->getAlphabeticProjects();
+	std::string filterActor = ui->textBrowseProjSearchByActor->text().toStdString();
+	std::vector<unsigned long long> idFiltered = backend->getProjectsActorFilter(filterActor, idAlpha);
+	//Then filter by title on top
+	std::string filterTitle = ui->textBrowseProjSearchByProj->text().toStdString();
+	idFiltered = backend->getProjectsTitleFilter(filterTitle, idFiltered);
+	for (unsigned int i = 0; i < idFiltered.size(); i++)
+	{
+		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idFiltered.at(i))), QVariant((idFiltered.at(i))));
+	}
+	ui->comboBrowseProjProjResults->setCurrentIndex(0);
+	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
+	backend->setCurrentProject(currentId);
 }
 
 void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
 {
-
+	//Filter by title
+	ui->comboBrowseProjProjResults->clear();
+	std::vector<unsigned long long> idAlpha = backend->getAlphabeticProjects();
+	std::string filterTitle = ui->textBrowseProjSearchByProj->text().toStdString();
+	std::vector<unsigned long long> idFiltered = backend->getProjectsTitleFilter(filterTitle, idAlpha);
+	//Then filter by actor on top
+	std::string filterActor = ui->textBrowseProjSearchByActor->text().toStdString();
+	idFiltered = backend->getProjectsActorFilter(filterActor, idFiltered);
+	for (unsigned int i = 0; i < idFiltered.size(); i++)
+	{
+		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idFiltered.at(i))), QVariant((idFiltered.at(i))));
+	}
+	ui->comboBrowseProjProjResults->setCurrentIndex(0);
+	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
+	backend->setCurrentProject(currentId);
 }
 
 void MainWindow::on_buttonBrowseProjAddMaterial_clicked()
@@ -243,8 +269,11 @@ void MainWindow::on_radioButtonlEditMaterialBluray_clicked()
 
 void MainWindow::on_buttonAddProjectsSave_clicked()
 {
-	//std::string date = ui->dateAddProjReleaseDate->date.toString("dd.MM.yyyy");
-
+	//Making new project
+	SDI::project* current = new SDI::project(backend->getNextProjectId(), false);
+	
+	std::string date = QString(ui->dateAddProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString();
+	current->setReleaseDate(date);
 }
 
 void MainWindow::on_buttonAddMaterialsSave_clicked()
