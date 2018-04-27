@@ -56,9 +56,9 @@ namespace SDI
 		projectsOut.close();
 	}
 
-	vector<unsigned long> controller::getAlphabeticProjects()
+	vector<unsigned long long> controller::getAlphabeticProjects()
 	{
-		vector<unsigned long> ids;
+		vector<unsigned long long> ids;
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			ids.push_back(projectList.at(i)->getProjectId());
@@ -84,7 +84,20 @@ namespace SDI
 		return ids;
 	}
 
-	string controller::getNameFromId(unsigned long id)
+	vector<unsigned long long> controller::getAlphabeticProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn)
+	{
+		vector<unsigned long long> filteredIds;
+		for (unsigned int i = 0; i < listIn.size(); i++)
+		{
+			if (getNameFromId(listIn.at(i)).find(titleFilter) != string::npos)
+			{
+				filteredIds.push_back(listIn.at(i));
+			}
+		}
+		return filteredIds;
+	}
+
+	string controller::getNameFromId(unsigned long long id)
 	{
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
@@ -93,10 +106,11 @@ namespace SDI
 				return projectList.at(i)->getTitle();
 			}
 		}
+		return "";
 	}
 
 	//Calculations:
-	unsigned long controller::getNextProjectId()
+	unsigned long long controller::getNextProjectId()
 	{
 		if (projectList.size() > 0)
 		{

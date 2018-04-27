@@ -2,7 +2,7 @@
 
 namespace SDI
 {
-	material::material(unsigned long idIn, bool exists)
+	material::material(unsigned long long idIn, bool exists)
 	{
 		this->setMaterialId(idIn);
 		if (exists)
@@ -97,7 +97,7 @@ namespace SDI
 	}
 
 	//Getters:
-	unsigned long material::getMaterialId()
+	unsigned long long material::getMaterialId()
 	{
 		return materialId;
 	}
@@ -183,7 +183,7 @@ namespace SDI
 	}
 
 	//Setters:
-	void material::setMaterialId(unsigned long idIn)
+	void material::setMaterialId(unsigned long long idIn)
 	{
 		materialId = idIn;
 	}

@@ -11,7 +11,7 @@ namespace SDI
 		//Filename at loading
 		string projectFilename;
 		//Unique ID to identify project
-		unsigned long projectId;
+		unsigned long long projectId;
 		//Inputted by user:
 		string title;
 		string summary;
@@ -38,7 +38,7 @@ namespace SDI
 		//Index of material we are editing
 		unsigned int currentMaterialIndex;
 		//Constructor setting project id
-		project(unsigned long id, bool exists);
+		project(unsigned long long id, bool exists);
 		//Destructor
 		~project();
 		//Load in variables from file
@@ -46,7 +46,7 @@ namespace SDI
 		//Save variables to a file
 		void saveOut();
 		//Getters:
-		unsigned long getProjectId();
+		unsigned long long getProjectId();
 		string getTitle();
 		string getSummary();
 		string getGenre();
@@ -66,7 +66,7 @@ namespace SDI
 		vector<string> getCast();
 		unsigned int getTicketSales();
 		//Setters:
-		void setProjectId(unsigned long idIn);
+		void setProjectId(unsigned long long idIn);
 		void setTitle(string titleIn);
 		void setSummary(string summaryIn);
 		void setGenre(string genreIn);
@@ -89,7 +89,7 @@ namespace SDI
 		void addCast(string castIn);
 		void setTicketSales(unsigned int ticketSalesIn);
 		//Calculations:
-		unsigned long getNextMaterialId();
+		unsigned long long getNextMaterialId();
 		void setCurrentMaterial(unsigned int materialId);
 		void setFromFile(string inFromFile, unsigned int attribute);
 	};

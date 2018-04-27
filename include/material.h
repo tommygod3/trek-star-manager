@@ -21,7 +21,7 @@ namespace SDI
 		//Filename at loading
 		string materialFilename;
 		//Unique ID to identify material
-		unsigned long materialId;
+		unsigned long long materialId;
 		//0 = DVD, 1 = DS-DVD, 2 = Boxset, 3 = VHS, 4 = Bluray
 		unsigned int materialType;
 		string title;
@@ -42,7 +42,7 @@ namespace SDI
 
 	public:
 		//Constructor to set id
-		material(unsigned long idIn, bool exists);
+		material(unsigned long long idIn, bool exists);
 		//Destructor
 		~material();
 		//Function to load in from file
@@ -50,7 +50,7 @@ namespace SDI
 		//Function to save to file
 		void saveOut();
 		//Getters:
-		unsigned long getMaterialId();
+		unsigned long long getMaterialId();
 		unsigned int getMaterialType();
 		string getTitle();
 		string getFormat();
@@ -68,7 +68,7 @@ namespace SDI
 		string getSideTwoDetails();
 		vector<string> getMovieList();
 		//Setters:
-		void setMaterialId(unsigned long idIn);
+		void setMaterialId(unsigned long long idIn);
 		void setMaterialType(unsigned int typeIn);
 		void setTitle(string titleIn);
 		void setFormat(string formatIn);

@@ -23,6 +23,16 @@ void MainWindow::on_buttonToAddProjects_clicked()
 void MainWindow::on_buttonToBrowseProjects_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+
+	ui->comboBrowseProjProjResults->clear();
+	std::vector<unsigned long long> idAlpha = backend->getAlphabeticProjects();
+	for (unsigned int i = 0; i < idAlpha.size(); i++)
+	{
+		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idAlpha.at(i))), QVariant((idAlpha.at(i))));
+	}
+	ui->comboBrowseProjProjResults->setCurrentIndex(0);
+	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
+	backend->setCurrentProject(currentId);
 }
 
 void MainWindow::on_buttonToMaintenance_clicked()
@@ -125,12 +135,7 @@ void MainWindow::on_radioButtonAddMaterialsCombo_clicked()
 void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 {
 
-	ui->comboBrowseProjProjResults->clear();
-	std::vector<unsigned long> idAlpha = backend->getAlphabeticProjects();
-	for (unsigned int i = 0; i < idAlpha.size(); i++)
-	{
-		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idAlpha.at(i))), QVariant((long long)(idAlpha.at(i))));
-	}
+	
 	
 }
 
@@ -238,6 +243,7 @@ void MainWindow::on_radioButtonlEditMaterialBluray_clicked()
 
 void MainWindow::on_buttonAddProjectsSave_clicked()
 {
+	//std::string date = ui->dateAddProjReleaseDate->date.toString("dd.MM.yyyy");
 
 }
 

@@ -2,7 +2,7 @@
 
 namespace SDI
 {
-	project::project(unsigned long id, bool exists)
+	project::project(unsigned long long id, bool exists)
 	{
 		this->setProjectId(id);
 		if (exists)
@@ -108,7 +108,7 @@ namespace SDI
 	}
 
 	//Getter functions:
-	unsigned long project::getProjectId()
+	unsigned long long project::getProjectId()
 	{
 		return projectId;
 	}
@@ -204,7 +204,7 @@ namespace SDI
 	}
 
 	//Setter functions:
-	void project::setProjectId(unsigned long idIn)
+	void project::setProjectId(unsigned long long idIn)
 	{
 		projectId = idIn;
 	}
@@ -399,7 +399,7 @@ namespace SDI
 	}
 
 	//Calculations:
-	unsigned long project::getNextMaterialId()
+	unsigned long long project::getNextMaterialId()
 	{
 		if (myMaterials.size() > 0)
 		{
