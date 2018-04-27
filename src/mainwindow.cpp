@@ -23,8 +23,6 @@ void MainWindow::on_buttonToAddProjects_clicked()
 void MainWindow::on_buttonToBrowseProjects_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
-    ui->frameBrowseProjProj->setVisible(false);
-    ui->frameBrowseProjMaterials->setVisible(false);
 }
 
 void MainWindow::on_buttonToMaintenance_clicked()
@@ -126,8 +124,7 @@ void MainWindow::on_radioButtonAddMaterialsCombo_clicked()
 
 void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 {
-    ui->frameBrowseProjProj->setVisible(true);
-    ui->frameBrowseProjMaterials->setVisible(true);
+
 	ui->comboBrowseProjProjResults->clear();
 	std::vector<unsigned long> idAlpha = backend->getAlphabeticProjects();
 	for (unsigned int i = 0; i < idAlpha.size(); i++)
@@ -139,8 +136,7 @@ void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 
 void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
 {
-    ui->frameBrowseProjProj->setVisible(true);
-    ui->frameBrowseProjMaterials->setVisible(true);
+
 }
 
 void MainWindow::on_buttonBrowseProjAddMaterial_clicked()
