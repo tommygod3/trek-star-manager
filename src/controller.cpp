@@ -79,4 +79,16 @@ namespace SDI
 			}
 		}
 	}
+
+	void controller::setCurrentProject(string projectName)
+	{
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			if (projectList.at(i)->getTitle() == projectName)
+			{
+				currentProjectIndex = i;
+			}
+		}
+	}
+
 }

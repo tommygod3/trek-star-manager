@@ -128,6 +128,9 @@ void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 {
     ui->frameBrowseProjProj->setVisible(true);
     ui->frameBrowseProjMaterials->setVisible(true);
+	ui->comboBrowseProjProjResults->clear();
+	std::vector<std::string> projectNames;
+	ui->comboBrowseProjProjResults->addItem("ITEM");
 }
 
 void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
