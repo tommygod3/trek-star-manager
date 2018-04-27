@@ -34,10 +34,10 @@ namespace SDI
 		string frameAspect;
 		string packaging;
 		vector<string> additionalLanguages;
-		string bonusFeatures;
+		string bonusFeatures = "";
 		vector<string> additionalSubtitles;
-		string sideOneDetails;
-		string sideTwoDetails;
+		string sideOneDetails = "";
+		string sideTwoDetails = "";
 		vector<string> movieList;
 		//Whether this should be saved
 		bool toBeSaved = 1;

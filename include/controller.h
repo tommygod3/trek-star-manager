@@ -22,24 +22,31 @@ namespace SDI
 		~controller();
 		//List of all projects
 		vector<project*> projectList;
+		vector<project*> toBeRemoved;
 		//Index of project we are editing
-		unsigned int currentProjectIndex;
+		int currentProjectIndex = -1;
 		//Get vector of all project ids in alphabetical order of title
 		vector<unsigned long long> getAlphabeticProjects();
-		//Get vector of all project ids filtering by project name and given an id list
+		//Get vector of given ids filtering by project name
 		vector<unsigned long long> getProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn);
-		//Get vector of all project ids filtering by actor and given an id list
+		//Get vector of given ids filtering by actor
 		vector<unsigned long long> getProjectsActorFilter(string actorFilter, vector<unsigned long long>& listIn);
+		//Ge vector of given ids with type of material
+		vector<unsigned long long> getProjectsMaterialFilter(unsigned int materialFilter, vector<unsigned long long>& listIn);
+
 		//Enter id get back name
 		string getNameFromId(unsigned long long id);
 		//Enter id get back actors
 		vector<string> getActorsFromId(unsigned long long id);
+		//Check id has material type 
+		bool checkProjectHasMaterialType(unsigned long long id, unsigned int type);
 		//Remove project with id
 		void removeProject(unsigned long long id);
 		
 		//Calculations:
 		unsigned long long getNextProjectId();
-		void setCurrentProject(unsigned int projectId);
+		void setCurrentProject(unsigned long long projectId);
+		void setCurrentProjectIndex(int index);
 		
 
 	};

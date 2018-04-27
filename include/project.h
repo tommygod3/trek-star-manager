@@ -37,8 +37,9 @@ namespace SDI
 	public:
 		//Vector of the projects associated materials
 		vector<material*> myMaterials;
+		vector<material*> toBeRemoved;
 		//Index of material we are editing
-		unsigned int currentMaterialIndex;
+		int currentMaterialIndex = -1;
 		//Constructor setting project id
 		project(unsigned long long id, bool exists);
 		//Destructor
@@ -49,10 +50,14 @@ namespace SDI
 		void saveOut();
 		//Remove this project
 		void removeThisProject();
+		//Remove a material
+		void removeMaterial(unsigned long long id);
 		//Get vector of all material ids in alphabetical order of title
 		vector<unsigned long long> getAlphabeticMaterials();
 		//Enter id get back name
 		string getMaterialNameFromId(unsigned long long id);
+		//Check if project has certain types of material
+		bool hasMaterialType(unsigned int type);
 		//Getters:
 		unsigned long long getProjectId();
 		string getTitle();
@@ -98,7 +103,8 @@ namespace SDI
 		void setTicketSales(unsigned int ticketSalesIn);
 		//Calculations:
 		unsigned long long getNextMaterialId();
-		void setCurrentMaterial(unsigned int materialId);
+		void setCurrentMaterial(unsigned long long materialId);
+		void setCurrentMaterialIndex(int index);
 		void setFromFile(string inFromFile, unsigned int attribute);
 	};
 }

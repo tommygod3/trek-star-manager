@@ -19,13 +19,23 @@ namespace SDI
 		{
 			saveOut();
 		}
+		else
+		{
+			remove(projectFilename.c_str());
+		}
 		
 		//Free up memory held by list
+		for (unsigned int i = 0; i < toBeRemoved.size(); i++)
+		{
+			delete toBeRemoved.at(i);
+		}
+		toBeRemoved.clear();
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
 			delete myMaterials.at(i);
 		}
 		myMaterials.clear();
+		
 	}
 
 	void project::loadIn()
@@ -113,12 +123,31 @@ namespace SDI
 
 	void project::removeThisProject()
 	{
-		remove(projectFilename.c_str());
 		toBeSaved = 0;
+		vector<unsigned long long> toBeRemoved;
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
-			myMaterials.at(i)->removeThisMaterial();
+			toBeRemoved.push_back(myMaterials.at(i)->getMaterialId());
 		}
+		for (unsigned int i = 0; i < toBeRemoved.size(); i++)
+		{
+			removeMaterial(toBeRemoved.at(i));
+		}
+	}
+
+	void project::removeMaterial(unsigned long long id)
+	{
+		int indexToRemove = -1;
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			if (myMaterials.at(i)->getMaterialId() == id)
+			{
+				myMaterials.at(i)->removeThisMaterial();
+				indexToRemove = i;
+				toBeRemoved.push_back(myMaterials.at(i));
+			}
+		}
+		myMaterials.erase(myMaterials.begin() + indexToRemove);
 	}
 
 	vector<unsigned long long> project::getAlphabeticMaterials()
@@ -127,6 +156,10 @@ namespace SDI
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
 			ids.push_back(myMaterials.at(i)->getMaterialId());
+		}
+		if (ids.size() == 0)
+		{
+			return ids;
 		}
 		//Bubble sort ids alphabetically from title
 		bool flag = 0;
@@ -159,6 +192,18 @@ namespace SDI
 			}
 		}
 		return "";
+	}
+
+	bool project::hasMaterialType(unsigned int type)
+	{
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			if (myMaterials.at(i)->getMaterialType() == type)
+			{
+				return 1;
+			}
+		}
+		return 0;
 	}
 
 	//Getter functions:
@@ -465,7 +510,7 @@ namespace SDI
 		}
 	}
 
-	void project::setCurrentMaterial(unsigned int materialId)
+	void project::setCurrentMaterial(unsigned long long materialId)
 	{
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
@@ -474,6 +519,11 @@ namespace SDI
 				currentMaterialIndex = i;
 			}
 		}
+	}
+
+	void project::setCurrentMaterialIndex(int index)
+	{
+		currentMaterialIndex = index;
 	}
 
 	void project::setFromFile(string inFromFile, unsigned int attribute)

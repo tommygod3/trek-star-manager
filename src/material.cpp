@@ -19,6 +19,10 @@ namespace SDI
 		{
 			saveOut();
 		}
+		else
+		{
+			remove(materialFilename.c_str());
+		}
 	}
 
 	void material::loadIn()
@@ -101,7 +105,6 @@ namespace SDI
 
 	void material::removeThisMaterial()
 	{
-		remove(materialFilename.c_str());
 		toBeSaved = 0;
 	}
 

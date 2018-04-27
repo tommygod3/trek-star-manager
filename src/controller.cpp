@@ -13,12 +13,17 @@ namespace SDI
 		//Save existing
 		saveListOfProjectsToDisk();
 		//Free up memory held by list
+		for (unsigned int i = 0; i < toBeRemoved.size(); i++)
+		{
+			delete toBeRemoved.at(i);
+		}
+		toBeRemoved.clear();
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			delete projectList.at(i);
 		}
 		projectList.clear();
-
+		
 	}
 
 	//Load in existing projects from file
@@ -62,6 +67,10 @@ namespace SDI
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			ids.push_back(projectList.at(i)->getProjectId());
+		}
+		if (ids.size() == 0)
+		{
+			return ids;
 		}
 		//Bubble sort ids alphabetically from title
 		bool flag = 0;
@@ -116,6 +125,19 @@ namespace SDI
 		return filteredIds;
 	}
 
+	vector<unsigned long long> controller::getProjectsMaterialFilter(unsigned int materialFilter, vector<unsigned long long>& listIn)
+	{
+		vector<unsigned long long> filteredIds;
+		for (unsigned int i = 0; i < listIn.size(); i++)
+		{
+			if (checkProjectHasMaterialType(listIn.at(i), materialFilter))
+			{
+				filteredIds.push_back(listIn.at(i));
+			}
+		}
+		return filteredIds;
+	}
+
 	string controller::getNameFromId(unsigned long long id)
 	{
 		for (unsigned int i = 0; i < projectList.size(); i++)
@@ -140,15 +162,34 @@ namespace SDI
 		return vector<string>();
 	}
 
-	void controller::removeProject(unsigned long long id)
+	bool controller::checkProjectHasMaterialType(unsigned long long id, unsigned int type)
 	{
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			if (projectList.at(i)->getProjectId() == id)
 			{
-				projectList.at(i)->removeThisProject();
+				if (projectList.at(i)->hasMaterialType(type))
+				{
+					return true;
+				}
 			}
 		}
+		return false;
+	}
+
+	void controller::removeProject(unsigned long long id)
+	{
+		int indexToRemove = -1;
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			if (projectList.at(i)->getProjectId() == id)
+			{
+				projectList.at(i)->removeThisProject();
+				indexToRemove = i;
+				toBeRemoved.push_back(projectList.at(i));
+			}
+		}
+		projectList.erase(projectList.begin() + indexToRemove);
 	}
 
 	//Calculations:
@@ -164,7 +205,7 @@ namespace SDI
 		}
 	}
 
-	void controller::setCurrentProject(unsigned int projectId)
+	void controller::setCurrentProject(unsigned long long projectId)
 	{
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
@@ -173,6 +214,11 @@ namespace SDI
 				currentProjectIndex = i;
 			}
 		}
+	}
+
+	void controller::setCurrentProjectIndex(int index)
+	{
+		currentProjectIndex = index;
 	}
 
 }

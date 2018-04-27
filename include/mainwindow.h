@@ -108,6 +108,11 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+	void filterAllBrowsePage();
+	void resetAddProjectInput();
+	void resetEditProjectInput();
+	void resetAddMaterialInput();
 };
 
 #endif // MAINWINDOW_H
