@@ -88,6 +88,10 @@ private slots:
 
     void on_buttonEditMaterialsSave_clicked();
 
+    void on_buttonBrowseProjDeleteProj_clicked();
+
+    void on_buttonBrowseProjDeleteMaterial_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

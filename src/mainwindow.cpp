@@ -290,3 +290,13 @@ void MainWindow::on_buttonEditMaterialsSave_clicked()
 {
 
 }
+
+void MainWindow::on_buttonBrowseProjDeleteProj_clicked()
+{
+
+}
+
+void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
+{
+
+}
