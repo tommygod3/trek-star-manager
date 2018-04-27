@@ -121,6 +121,46 @@ namespace SDI
 		}
 	}
 
+	vector<unsigned long long> project::getAlphabeticMaterials()
+	{
+		vector<unsigned long long> ids;
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			ids.push_back(myMaterials.at(i)->getMaterialId());
+		}
+		//Bubble sort ids alphabetically from title
+		bool flag = 0;
+		while (flag == 0)
+		{
+			bool change = 0;
+			for (int i = 0; i < ids.size() - 1; i++)
+			{
+				if (getMaterialNameFromId(ids.at(i)) > getMaterialNameFromId(ids.at(i + 1)))
+				{
+					std::iter_swap(ids.begin() + i, ids.begin() + i + 1);
+					change = 1;
+				}
+			}
+			if (change == 0)
+			{
+				flag = 1;
+			}
+		}
+		return ids;
+	}
+
+	string project::getMaterialNameFromId(unsigned long long id)
+	{
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			if (myMaterials.at(i)->getMaterialId() == id)
+			{
+				return myMaterials.at(i)->getTitle();
+			}
+		}
+		return "";
+	}
+
 	//Getter functions:
 	unsigned long long project::getProjectId()
 	{

@@ -31,8 +31,6 @@ void MainWindow::on_buttonToBrowseProjects_clicked()
 		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idAlpha.at(i))), QVariant((idAlpha.at(i))));
 	}
 	ui->comboBrowseProjProjResults->setCurrentIndex(0);
-	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
-	backend->setCurrentProject(currentId);
 }
 
 void MainWindow::on_buttonToMaintenance_clicked()
@@ -156,8 +154,7 @@ void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idFiltered.at(i))), QVariant((idFiltered.at(i))));
 	}
 	ui->comboBrowseProjProjResults->setCurrentIndex(0);
-	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
-	backend->setCurrentProject(currentId);
+	
 }
 
 void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
@@ -175,8 +172,7 @@ void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
 		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idFiltered.at(i))), QVariant((idFiltered.at(i))));
 	}
 	ui->comboBrowseProjProjResults->setCurrentIndex(0);
-	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
-	backend->setCurrentProject(currentId);
+	
 }
 
 void MainWindow::on_buttonBrowseProjAddMaterial_clicked()
@@ -312,10 +308,20 @@ void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
 
 void MainWindow::on_comboBrowseProjProjResults_currentIndexChanged(int index)
 {
+	unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
+	backend->setCurrentProject(currentId);
 
+	ui->comboBrowseProjProjMaterials->clear();
+	std::vector<unsigned long long> idAlphaMaterials = backend->projectList.at(backend->currentProjectIndex)->getAlphabeticMaterials();
+	for (unsigned int i = 0; i < idAlphaMaterials.size(); i++)
+	{
+		ui->comboBrowseProjProjMaterials->addItem(QString::fromStdString(backend->projectList.at(backend->currentProjectIndex)->getMaterialNameFromId(idAlphaMaterials.at(i))), QVariant((idAlphaMaterials.at(i))));
+	}
+	ui->comboBrowseProjProjMaterials->setCurrentIndex(0);
 }
 
 void MainWindow::on_comboBrowseProjProjMaterials_currentIndexChanged(int index)
 {
-
+	unsigned long long materialId = ui->comboBrowseProjProjMaterials->itemData(ui->comboBrowseProjProjMaterials->currentIndex()).toULongLong();
+	backend->projectList.at(backend->currentProjectIndex)->setCurrentMaterial(materialId);
 }

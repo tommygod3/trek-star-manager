@@ -49,6 +49,10 @@ namespace SDI
 		void saveOut();
 		//Remove this project
 		void removeThisProject();
+		//Get vector of all material ids in alphabetical order of title
+		vector<unsigned long long> getAlphabeticMaterials();
+		//Enter id get back name
+		string getMaterialNameFromId(unsigned long long id);
 		//Getters:
 		unsigned long long getProjectId();
 		string getTitle();
