@@ -92,6 +92,10 @@ private slots:
 
     void on_buttonBrowseProjDeleteMaterial_clicked();
 
+    void on_comboBrowseProjProjResults_currentIndexChanged(int index);
+
+    void on_comboBrowseProjProjMaterials_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 };

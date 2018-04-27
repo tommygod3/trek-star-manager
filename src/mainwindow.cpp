@@ -309,3 +309,13 @@ void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
 {
 
 }
+
+void MainWindow::on_comboBrowseProjProjResults_currentIndexChanged(int index)
+{
+
+}
+
+void MainWindow::on_comboBrowseProjProjMaterials_currentIndexChanged(int index)
+{
+
+}
