@@ -235,3 +235,23 @@ void MainWindow::on_radioButtonlEditMaterialBluray_clicked()
     ui->comboEditMaterialPackaging->clear();
     ui->comboEditMaterialPackaging->addItem("Plastic box");
 }
+
+void MainWindow::on_buttonAddProjectsSave_clicked()
+{
+
+}
+
+void MainWindow::on_buttonAddMaterialsSave_clicked()
+{
+
+}
+
+void MainWindow::on_buttonEditProjSave_clicked()
+{
+
+}
+
+void MainWindow::on_buttonEditMaterialsSave_clicked()
+{
+
+}

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <widget class="QLabel" name="labelTitle">
@@ -2132,7 +2132,7 @@ Material</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="editProjectPage">
+    <widget class="QWidget" name="pageEditProject">
      <widget class="QLineEdit" name="textEditProjGenre">
       <property name="geometry">
        <rect>
@@ -2803,7 +2803,7 @@ Material</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="pageEditMaterials">
      <widget class="QLineEdit" name="textEditMaterialSubtitles">
       <property name="geometry">
        <rect>
