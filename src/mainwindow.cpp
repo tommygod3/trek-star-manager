@@ -53,6 +53,15 @@ void MainWindow::on_buttonHomeAddMaterials_clicked()
 void MainWindow::on_buttonHomeBrowseProj_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+	ui->textBrowseProjSearchByActor->clear();
+	ui->textBrowseProjSearchByProj->clear();
+	ui->comboBrowseProjProjMaterials->clear();
+	ui->comboBrowseProjProjResults->clear();
+	ui->checkBoxBrowseProjBluray->setChecked(0);
+	ui->checkBoxBrowseProjCombo->setChecked(0);
+	ui->checkBoxBrowseProjDoubleDVD->setChecked(0);
+	ui->checkBoxBrowseProjDVD->setChecked(0);
+	ui->checkBoxBrowseProjVHS->setChecked(0);
 }
 
 void MainWindow::on_buttonHomeMaintenance_clicked()

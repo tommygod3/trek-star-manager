@@ -42,7 +42,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <property name="minimumSize">
@@ -1924,6 +1924,11 @@ Project</string>
          <height>41</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
       </widget>
       <widget class="QPushButton" name="buttonBrowseProjViewProj">
        <property name="geometry">
@@ -2093,6 +2098,11 @@ Material</string>
          <width>731</width>
          <height>41</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
        </property>
       </widget>
       <widget class="QPushButton" name="buttonBrowseProjEditMaterial">
