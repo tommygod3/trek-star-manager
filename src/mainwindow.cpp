@@ -130,7 +130,10 @@ void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
     ui->frameBrowseProjMaterials->setVisible(true);
 	ui->comboBrowseProjProjResults->clear();
 	std::vector<std::string> projectNames;
-	ui->comboBrowseProjProjResults->addItem("ITEM");
+	ui->comboBrowseProjProjResults->addItem("ITEM",12);
+	ui->comboBrowseProjProjResults->setCurrentIndex(0);
+	QVariant a = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex());
+	ui->comboBrowseProjProjResults->addItem(a.toString());
 }
 
 void MainWindow::on_buttonBrowseProjSearchByActor_clicked()

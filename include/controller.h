@@ -24,13 +24,14 @@ namespace SDI
 		vector<project*> projectList;
 		//Index of project we are editing
 		unsigned int currentProjectIndex;
-		//Get 
+		//Get vector of all project ids in alphabetical order of title
+		vector<unsigned long> getAlphabeticProjects();
 		
 		
 		//Calculations:
 		unsigned long getNextProjectId();
 		void setCurrentProject(unsigned int projectId);
-		void setCurrentProject(string projectName);
+		
 
 	};
 

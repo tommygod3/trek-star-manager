@@ -56,6 +56,12 @@ namespace SDI
 		projectsOut.close();
 	}
 
+	vector<unsigned long> controller::getAlphabeticProjects()
+	{
+		vector<unsigned long> ids;
+		//sort, return
+	}
+
 	//Calculations:
 	unsigned long controller::getNextProjectId()
 	{
@@ -74,17 +80,6 @@ namespace SDI
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			if (projectList.at(i)->getProjectId() == projectId)
-			{
-				currentProjectIndex = i;
-			}
-		}
-	}
-
-	void controller::setCurrentProject(string projectName)
-	{
-		for (unsigned int i = 0; i < projectList.size(); i++)
-		{
-			if (projectList.at(i)->getTitle() == projectName)
 			{
 				currentProjectIndex = i;
 			}
