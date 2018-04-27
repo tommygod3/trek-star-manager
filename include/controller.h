@@ -26,7 +26,8 @@ namespace SDI
 		unsigned int currentProjectIndex;
 		//Get vector of all project ids in alphabetical order of title
 		vector<unsigned long> getAlphabeticProjects();
-		
+		//Enter id get back name
+		string getNameFromId(unsigned long id);
 		
 		//Calculations:
 		unsigned long getNextProjectId();

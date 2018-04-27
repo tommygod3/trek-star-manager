@@ -59,7 +59,40 @@ namespace SDI
 	vector<unsigned long> controller::getAlphabeticProjects()
 	{
 		vector<unsigned long> ids;
-		//sort, return
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			ids.push_back(projectList.at(i)->getProjectId());
+		}
+		//Bubble sort ids alphabetically from title
+		bool flag = 0;
+		while (flag == 0)
+		{
+			bool change = 0;
+			for (int i = 0; i < ids.size() - 1; i++)
+			{
+				if (getNameFromId(ids.at(i)) > getNameFromId(ids.at(i + 1)))
+				{
+					std::iter_swap(ids.begin() + i, ids.begin() + i + 1);
+					change = 1;
+				}
+			}
+			if (change == 0)
+			{
+				flag = 1;
+			}
+		}
+		return ids;
+	}
+
+	string controller::getNameFromId(unsigned long id)
+	{
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			if (projectList.at(i)->getProjectId() == id)
+			{
+				return projectList.at(i)->getTitle();
+			}
+		}
 	}
 
 	//Calculations:
