@@ -10,10 +10,22 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="minimumSize">
+    <size>
+     <width>900</width>
+     <height>600</height>
+    </size>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
@@ -23,10 +35,22 @@
       <height>600</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>900</width>
+      <height>600</height>
+     </size>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="pageHome">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>600</height>
+      </size>
+     </property>
      <widget class="QLabel" name="labelTitle">
       <property name="geometry">
        <rect>
@@ -102,6 +126,12 @@ Project Manager</string>
      </widget>
     </widget>
     <widget class="QWidget" name="pageAddProj">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>600</height>
+      </size>
+     </property>
      <widget class="QLabel" name="labelAddProjHeading">
       <property name="geometry">
        <rect>
@@ -773,6 +803,12 @@ Project Manager</string>
      </widget>
     </widget>
     <widget class="QWidget" name="pageAddMaterials">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>600</height>
+      </size>
+     </property>
      <widget class="QPushButton" name="buttonHomeAddMaterials">
       <property name="geometry">
        <rect>
@@ -1545,6 +1581,12 @@ Project Manager</string>
      </widget>
     </widget>
     <widget class="QWidget" name="pageBrowseProjects">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>300</height>
+      </size>
+     </property>
      <widget class="QLabel" name="labelBrowseProjHeading">
       <property name="geometry">
        <rect>
@@ -2095,6 +2137,12 @@ Material</string>
      </widget>
     </widget>
     <widget class="QWidget" name="pageMaintenace">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>600</height>
+      </size>
+     </property>
      <widget class="QLabel" name="labelMaintenanceHeading">
       <property name="geometry">
        <rect>
@@ -2133,6 +2181,12 @@ Material</string>
      </widget>
     </widget>
     <widget class="QWidget" name="pageEditProject">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>600</height>
+      </size>
+     </property>
      <widget class="QLineEdit" name="textEditProjGenre">
       <property name="geometry">
        <rect>
@@ -2804,6 +2858,12 @@ Material</string>
      </widget>
     </widget>
     <widget class="QWidget" name="pageEditMaterials">
+     <property name="minimumSize">
+      <size>
+       <width>900</width>
+       <height>600</height>
+      </size>
+     </property>
      <widget class="QLineEdit" name="textEditMaterialSubtitles">
       <property name="geometry">
        <rect>
