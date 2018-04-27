@@ -96,6 +96,16 @@ private slots:
 
     void on_comboBrowseProjProjMaterials_currentIndexChanged(int index);
 
+    void on_checkBoxBrowseProjDVD_stateChanged(int arg1);
+
+    void on_checkBoxBrowseProjDoubleDVD_stateChanged(int arg1);
+
+    void on_checkBoxBrowseProjCombo_stateChanged(int arg1);
+
+    void on_checkBoxBrowseProjVHS_stateChanged(int arg1);
+
+    void on_checkBoxBrowseProjBluray_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
 };

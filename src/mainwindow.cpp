@@ -325,3 +325,28 @@ void MainWindow::on_comboBrowseProjProjMaterials_currentIndexChanged(int index)
 	unsigned long long materialId = ui->comboBrowseProjProjMaterials->itemData(ui->comboBrowseProjProjMaterials->currentIndex()).toULongLong();
 	backend->projectList.at(backend->currentProjectIndex)->setCurrentMaterial(materialId);
 }
+
+void MainWindow::on_checkBoxBrowseProjDVD_stateChanged(int arg1)
+{
+
+}
+
+void MainWindow::on_checkBoxBrowseProjDoubleDVD_stateChanged(int arg1)
+{
+
+}
+
+void MainWindow::on_checkBoxBrowseProjCombo_stateChanged(int arg1)
+{
+
+}
+
+void MainWindow::on_checkBoxBrowseProjVHS_stateChanged(int arg1)
+{
+
+}
+
+void MainWindow::on_checkBoxBrowseProjBluray_stateChanged(int arg1)
+{
+
+}
