@@ -5,6 +5,9 @@
 #include <vector>
 #include <stdexcept>
 #include <fstream>
+#include <cstdio>
+
+#include <iostream>
 
 namespace SDI
 {
@@ -14,6 +17,9 @@ namespace SDI
 	class material
 	{
 	private:
+		//Filename at loading
+		string materialFilename;
+		//Unique ID to identify material
 		unsigned long materialId;
 		//0 = DVD, 1 = DS-DVD, 2 = Boxset, 3 = VHS, 4 = Bluray
 		unsigned int materialType;
@@ -36,8 +42,12 @@ namespace SDI
 	public:
 		//Constructor to set id
 		material(unsigned long idIn, bool exists);
+		//Destructor
+		~material();
 		//Function to load in from file
-		void loadIn(string materialFilename);
+		void loadIn();
+		//Function to save to file
+		void saveOut();
 		//Getters:
 		unsigned long getMaterialId();
 		unsigned int getMaterialType();

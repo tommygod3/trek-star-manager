@@ -8,6 +8,8 @@ namespace SDI
 	class project
 	{
 	private:
+		//Filename at loading
+		string projectFilename;
 		//Unique ID to identify project
 		unsigned long projectId;
 		//Inputted by user:
@@ -37,8 +39,12 @@ namespace SDI
 		unsigned int currentMaterialIndex;
 		//Constructor setting project id
 		project(unsigned long id, bool exists);
+		//Destructor
+		~project();
 		//Load in variables from file
-		void loadIn(string projectFilename);
+		void loadIn();
+		//Save variables to a file
+		void saveOut();
 		//Getters:
 		unsigned long getProjectId();
 		string getTitle();

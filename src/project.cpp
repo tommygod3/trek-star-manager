@@ -7,11 +7,24 @@ namespace SDI
 		this->setProjectId(id);
 		if (exists)
 		{
-			loadIn("../data/project" + std::to_string(id) + ".txt");
+			projectFilename = "../data/project" + std::to_string(id) + ".txt";
+			loadIn();
 		}
 	}
 
-	void project::loadIn(string projectFilename)
+	project::~project()
+	{
+		//Save existing
+		saveOut();
+		//Free up memory held by list
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			delete myMaterials.at(i);
+		}
+		myMaterials.clear();
+	}
+
+	void project::loadIn()
 	{
 		std::ifstream detailsIn(projectFilename);
 
@@ -35,7 +48,7 @@ namespace SDI
 			if (std::find(posOfVecs.begin(), posOfVecs.end(), counter) != posOfVecs.end())
 			{
 				int currentAttribute = counter;
-				int quantity = std::stoi(attributeIn);
+				unsigned int quantity = std::stoul(attributeIn);
 				parser.erase(0, position + deliminator.length());
 				for (unsigned int i = 0; i < quantity; i++)
 				{
@@ -57,9 +70,42 @@ namespace SDI
 			parser.erase(0, position + deliminator.length());
 			counter++;
 		}
+
+		detailsIn.close();
 	}
 
-
+	void project::saveOut()
+	{
+		remove(projectFilename.c_str());
+		projectFilename = "../data/project" + std::to_string(getProjectId()) + ".txt";
+		std::ofstream projectOut(projectFilename);
+		string csv = ",";
+		projectOut << getTitle() << csv << getSummary() << csv << getGenre() << csv << getReleaseDate() << csv << getLanguage() << csv;
+		projectOut << filmingLocations.size() << csv;
+		for (unsigned int i = 0; i < filmingLocations.size(); i++)
+		{
+			projectOut << filmingLocations.at(i) << csv;
+		}
+		projectOut << getProjectStatus() << csv << getRuntime() << csv << getProducer() << csv << getDirector() << csv << getWriter() << csv;
+		projectOut << keywords.size() << csv;
+		for (unsigned int i = 0; i < keywords.size(); i++)
+		{
+			projectOut << keywords.at(i) << csv;
+		}
+		projectOut << getEditor() << csv << getProductionDesigner() << csv << getSetDecorator() << csv << getCostumeDesigner() << csv;
+		projectOut << cast.size() << csv;
+		for (unsigned int i = 0; i < cast.size(); i++)
+		{
+			projectOut << cast.at(i) << csv;
+		}
+		projectOut << getTicketSales() << csv;
+		projectOut << myMaterials.size() << csv;
+		for (unsigned int i = 0; i < myMaterials.size(); i++)
+		{
+			projectOut << myMaterials.at(i)->getMaterialId() << csv;
+		}
+		projectOut.close();
+	}
 
 	//Getter functions:
 	unsigned long project::getProjectId()

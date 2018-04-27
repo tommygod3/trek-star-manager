@@ -12,6 +12,13 @@ namespace SDI
 	{
 		//Save existing
 		saveListOfProjectsToDisk();
+		//Free up memory held by list
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			delete projectList.at(i);
+		}
+		projectList.clear();
+
 	}
 
 	//Load in existing projects from file
@@ -34,12 +41,19 @@ namespace SDI
 			projectList.push_back(projectRead);
 			parser.erase(0, position + deliminator.length());
 		}
+		projectsIn.close();
 	}
 
 	//Save existing projects to file
 	void controller::saveListOfProjectsToDisk()
 	{
-
+		std::ofstream projectsOut(projectsFilename);
+		for (unsigned int i = 0; i < projectList.size(); i++)
+		{
+			projectsOut << std::to_string(projectList.at(i)->getProjectId()) << ",";
+			
+		}
+		projectsOut.close();
 	}
 
 	//Calculations:

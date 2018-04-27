@@ -7,11 +7,18 @@ namespace SDI
 		this->setMaterialId(idIn);
 		if (exists)
 		{
-			loadIn("../data/material" + std::to_string(idIn) + ".txt");
+			materialFilename = "../data/material" + std::to_string(idIn) + ".txt";
+			loadIn();
 		}
 	}
 
-	void material::loadIn(string materialFilename)
+	material::~material()
+	{
+		//Save existing
+		saveOut();
+	}
+
+	void material::loadIn()
 	{
 		std::ifstream materialIn(materialFilename);
 
@@ -35,7 +42,7 @@ namespace SDI
 			if (std::find(posOfVecs.begin(), posOfVecs.end(), counter) != posOfVecs.end())
 			{
 				int currentAttribute = counter;
-				int quantity = std::stoi(attributeIn);
+				unsigned int quantity = std::stoul(attributeIn);
 				parser.erase(0, position + deliminator.length());
 				for (unsigned int i = 0; i < quantity; i++)
 				{
@@ -57,6 +64,36 @@ namespace SDI
 			parser.erase(0, position + deliminator.length());
 			counter++;
 		}
+
+		materialIn.close();
+	}
+
+	void material::saveOut()
+	{
+		remove(materialFilename.c_str());
+		materialFilename = "../data/material" + std::to_string(getMaterialId()) + ".txt";
+		std::ofstream materialOut(materialFilename);
+		string csv = ",";
+
+		materialOut << getMaterialType() << csv << getTitle() << csv << getFormat() << csv << getAudioFormat() << csv << getRuntime() << csv << getLanguage() << csv << getRetailPrice() << csv << getSubtitles() << csv << getFrameAspect() << csv << getPackaging() << csv;
+		materialOut << additionalLanguages.size() << csv;
+		for (unsigned int i = 0; i < additionalLanguages.size(); i++)
+		{
+			materialOut << additionalLanguages.at(i) << csv;
+		}
+		materialOut << getBonusFeatures() << csv;
+		materialOut << additionalSubtitles.size() << csv;
+		for (unsigned int i = 0; i < additionalSubtitles.size(); i++)
+		{
+			materialOut << additionalSubtitles.at(i) << csv;
+		}
+		materialOut << getSideOneDetails() << csv << getSideTwoDetails() << csv;
+		materialOut << movieList.size() << csv;
+		for (unsigned int i = 0; i < movieList.size(); i++)
+		{
+			materialOut << movieList.at(i) << csv;
+		}
+		materialOut.close();
 	}
 
 	//Getters:
