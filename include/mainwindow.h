@@ -80,6 +80,14 @@ private slots:
     void on_radioButtonlEditMaterialBluray_clicked();
 
 
+    void on_buttonAddProjectsSave_clicked();
+
+    void on_buttonAddMaterialsSave_clicked();
+
+    void on_buttonEditProjSave_clicked();
+
+    void on_buttonEditMaterialsSave_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
