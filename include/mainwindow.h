@@ -65,19 +65,17 @@ private slots:
 
     void on_radioButtonEditProjNowPlaying_clicked();
 
-    void on_radioButtonEditProjUneleased_clicked();
-
     void on_radioButtonEditProjReleased_clicked();
 
-    void on_radioButtonlEditMaterialsDVD_clicked();
+    void on_radioButtonEditMaterialsDVD_clicked();
 
-    void on_radioButtonlEditMaterialsDoubleDVD_clicked();
+    void on_radioButtonEditMaterialsDoubleDVD_clicked();
 
-    void on_radioButtonlEditMaterialsCombo_clicked();
+    void on_radioButtonEditMaterialsCombo_clicked();
 
-    void on_radioButtonlEditMaterialsVHS_clicked();
+    void on_radioButtonEditMaterialsVHS_clicked();
 
-    void on_radioButtonlEditMaterialBluray_clicked();
+    void on_radioButtonEditMaterialsBluray_clicked();
 
 
     void on_buttonAddProjectsSave_clicked();
@@ -109,6 +107,8 @@ private slots:
     void on_buttonBackEditProj_clicked();
 
     void on_buttonBackEditMaterials_clicked();
+
+    void on_radioButtonEditProjUnreleased_clicked();
 
 private:
     Ui::MainWindow *ui;

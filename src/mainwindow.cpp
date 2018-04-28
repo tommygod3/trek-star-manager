@@ -126,8 +126,9 @@ void MainWindow::on_radioButtonAddMaterialsDoubleDVD_clicked()
     ui->frameAddMaterialsAdditional->setVisible(true);
     ui->frameAddMaterialsSides->setVisible(true);
     ui->frameAddMaterialsSidesMovieList->setVisible(true);
-    ui->frameAddMaterialsSidesMovieList->setGeometry(500,380,131,111);
-    ui->buttonAddMaterialsSave->setGeometry(680,450,130,40);
+    ui->frameEditMaterialsSides->setGeometry(500,250,131,111);
+    ui->frameAddMaterialsSidesMovieList->setGeometry(500,390,131,111);
+    ui->buttonAddMaterialsSave->setGeometry(680,460,130,40);
     ui->comboAddMaterialsPackaging->clear();
     ui->comboAddMaterialsPackaging->addItem("Plastic box");
 }
@@ -292,7 +293,7 @@ void MainWindow::on_radioButtonEditProjNowPlaying_clicked()
     ui->spinBoxEditProjTicketSale->setVisible(true);
 }
 
-void MainWindow::on_radioButtonEditProjUneleased_clicked()
+void MainWindow::on_radioButtonEditProjUnreleased_clicked()
 {
     ui->labelEditProjTicketSale->setVisible(false);
     ui->spinBoxEditProjTicketSale->setVisible(false);
@@ -304,7 +305,7 @@ void MainWindow::on_radioButtonEditProjReleased_clicked()
     ui->spinBoxEditProjTicketSale->setVisible(false);
 }
 
-void MainWindow::on_radioButtonlEditMaterialsDVD_clicked()
+void MainWindow::on_radioButtonEditMaterialsDVD_clicked()
 {
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(false);
@@ -314,18 +315,19 @@ void MainWindow::on_radioButtonlEditMaterialsDVD_clicked()
     ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
-void MainWindow::on_radioButtonlEditMaterialsDoubleDVD_clicked()
+void MainWindow::on_radioButtonEditMaterialsDoubleDVD_clicked()
 {
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsMovieList->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(true);
-    ui->frameEditMaterialsSides->setGeometry(500,380,131,111);
-    ui->buttonEditMaterialsSave->setGeometry(680,450,130,40);
+    ui->frameEditMaterialsSides->setGeometry(500,250,131,111);
+    ui->frameEditMaterialsMovieList->setGeometry(500,390,131,111);
+    ui->buttonEditMaterialsSave->setGeometry(680,460,130,40);
     ui->comboEditMaterialsPackaging->clear();
     ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
-void MainWindow::on_radioButtonlEditMaterialsCombo_clicked()
+void MainWindow::on_radioButtonEditMaterialsCombo_clicked()
 {
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(false);
@@ -336,7 +338,7 @@ void MainWindow::on_radioButtonlEditMaterialsCombo_clicked()
     ui->comboEditMaterialsPackaging->addItem("Cardboard box");
 }
 
-void MainWindow::on_radioButtonlEditMaterialsVHS_clicked()
+void MainWindow::on_radioButtonEditMaterialsVHS_clicked()
 {
 
     ui->frameEditMaterialsAdditional->setVisible(false);
@@ -348,7 +350,7 @@ void MainWindow::on_radioButtonlEditMaterialsVHS_clicked()
     ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
-void MainWindow::on_radioButtonlEditMaterialBluray_clicked()
+void MainWindow::on_radioButtonEditMaterialsBluray_clicked()
 {
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(false);
