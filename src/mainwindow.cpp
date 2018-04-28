@@ -655,3 +655,12 @@ void MainWindow::resetEditMaterialInput()
 	ui->textEditMaterialsSecondSide->clear();
 	ui->textEditMaterialsMovieList->clear();
 }
+void MainWindow::on_buttonBackEditProj_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_buttonBackEditMaterials_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
+}

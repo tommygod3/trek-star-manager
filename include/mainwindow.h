@@ -106,6 +106,10 @@ private slots:
 
     void on_checkBoxBrowseProjBluray_stateChanged(int arg1);
 
+    void on_buttonBackEditProj_clicked();
+
+    void on_buttonBackEditMaterials_clicked();
+
 private:
     Ui::MainWindow *ui;
 
