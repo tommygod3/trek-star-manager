@@ -86,6 +86,7 @@ namespace SDI
 		void setReleaseDate(string releaseDateIn);
 		void setLanguage(string languageIn);
 		void setFilmingLocations(vector<string> filmingLocationsIn);
+		void resetFilmingLocations();
 		void addFilmingLocation(string filmingLocationIn);
 		void setProjectStatus(unsigned int projectStatusIn);
 		void setRuntime(string runtimeIn);
@@ -93,12 +94,14 @@ namespace SDI
 		void setDirector(string directorIn);
 		void setWriter(string writerIn);
 		void setKeywords(vector<string> keywordsIn);
+		void resetKeywords();
 		void addKeyword(string keywordIn);
 		void setEditor(string editorIn);
 		void setProductionDesigner(string productionDesignerIn);
 		void setSetDecorator(string setDecoratorIn);
 		void setCostumeDesigner(string costumeDesignerIn);
 		void setCast(vector<string> castIn);
+		void resetCast();
 		void addCast(string castIn);
 		void setTicketSales(unsigned int ticketSalesIn);
 		void resetTicketSales();

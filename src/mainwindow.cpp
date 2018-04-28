@@ -205,8 +205,65 @@ void MainWindow::on_buttonBrowseProjAddMaterial_clicked()
 void MainWindow::on_buttonBrowseProjViewProj_clicked()
 {
     ui->stackedWidget->setCurrentIndex(5);
+	SDI::project* currProj = backend->projectList.at(backend->currentProjectIndex);
 	//Load in current project in all edit boxes
-
+	ui->textEditProjTitle->setText(QString::fromStdString(currProj->getTitle()));
+	ui->textEditProjSummary->setText(QString::fromStdString(currProj->getSummary()));
+	ui->textEditProjGenre->setText(QString::fromStdString(currProj->getGenre()));
+	ui->dateEditProjReleaseDate->setDate(QDate::fromString(QString::fromStdString(currProj->getReleaseDate()), "dd.MM.yyyy"));
+	ui->textEditProjLanguage->setText(QString::fromStdString(currProj->getLanguage()));
+	QString filmingLocations;
+	for (unsigned int i = 0; i < currProj->getFilmingLocations().size(); i++)
+	{
+		filmingLocations += QString::fromStdString(currProj->getFilmingLocations().at(i));
+		if (i + 1 < currProj->getFilmingLocations().size())
+		{
+			filmingLocations += "\n";
+		}
+		
+	}
+	ui->textEditProjFilmingLocations->setPlainText(filmingLocations);
+	switch (currProj->getProjectStatus())
+	{
+	case 0:
+		ui->radioButtonEditProjReleased->setChecked(true);
+		break;
+	case 1:
+		ui->radioButtonEditProjUnreleased->setChecked(true);
+		break;
+	case 2:
+		ui->radioButtonEditProjNowPlaying->setChecked(true);
+		ui->spinBoxEditProjTicketSale->setValue(currProj->getTicketSales());
+		break;
+	}
+	ui->timeEditProjRuntime->setTime(QTime::fromString((QString::fromStdString(currProj->getRuntime())), "HH:mm"));
+	ui->textEditProjProducer->setText(QString::fromStdString(currProj->getProducer()));
+	ui->textEditProjDirector->setText(QString::fromStdString(currProj->getDirector()));
+	ui->textEditProjWriter->setText(QString::fromStdString(currProj->getWriter()));
+	QString keywords;
+	for (unsigned int i = 0; i < currProj->getKeywords().size(); i++)
+	{
+		keywords += QString::fromStdString(currProj->getKeywords().at(i));
+		if (i + 1 < currProj->getKeywords().size())
+		{
+			keywords += "\n";
+		}
+	}
+	ui->textEditProjKeywords->setPlainText(keywords);
+	ui->textEditProjEditor->setText(QString::fromStdString(currProj->getEditor()));
+	ui->textEditProjProductionDesigner->setText(QString::fromStdString(currProj->getProductionDesigner()));
+	ui->textEditProjSetDecorator->setText(QString::fromStdString(currProj->getSetDecorator()));
+	ui->textEditProjCostumeDesigner->setText(QString::fromStdString(currProj->getCostumeDesigner()));
+	QString allCast;
+	for (unsigned int i = 0; i < currProj->getCast().size(); i++)
+	{
+		allCast += QString::fromStdString(currProj->getCast().at(i));
+		if (i + 1 < currProj->getCast().size())
+		{
+			allCast += "\n";
+		}
+	}
+	ui->textEditProjCast->setPlainText(allCast);
 }
 
 void MainWindow::on_buttonHomeEditProj_clicked()
@@ -332,7 +389,7 @@ void MainWindow::on_buttonAddProjectsSave_clicked()
 		newProject->setProjectStatus(2);
 		newProject->setTicketSales(ui->spinBoxAddProjTicketSale->value());
 	}
-	newProject->setRuntime(ui->timeAddProjRuntime->time().toString().toStdString());
+	newProject->setRuntime(ui->timeAddProjRuntime->time().toString("HH:mm").toStdString());
 	newProject->setProducer(ui->textAddProjProducer->text().toStdString());
 	newProject->setDirector(ui->textAddProjDirector->text().toStdString());
 	newProject->setWriter(ui->textAddProjWriter->text().toStdString());
@@ -383,7 +440,7 @@ void MainWindow::on_buttonAddMaterialsSave_clicked()
 	}
 	newMaterial->setTitle(ui->textAddMaterialsTitle->text().toStdString());
 	newMaterial->setFormat(ui->textAddMaterialsFormat->text().toStdString());
-	newMaterial->setRuntime(ui->timeAddMaterialsRuntime->time().toString().toStdString());
+	newMaterial->setRuntime(ui->timeAddMaterialsRuntime->time().toString("HH:mm").toStdString());
 	newMaterial->setRetailPrice(ui->spinBoxAddMaterialsRetailPrice->value());
 	newMaterial->setFrameAspect(ui->textAddMaterialsFrameAspect->text().toStdString());
 	newMaterial->setAudioFormat(ui->comboAddMaterialsAudioFormat->currentText().toStdString());
@@ -453,6 +510,57 @@ void MainWindow::on_buttonAddMaterialsSave_clicked()
 
 void MainWindow::on_buttonEditProjSave_clicked()
 {
+	SDI::project* currProj = backend->projectList.at(backend->currentProjectIndex);
+
+	currProj->setTitle(ui->textEditProjTitle->text().toStdString());
+	currProj->setSummary(ui->textEditProjSummary->text().toStdString());
+	currProj->setGenre(ui->textEditProjGenre->text().toStdString());
+	currProj->setReleaseDate(QString(ui->dateEditProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString());
+	currProj->setLanguage(ui->textEditProjLanguage->text().toStdString());
+	QString allLocations = ui->textEditProjFilmingLocations->toPlainText();
+	QStringList locationList = allLocations.split("\n");
+	currProj->resetFilmingLocations();
+	for (unsigned int i = 0; i < locationList.size(); i++)
+	{
+		currProj->addFilmingLocation(locationList.at(i).toStdString());
+	}
+	if (ui->radioButtonEditProjReleased->isChecked())
+	{
+		currProj->setProjectStatus(0);
+		currProj->resetTicketSales();
+	}
+	else if (ui->radioButtonEditProjUnreleased->isChecked())
+	{
+		currProj->setProjectStatus(1);
+		currProj->resetTicketSales();
+	}
+	else if (ui->radioButtonEditProjNowPlaying->isChecked())
+	{
+		currProj->setProjectStatus(2);
+		currProj->setTicketSales(ui->spinBoxEditProjTicketSale->value());
+	}
+	currProj->setRuntime(ui->timeEditProjRuntime->time().toString("HH:mm").toStdString());
+	currProj->setProducer(ui->textEditProjProducer->text().toStdString());
+	currProj->setDirector(ui->textEditProjDirector->text().toStdString());
+	currProj->setWriter(ui->textEditProjWriter->text().toStdString());
+	QString allKeywords = ui->textEditProjKeywords->toPlainText();
+	QStringList keywordList = allKeywords.split("\n");
+	currProj->resetKeywords();
+	for (unsigned int i = 0; i < keywordList.size(); i++)
+	{
+		currProj->addKeyword(keywordList.at(i).toStdString());
+	}
+	currProj->setEditor(ui->textEditProjEditor->text().toStdString());
+	currProj->setProductionDesigner(ui->textEditProjProductionDesigner->text().toStdString());
+	currProj->setSetDecorator(ui->textEditProjSetDecorator->text().toStdString());
+	currProj->setCostumeDesigner(ui->textEditProjCostumeDesigner->text().toStdString());
+	QString allCast = ui->textEditProjCast->toPlainText();
+	QStringList castList = allCast.split("\n");
+	currProj->resetCast();
+	for (unsigned int i = 0; i < castList.size(); i++)
+	{
+		currProj->addCast(castList.at(i).toStdString());
+	}
 	
 }
 
@@ -658,9 +766,13 @@ void MainWindow::resetEditMaterialInput()
 void MainWindow::on_buttonBackEditProj_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+	resetEditMaterialInput();
+	filterAllBrowsePage();
 }
 
 void MainWindow::on_buttonBackEditMaterials_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
+	resetEditMaterialInput();
+	filterAllBrowsePage();
 }

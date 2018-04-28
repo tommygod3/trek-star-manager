@@ -1,1 +1,1 @@
-the title of project 1,a summary,a genre, the release data, the laguage,2,location 1, location 2,2, runtime is 100,the producer, the director, the writer,2,keyword 1,keyword 2, the editor, the prod designer, the set dec, the cost desi,3, cast 1, cast 2, cast 3,10000,2,2,3,
+the title 1,sum,genre,30.12.2011,lan,2,loc 1,loc 2,2,02:01,prod,dir,write,2,key 1,key 2,edit,prod de,set dec,cost desi,3,cast 1,member 2,member 3,3000,0,

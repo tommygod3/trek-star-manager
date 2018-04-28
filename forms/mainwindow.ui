@@ -42,7 +42,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <property name="minimumSize">
@@ -2824,6 +2824,12 @@ Material</string>
         <width>130</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="maximum">
+       <number>1000000000</number>
+      </property>
+      <property name="singleStep">
+       <number>1000</number>
       </property>
      </widget>
      <widget class="QPushButton" name="buttonBackEditProj">

@@ -366,6 +366,11 @@ namespace SDI
 		filmingLocations = filmingLocationsIn;
 	}
 
+	void project::resetFilmingLocations()
+	{
+		filmingLocations = vector<string>();
+	}
+
 	void project::addFilmingLocation(string filmingLocationIn)
 	{
 		if (filmingLocationIn.size() == 0)
@@ -429,6 +434,11 @@ namespace SDI
 		keywords = keywordsIn;
 	}
 
+	void project::resetKeywords()
+	{
+		keywords = vector<string>();
+	}
+
 	void project::addKeyword(string keywordIn)
 	{
 		if (keywordIn.size() == 0)
@@ -481,6 +491,11 @@ namespace SDI
 			throw std::invalid_argument("Cast selection invalid: input empty");
 		}
 		cast = castIn;
+	}
+
+	void project::resetCast()
+	{
+		cast = vector<string>();
 	}
 
 	void project::addCast(string castIn)
