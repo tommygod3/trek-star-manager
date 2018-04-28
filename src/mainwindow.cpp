@@ -6,7 +6,17 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 	this->setFixedSize(900, 600);
-	backend = new SDI::controller();
+	this->setWindowIcon(QIcon("../resources/film.png"));
+	this->setWindowTitle("Trek Star Pictures Project Manager");
+	try
+	{
+		backend = new SDI::controller();
+	}
+	catch (std::runtime_error &r)
+	{
+		showMessage(r.what());
+		QTimer::singleShot(0, this, SLOT(close()));
+	}
 }
 
 MainWindow::~MainWindow()
@@ -205,9 +215,12 @@ void MainWindow::on_buttonBrowseProjAddMaterial_clicked()
 
 void MainWindow::on_buttonBrowseProjViewProj_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(5);
+	//Load in current project to view projects page
+	if (backend->currentProjectIndex == -1)
+	{
+		return;
+	}
 	SDI::project* currProj = backend->projectList.at(backend->currentProjectIndex);
-	//Load in current project in all edit boxes
 	ui->textEditProjTitle->setText(QString::fromStdString(currProj->getTitle()));
 	ui->textEditProjSummary->setText(QString::fromStdString(currProj->getSummary()));
 	ui->textEditProjGenre->setText(QString::fromStdString(currProj->getGenre()));
@@ -265,6 +278,7 @@ void MainWindow::on_buttonBrowseProjViewProj_clicked()
 		}
 	}
 	ui->textEditProjCast->setPlainText(allCast);
+	ui->stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::on_buttonHomeEditProj_clicked()
@@ -283,8 +297,97 @@ void MainWindow::on_buttonHomeEditMaterials_clicked()
 
 void MainWindow::on_buttonBrowseProjEditMaterial_clicked()
 {
+	//Load in current project to view projects page
+	if (backend->currentProjectIndex == -1)
+	{
+		return;
+	}
+	if (backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex == -1)
+	{
+		return;
+	}
+	SDI::material* currMat = backend->projectList.at(backend->currentProjectIndex)->myMaterials.at(backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex);
+	switch (currMat->getMaterialType())
+	{
+	case 0:
+		ui->radioButtonEditMaterialsDVD->setChecked(true);
+		break;
+	case 1:
+		ui->radioButtonEditMaterialsDoubleDVD->setChecked(true);
+		break;
+	case 2:
+		ui->radioButtonEditMaterialsCombo->setChecked(true);
+		break;
+	case 3:
+		ui->radioButtonEditMaterialsVHS->setChecked(true);
+		break;
+	case 4:
+		ui->radioButtonEditMaterialsBluray->setChecked(true);
+		break;
+	}
+
+	ui->textEditMaterialsTitle->setText(QString::fromStdString(currMat->getTitle()));
+	ui->textEditMaterialsFormat->setText(QString::fromStdString(currMat->getFormat()));
+	ui->timeEditMaterialsRuntime->setTime(QTime::fromString((QString::fromStdString(currMat->getRuntime())), "HH:mm"));
+	ui->spinBoxEditMaterialsRetailPrice->setValue(currMat->getRetailPrice());
+	ui->textEditMaterialsFrameAspect->setText(QString::fromStdString(currMat->getFrameAspect()));
+	ui->comboEditMaterialsAudioFormat->setCurrentIndex(ui->comboEditMaterialsAudioFormat->findText(QString::fromStdString(currMat->getAudioFormat())));
+	ui->textEditMaterialsLanguage->setText(QString::fromStdString(currMat->getLanguage()));
+	ui->textEditMaterialsSubtitles->setText(QString::fromStdString(currMat->getSubtitles()));
+	ui->comboEditMaterialsPackaging->setCurrentIndex(ui->comboEditMaterialsPackaging->findText(QString::fromStdString(currMat->getPackaging())));
+
+
+
+	if (currMat->getMaterialType() != 3)
+	{
+		QString additionalLangs;
+		for (unsigned int i = 0; i < currMat->getAdditionalLanguages().size(); i++)
+		{
+			additionalLangs += QString::fromStdString(currMat->getAdditionalLanguages().at(i));
+			if (i + 1 < currMat->getAdditionalLanguages().size())
+			{
+				additionalLangs += "\n";
+			}
+
+		}
+		ui->textEditMaterialsAdditionalLang->setPlainText(additionalLangs);
+
+
+		QString additionalSubs;
+		for (unsigned int i = 0; i < currMat->getAdditionalSubtitles().size(); i++)
+		{
+			additionalSubs += QString::fromStdString(currMat->getAdditionalSubtitles().at(i));
+			if (i + 1 < currMat->getAdditionalSubtitles().size())
+			{
+				additionalSubs += "\n";
+			}
+		}
+		ui->textEditMaterialsAdditionalSub->setPlainText(additionalSubs);
+
+		ui->textEditMaterialsBonusFeatures->setPlainText(QString::fromStdString(currMat->getBonusFeatures()));
+	}
+	if (currMat->getMaterialType() == 1 || currMat->getMaterialType() == 2)
+	{
+		QString movieList;
+		for (unsigned int i = 0; i < currMat->getMovieList().size(); i++)
+		{
+			movieList += QString::fromStdString(currMat->getMovieList().at(i));
+			if (i + 1 < currMat->getMovieList().size())
+			{
+				movieList += "\n";
+			}
+		}
+		ui->textEditMaterialsMovieList->setPlainText(movieList);
+
+		if (currMat->getMaterialType() == 1)
+		{
+			ui->textEditMaterialsFirstSide->setPlainText(QString::fromStdString(currMat->getSideOneDetails()));
+
+			ui->textEditMaterialsSecondSide->setPlainText(QString::fromStdString(currMat->getSideTwoDetails()));
+		}
+	}
+
     ui->stackedWidget->setCurrentIndex(6);
-	//Load in current proj to boxes
 }
 
 void MainWindow::on_radioButtonEditProjNowPlaying_clicked()
@@ -363,212 +466,333 @@ void MainWindow::on_radioButtonEditMaterialsBluray_clicked()
 void MainWindow::on_buttonAddProjectsSave_clicked()
 {
 	//Making new project
-	SDI::project* newProject = new SDI::project(backend->getNextProjectId(), false);
+	try
+	{
+		SDI::project* newProject = new SDI::project(backend->getNextProjectId(), false);
 
-	newProject->setTitle(ui->textAddProjTitle->text().toStdString());
-	newProject->setSummary(ui->textAddProjSummary->text().toStdString());
-	newProject->setGenre(ui->textAddProjGenre->text().toStdString());
-	newProject->setReleaseDate(QString(ui->dateAddProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString());
-	newProject->setLanguage(ui->textAddProjLanguage->text().toStdString());
-	QString allLocations = ui->textAddProjFilmingLocations->toPlainText();
-	QStringList locationList = allLocations.split("\n");
-	for (unsigned int i = 0; i < locationList.size(); i++)
-	{
-		newProject->addFilmingLocation(locationList.at(i).toStdString());
+		newProject->setTitle(ui->textAddProjTitle->text().toStdString());
+		newProject->setSummary(ui->textAddProjSummary->text().toStdString());
+		newProject->setGenre(ui->textAddProjGenre->text().toStdString());
+		newProject->setReleaseDate(QString(ui->dateAddProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString());
+		newProject->setLanguage(ui->textAddProjLanguage->text().toStdString());
+		QString allLocations = ui->textAddProjFilmingLocations->toPlainText();
+		QStringList locationList = allLocations.split("\n");
+		for (unsigned int i = 0; i < locationList.size(); i++)
+		{
+			newProject->addFilmingLocation(locationList.at(i).toStdString());
+		}
+		if (ui->radioButtonAddProjReleased->isChecked())
+		{
+			newProject->setProjectStatus(0);
+			newProject->resetTicketSales();
+		}
+		else if (ui->radioButtonAddProjUnreleased->isChecked())
+		{
+			newProject->setProjectStatus(1);
+			newProject->resetTicketSales();
+		}
+		else if (ui->radioButtonAddProjNowPlaying->isChecked())
+		{
+			newProject->setProjectStatus(2);
+			newProject->setTicketSales(ui->spinBoxAddProjTicketSale->value());
+		}
+		newProject->setRuntime(ui->timeAddProjRuntime->time().toString("HH:mm").toStdString());
+		newProject->setProducer(ui->textAddProjProducer->text().toStdString());
+		newProject->setDirector(ui->textAddProjDirector->text().toStdString());
+		newProject->setWriter(ui->textAddProjWriter->text().toStdString());
+		QString allKeywords = ui->textAddProjKeywords->toPlainText();
+		QStringList keywordList = allKeywords.split("\n");
+		for (unsigned int i = 0; i < keywordList.size(); i++)
+		{
+			newProject->addKeyword(keywordList.at(i).toStdString());
+		}
+		newProject->setEditor(ui->textAddProjEditor->text().toStdString());
+		newProject->setProductionDesigner(ui->textAddProjProductionDesigner->text().toStdString());
+		newProject->setSetDecorator(ui->textAddProjSetDecorator->text().toStdString());
+		newProject->setCostumeDesigner(ui->textAddProjCostumeDesigner->text().toStdString());
+		QString allCast = ui->textAddProjCast->toPlainText();
+		QStringList castList = allCast.split("\n");
+		for (unsigned int i = 0; i < castList.size(); i++)
+		{
+			newProject->addCast(castList.at(i).toStdString());
+		}
+		backend->projectList.push_back(newProject);
+
+		resetAddProjectInput();
 	}
-	if (ui->radioButtonAddProjReleased->isChecked())
+	catch (std::invalid_argument &e)
 	{
-		newProject->setProjectStatus(0);
-		newProject->resetTicketSales();
+		showMessage(e.what());
 	}
-	else if (ui->radioButtonAddProjUnreleased->isChecked())
-	{
-		newProject->setProjectStatus(1);
-		newProject->resetTicketSales();
-	}
-	else if (ui->radioButtonAddProjNowPlaying->isChecked())
-	{
-		newProject->setProjectStatus(2);
-		newProject->setTicketSales(ui->spinBoxAddProjTicketSale->value());
-	}
-	newProject->setRuntime(ui->timeAddProjRuntime->time().toString("HH:mm").toStdString());
-	newProject->setProducer(ui->textAddProjProducer->text().toStdString());
-	newProject->setDirector(ui->textAddProjDirector->text().toStdString());
-	newProject->setWriter(ui->textAddProjWriter->text().toStdString());
-	QString allKeywords = ui->textAddProjKeywords->toPlainText();
-	QStringList keywordList = allKeywords.split("\n");
-	for (unsigned int i = 0; i < keywordList.size(); i++)
-	{
-		newProject->addKeyword(keywordList.at(i).toStdString());
-	}
-	newProject->setEditor(ui->textAddProjEditor->text().toStdString());
-	newProject->setProductionDesigner(ui->textAddProjProductionDesigner->text().toStdString());
-	newProject->setSetDecorator(ui->textAddProjSetDecorator->text().toStdString());
-	newProject->setCostumeDesigner(ui->textAddProjCostumeDesigner->text().toStdString());
-	QString allCast = ui->textAddProjCast->toPlainText();
-	QStringList castList = allCast.split("\n");
-	for (unsigned int i = 0; i < castList.size(); i++)
-	{
-		newProject->addCast(castList.at(i).toStdString());
-	}
-	backend->projectList.push_back(newProject);
-	
-	resetAddProjectInput();
 }
 
 void MainWindow::on_buttonAddMaterialsSave_clicked()
 {
 	//Making new material
-	SDI::material* newMaterial = new SDI::material(backend->projectList.at(backend->currentProjectIndex)->getNextMaterialId(), false);
-	if (ui->radioButtonAddMaterialsDVD->isChecked())
+	try
 	{
-		newMaterial->setMaterialType(0);
-	}
-	else if (ui->radioButtonAddMaterialsDoubleDVD->isChecked())
-	{
-		newMaterial->setMaterialType(1);
-	}
-	else if (ui->radioButtonAddMaterialsCombo->isChecked())
-	{
-		newMaterial->setMaterialType(2);
-	}
-	else if (ui->radioButtonAddMaterialsVHS->isChecked())
-	{
-		newMaterial->setMaterialType(3);
-	}
-	else if (ui->radioButtonAddMaterialsBluray->isChecked())
-	{
-		newMaterial->setMaterialType(4);
-	}
-	newMaterial->setTitle(ui->textAddMaterialsTitle->text().toStdString());
-	newMaterial->setFormat(ui->textAddMaterialsFormat->text().toStdString());
-	newMaterial->setRuntime(ui->timeAddMaterialsRuntime->time().toString("HH:mm").toStdString());
-	newMaterial->setRetailPrice(ui->spinBoxAddMaterialsRetailPrice->value());
-	newMaterial->setFrameAspect(ui->textAddMaterialsFrameAspect->text().toStdString());
-	newMaterial->setAudioFormat(ui->comboAddMaterialsAudioFormat->currentText().toStdString());
-	newMaterial->setLanguage(ui->textAddMaterialsLanguage->text().toStdString());
-	newMaterial->setSubtitles(ui->textAddMaterialsSubtitles->text().toStdString());
-	newMaterial->setPackaging(ui->comboAddMaterialsPackaging->currentText().toStdString());
+		SDI::material* newMaterial = new SDI::material(backend->projectList.at(backend->currentProjectIndex)->getNextMaterialId(), false);
+		if (ui->radioButtonAddMaterialsDVD->isChecked())
+		{
+			newMaterial->setMaterialType(0);
+		}
+		else if (ui->radioButtonAddMaterialsDoubleDVD->isChecked())
+		{
+			newMaterial->setMaterialType(1);
+		}
+		else if (ui->radioButtonAddMaterialsCombo->isChecked())
+		{
+			newMaterial->setMaterialType(2);
+		}
+		else if (ui->radioButtonAddMaterialsVHS->isChecked())
+		{
+			newMaterial->setMaterialType(3);
+		}
+		else if (ui->radioButtonAddMaterialsBluray->isChecked())
+		{
+			newMaterial->setMaterialType(4);
+		}
+		newMaterial->setTitle(ui->textAddMaterialsTitle->text().toStdString());
+		newMaterial->setFormat(ui->textAddMaterialsFormat->text().toStdString());
+		newMaterial->setRuntime(ui->timeAddMaterialsRuntime->time().toString("HH:mm").toStdString());
+		newMaterial->setRetailPrice(ui->spinBoxAddMaterialsRetailPrice->value());
+		newMaterial->setFrameAspect(ui->textAddMaterialsFrameAspect->text().toStdString());
+		newMaterial->setAudioFormat(ui->comboAddMaterialsAudioFormat->currentText().toStdString());
+		newMaterial->setLanguage(ui->textAddMaterialsLanguage->text().toStdString());
+		newMaterial->setSubtitles(ui->textAddMaterialsSubtitles->text().toStdString());
+		newMaterial->setPackaging(ui->comboAddMaterialsPackaging->currentText().toStdString());
 
-	if (!ui->radioButtonAddMaterialsVHS->isChecked())
-	{
-		QString allLanguages = ui->textAddMaterialsAdditionalLang->toPlainText();
-		QStringList languageList = allLanguages.split("\n");
-		for (unsigned int i = 0; i < languageList.size(); i++)
+		if (!ui->radioButtonAddMaterialsVHS->isChecked())
 		{
-			newMaterial->addAdditionalLanguage(languageList.at(i).toStdString());
+			QString allLanguages = ui->textAddMaterialsAdditionalLang->toPlainText();
+			QStringList languageList = allLanguages.split("\n");
+			for (unsigned int i = 0; i < languageList.size(); i++)
+			{
+				newMaterial->addAdditionalLanguage(languageList.at(i).toStdString());
+			}
+
+			QString allSubtitles = ui->textAddMaterialsAdditionalSub->toPlainText();
+			QStringList subtitleList = allSubtitles.split("\n");
+			for (unsigned int i = 0; i < subtitleList.size(); i++)
+			{
+				newMaterial->addAdditionalSubtitle(subtitleList.at(i).toStdString());
+			}
+
+			QString bonusFeature = ui->textAddMaterialsBonusFeatures->toPlainText();
+			QStringList featureList = bonusFeature.split("\n");
+			std::string feature;
+			for (unsigned int i = 0; i < featureList.size(); i++)
+			{
+				feature += featureList.at(i).toStdString();
+			}
+			newMaterial->setBonusFeatures(feature);
 		}
 
-		QString allSubtitles = ui->textAddMaterialsAdditionalSub->toPlainText();
-		QStringList subtitleList = allSubtitles.split("\n");
-		for (unsigned int i = 0; i < subtitleList.size(); i++)
+		if (ui->radioButtonAddMaterialsDoubleDVD->isChecked())
 		{
-			newMaterial->addAdditionalSubtitle(subtitleList.at(i).toStdString());
+			QString firstSide = ui->textAddMaterialsFirstSide->toPlainText();
+			QStringList firstSideList = firstSide.split("\n");
+			std::string sideOne;
+			for (unsigned int i = 0; i < firstSideList.size(); i++)
+			{
+				sideOne += firstSideList.at(i).toStdString();
+			}
+			newMaterial->setSideOneDetails(sideOne);
+
+			QString secondSide = ui->textAddMaterialsSecondSide->toPlainText();
+			QStringList secondSideList = secondSide.split("\n");
+			std::string sideTwo;
+			for (unsigned int i = 0; i < secondSideList.size(); i++)
+			{
+				sideTwo += secondSideList.at(i).toStdString();
+			}
+			newMaterial->setSideTwoDetails(sideTwo);
 		}
 
-		QString bonusFeature = ui->textAddMaterialsBonusFeatures->toPlainText();
-		QStringList featureList = bonusFeature.split("\n");
-		std::string feature;
-		for (unsigned int i = 0; i < featureList.size(); i++)
+		if (ui->radioButtonAddMaterialsCombo->isChecked() || ui->radioButtonAddMaterialsDoubleDVD->isChecked())
 		{
-			feature += featureList.at(i).toStdString();
+			QString allMovies = ui->textAddMaterialsMovieList->toPlainText();
+			QStringList movieList = allMovies.split("\n");
+			for (unsigned int i = 0; i < movieList.size(); i++)
+			{
+				newMaterial->addToMovieList(movieList.at(i).toStdString());
+			}
 		}
-		newMaterial->setBonusFeatures(feature);
+		backend->projectList.at(backend->currentProjectIndex)->myMaterials.push_back(newMaterial);
+		resetAddMaterialInput();
 	}
-	
-	if (ui->radioButtonAddMaterialsDoubleDVD->isChecked())
+	catch (std::invalid_argument &e)
 	{
-		QString firstSide = ui->textAddMaterialsFirstSide->toPlainText();
-		QStringList firstSideList = firstSide.split("\n");
-		std::string sideOne;
-		for (unsigned int i = 0; i < firstSideList.size(); i++)
-		{
-			sideOne += firstSideList.at(i).toStdString();
-		}
-		newMaterial->setSideOneDetails(sideOne);
-
-		QString secondSide = ui->textAddMaterialsSecondSide->toPlainText();
-		QStringList secondSideList = secondSide.split("\n");
-		std::string sideTwo;
-		for (unsigned int i = 0; i < secondSideList.size(); i++)
-		{
-			sideTwo += secondSideList.at(i).toStdString();
-		}
-		newMaterial->setSideTwoDetails(sideTwo);
+		showMessage(e.what());
 	}
-
-	if (ui->radioButtonAddMaterialsCombo->isChecked() || ui->radioButtonAddMaterialsDoubleDVD->isChecked())
-	{
-		QString allMovies = ui->textAddMaterialsMovieList->toPlainText();
-		QStringList movieList = allMovies.split("\n");
-		for (unsigned int i = 0; i < movieList.size(); i++)
-		{
-			newMaterial->addToMovieList(movieList.at(i).toStdString());
-		}
-	}
-	backend->projectList.at(backend->currentProjectIndex)->myMaterials.push_back(newMaterial);
-	resetAddMaterialInput();
 }
 
 void MainWindow::on_buttonEditProjSave_clicked()
 {
-	SDI::project* currProj = backend->projectList.at(backend->currentProjectIndex);
+	//Save changes on viewed project
+	try
+	{
+		SDI::project* currProj = backend->projectList.at(backend->currentProjectIndex);
 
-	currProj->setTitle(ui->textEditProjTitle->text().toStdString());
-	currProj->setSummary(ui->textEditProjSummary->text().toStdString());
-	currProj->setGenre(ui->textEditProjGenre->text().toStdString());
-	currProj->setReleaseDate(QString(ui->dateEditProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString());
-	currProj->setLanguage(ui->textEditProjLanguage->text().toStdString());
-	QString allLocations = ui->textEditProjFilmingLocations->toPlainText();
-	QStringList locationList = allLocations.split("\n");
-	currProj->resetFilmingLocations();
-	for (unsigned int i = 0; i < locationList.size(); i++)
-	{
-		currProj->addFilmingLocation(locationList.at(i).toStdString());
+		currProj->setTitle(ui->textEditProjTitle->text().toStdString());
+		currProj->setSummary(ui->textEditProjSummary->text().toStdString());
+		currProj->setGenre(ui->textEditProjGenre->text().toStdString());
+		currProj->setReleaseDate(QString(ui->dateEditProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString());
+		currProj->setLanguage(ui->textEditProjLanguage->text().toStdString());
+		QString allLocations = ui->textEditProjFilmingLocations->toPlainText();
+		QStringList locationList = allLocations.split("\n");
+		currProj->resetFilmingLocations();
+		for (unsigned int i = 0; i < locationList.size(); i++)
+		{
+			currProj->addFilmingLocation(locationList.at(i).toStdString());
+		}
+		if (ui->radioButtonEditProjReleased->isChecked())
+		{
+			currProj->setProjectStatus(0);
+			currProj->resetTicketSales();
+		}
+		else if (ui->radioButtonEditProjUnreleased->isChecked())
+		{
+			currProj->setProjectStatus(1);
+			currProj->resetTicketSales();
+		}
+		else if (ui->radioButtonEditProjNowPlaying->isChecked())
+		{
+			currProj->setProjectStatus(2);
+			currProj->setTicketSales(ui->spinBoxEditProjTicketSale->value());
+		}
+		currProj->setRuntime(ui->timeEditProjRuntime->time().toString("HH:mm").toStdString());
+		currProj->setProducer(ui->textEditProjProducer->text().toStdString());
+		currProj->setDirector(ui->textEditProjDirector->text().toStdString());
+		currProj->setWriter(ui->textEditProjWriter->text().toStdString());
+		QString allKeywords = ui->textEditProjKeywords->toPlainText();
+		QStringList keywordList = allKeywords.split("\n");
+		currProj->resetKeywords();
+		for (unsigned int i = 0; i < keywordList.size(); i++)
+		{
+			currProj->addKeyword(keywordList.at(i).toStdString());
+		}
+		currProj->setEditor(ui->textEditProjEditor->text().toStdString());
+		currProj->setProductionDesigner(ui->textEditProjProductionDesigner->text().toStdString());
+		currProj->setSetDecorator(ui->textEditProjSetDecorator->text().toStdString());
+		currProj->setCostumeDesigner(ui->textEditProjCostumeDesigner->text().toStdString());
+		QString allCast = ui->textEditProjCast->toPlainText();
+		QStringList castList = allCast.split("\n");
+		currProj->resetCast();
+		for (unsigned int i = 0; i < castList.size(); i++)
+		{
+			currProj->addCast(castList.at(i).toStdString());
+		}
 	}
-	if (ui->radioButtonEditProjReleased->isChecked())
+	catch (std::invalid_argument &e)
 	{
-		currProj->setProjectStatus(0);
-		currProj->resetTicketSales();
-	}
-	else if (ui->radioButtonEditProjUnreleased->isChecked())
-	{
-		currProj->setProjectStatus(1);
-		currProj->resetTicketSales();
-	}
-	else if (ui->radioButtonEditProjNowPlaying->isChecked())
-	{
-		currProj->setProjectStatus(2);
-		currProj->setTicketSales(ui->spinBoxEditProjTicketSale->value());
-	}
-	currProj->setRuntime(ui->timeEditProjRuntime->time().toString("HH:mm").toStdString());
-	currProj->setProducer(ui->textEditProjProducer->text().toStdString());
-	currProj->setDirector(ui->textEditProjDirector->text().toStdString());
-	currProj->setWriter(ui->textEditProjWriter->text().toStdString());
-	QString allKeywords = ui->textEditProjKeywords->toPlainText();
-	QStringList keywordList = allKeywords.split("\n");
-	currProj->resetKeywords();
-	for (unsigned int i = 0; i < keywordList.size(); i++)
-	{
-		currProj->addKeyword(keywordList.at(i).toStdString());
-	}
-	currProj->setEditor(ui->textEditProjEditor->text().toStdString());
-	currProj->setProductionDesigner(ui->textEditProjProductionDesigner->text().toStdString());
-	currProj->setSetDecorator(ui->textEditProjSetDecorator->text().toStdString());
-	currProj->setCostumeDesigner(ui->textEditProjCostumeDesigner->text().toStdString());
-	QString allCast = ui->textEditProjCast->toPlainText();
-	QStringList castList = allCast.split("\n");
-	currProj->resetCast();
-	for (unsigned int i = 0; i < castList.size(); i++)
-	{
-		currProj->addCast(castList.at(i).toStdString());
+		showMessage(e.what());
 	}
 	
 }
 
 void MainWindow::on_buttonEditMaterialsSave_clicked()
 {
+	//Save changes on currently viewed material
+	try
+	{
+		SDI::material* currMat = backend->projectList.at(backend->currentProjectIndex)->myMaterials.at(backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex);
 
+		if (ui->radioButtonEditMaterialsDVD->isChecked())
+		{
+			currMat->setMaterialType(0);
+		}
+		else if (ui->radioButtonEditMaterialsDoubleDVD->isChecked())
+		{
+			currMat->setMaterialType(1);
+		}
+		else if (ui->radioButtonEditMaterialsCombo->isChecked())
+		{
+			currMat->setMaterialType(2);
+		}
+		else if (ui->radioButtonEditMaterialsVHS->isChecked())
+		{
+			currMat->setMaterialType(3);
+		}
+		else if (ui->radioButtonEditMaterialsBluray->isChecked())
+		{
+			currMat->setMaterialType(4);
+		}
+		currMat->setTitle(ui->textEditMaterialsTitle->text().toStdString());
+		currMat->setFormat(ui->textEditMaterialsFormat->text().toStdString());
+		currMat->setRuntime(ui->timeEditMaterialsRuntime->time().toString("HH:mm").toStdString());
+		currMat->setRetailPrice(ui->spinBoxEditMaterialsRetailPrice->value());
+		currMat->setFrameAspect(ui->textEditMaterialsFrameAspect->text().toStdString());
+		currMat->setAudioFormat(ui->comboEditMaterialsAudioFormat->currentText().toStdString());
+		currMat->setLanguage(ui->textEditMaterialsLanguage->text().toStdString());
+		currMat->setSubtitles(ui->textEditMaterialsSubtitles->text().toStdString());
+		currMat->setPackaging(ui->comboEditMaterialsPackaging->currentText().toStdString());
+
+		if (!ui->radioButtonEditMaterialsVHS->isChecked())
+		{
+			QString allLanguages = ui->textEditMaterialsAdditionalLang->toPlainText();
+			QStringList languageList = allLanguages.split("\n");
+			currMat->resetAdditionalLanguages();
+			for (unsigned int i = 0; i < languageList.size(); i++)
+			{
+				currMat->addAdditionalLanguage(languageList.at(i).toStdString());
+			}
+
+			QString allSubtitles = ui->textEditMaterialsAdditionalSub->toPlainText();
+			QStringList subtitleList = allSubtitles.split("\n");
+			currMat->resetAdditionalSubtitles();
+			for (unsigned int i = 0; i < subtitleList.size(); i++)
+			{
+				currMat->addAdditionalSubtitle(subtitleList.at(i).toStdString());
+			}
+
+			QString bonusFeature = ui->textEditMaterialsBonusFeatures->toPlainText();
+			QStringList featureList = bonusFeature.split("\n");
+			std::string feature;
+			for (unsigned int i = 0; i < featureList.size(); i++)
+			{
+				feature += featureList.at(i).toStdString();
+			}
+			currMat->setBonusFeatures(feature);
+		}
+
+		if (ui->radioButtonEditMaterialsDoubleDVD->isChecked())
+		{
+			QString firstSide = ui->textEditMaterialsFirstSide->toPlainText();
+			QStringList firstSideList = firstSide.split("\n");
+			std::string sideOne;
+			for (unsigned int i = 0; i < firstSideList.size(); i++)
+			{
+				sideOne += firstSideList.at(i).toStdString();
+			}
+			currMat->setSideOneDetails(sideOne);
+
+			QString secondSide = ui->textEditMaterialsSecondSide->toPlainText();
+			QStringList secondSideList = secondSide.split("\n");
+			std::string sideTwo;
+			for (unsigned int i = 0; i < secondSideList.size(); i++)
+			{
+				sideTwo += secondSideList.at(i).toStdString();
+			}
+			currMat->setSideTwoDetails(sideTwo);
+		}
+
+		if (ui->radioButtonEditMaterialsCombo->isChecked() || ui->radioButtonEditMaterialsDoubleDVD->isChecked())
+		{
+			QString allMovies = ui->textEditMaterialsMovieList->toPlainText();
+			QStringList movieList = allMovies.split("\n");
+			currMat->resetMovieList();
+			for (unsigned int i = 0; i < movieList.size(); i++)
+			{
+				currMat->addToMovieList(movieList.at(i).toStdString());
+			}
+		}
+	}
+	catch (std::invalid_argument &e)
+	{
+		showMessage(e.what());
+	}
+	
 }
 
 void MainWindow::on_buttonBrowseProjDeleteProj_clicked()
@@ -579,12 +803,11 @@ void MainWindow::on_buttonBrowseProjDeleteProj_clicked()
 		backend->removeProject(backend->projectList.at(backend->currentProjectIndex)->getProjectId());
 		filterAllBrowsePage();
 	}
-	
-
 }
 
 void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
 {
+	//Delete selected material
 	if (backend->currentProjectIndex > -1)
 	{
 		if (backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex > -1)
@@ -777,4 +1000,16 @@ void MainWindow::on_buttonBackEditMaterials_clicked()
     ui->stackedWidget->setCurrentIndex(3);
 	resetEditMaterialInput();
 	filterAllBrowsePage();
+}
+
+void MainWindow::showMessage(std::string text)
+{
+	QString message = QString::fromStdString(text);
+	QMessageBox msg;
+	msg.setText("Error");
+	msg.setInformativeText(message);
+	msg.setWindowTitle("Trek Star Pictures Project Manager");
+	msg.setIconPixmap(QPixmap("../resources/error.png"));
+	msg.setWindowIcon(QIcon("../resources/film.png"));
+	msg.exec();
 }

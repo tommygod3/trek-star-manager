@@ -66,6 +66,7 @@ namespace SDI
 		string getReleaseDate();
 		string getLanguage();
 		vector<string> getFilmingLocations();
+		//0 = Released, 1 = Unreleased, 2 = Now Playing
 		unsigned int getProjectStatus();
 		string getRuntime();
 		string getProducer();

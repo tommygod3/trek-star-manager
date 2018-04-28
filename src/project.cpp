@@ -41,7 +41,10 @@ namespace SDI
 	void project::loadIn()
 	{
 		std::ifstream detailsIn(projectFilename);
-
+		if (!detailsIn.is_open())
+		{
+			throw std::runtime_error("Error with project file - cannot find " + projectFilename);
+		}
 		string parser;
 		getline(detailsIn, parser);
 

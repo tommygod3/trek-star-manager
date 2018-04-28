@@ -42,7 +42,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <property name="minimumSize">
@@ -1232,9 +1232,9 @@ Project Manager</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>80</y>
+        <y>100</y>
         <width>311</width>
-        <height>141</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -1249,7 +1249,7 @@ Project Manager</string>
          <x>180</x>
          <y>20</y>
          <width>130</width>
-         <height>121</height>
+         <height>141</height>
         </rect>
        </property>
       </widget>
@@ -1275,7 +1275,7 @@ Project Manager</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>70</y>
+         <y>80</y>
          <width>121</width>
          <height>21</height>
         </rect>
@@ -1313,20 +1313,17 @@ Project Manager</string>
          <x>0</x>
          <y>20</y>
          <width>131</width>
-         <height>51</height>
+         <height>61</height>
         </rect>
-       </property>
-       <property name="plainText">
-        <string/>
        </property>
       </widget>
       <widget class="QPlainTextEdit" name="textAddMaterialsAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>90</y>
+         <y>100</y>
          <width>131</width>
-         <height>51</height>
+         <height>61</height>
         </rect>
        </property>
       </widget>
@@ -1335,7 +1332,7 @@ Project Manager</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>250</y>
+        <y>270</y>
         <width>311</width>
         <height>111</height>
        </rect>
@@ -1816,34 +1813,61 @@ available</string>
       <property name="palette">
        <palette>
         <active>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>255</green>
-            <blue>127</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
         </active>
         <inactive>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>255</red>
+            <green>255</green>
+            <blue>255</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>255</green>
-            <blue>127</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
         </inactive>
         <disabled>
+         <colorrole role="Base">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
+           </color>
+          </brush>
+         </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>0</red>
-            <green>255</green>
-            <blue>127</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -1976,9 +2000,9 @@ Material</string>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>49</green>
-            <blue>8</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -1996,9 +2020,9 @@ Material</string>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>49</green>
-            <blue>8</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -2007,18 +2031,18 @@ Material</string>
          <colorrole role="Base">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>49</green>
-            <blue>8</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
          <colorrole role="Window">
           <brush brushstyle="SolidPattern">
            <color alpha="255">
-            <red>255</red>
-            <green>49</green>
-            <blue>8</blue>
+            <red>180</red>
+            <green>189</green>
+            <blue>180</blue>
            </color>
           </brush>
          </colorrole>
@@ -2919,7 +2943,7 @@ Material</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>250</y>
+        <y>270</y>
         <width>311</width>
         <height>111</height>
        </rect>
@@ -3460,9 +3484,9 @@ Material</string>
       <property name="geometry">
        <rect>
         <x>500</x>
-        <y>80</y>
+        <y>100</y>
         <width>311</width>
-        <height>141</height>
+        <height>161</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -3477,7 +3501,7 @@ Material</string>
          <x>180</x>
          <y>20</y>
          <width>130</width>
-         <height>121</height>
+         <height>141</height>
         </rect>
        </property>
       </widget>
@@ -3503,9 +3527,9 @@ Material</string>
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>60</y>
+         <y>80</y>
          <width>121</width>
-         <height>35</height>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -3535,23 +3559,23 @@ Material</string>
         <string>Bonus Features</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="textEditMaterialsAdditionalLang">
+      <widget class="QPlainTextEdit" name="textEditMaterialsAdditionalLang">
        <property name="geometry">
         <rect>
          <x>0</x>
          <y>20</y>
          <width>131</width>
-         <height>51</height>
+         <height>61</height>
         </rect>
        </property>
       </widget>
-      <widget class="QTextEdit" name="textEditMaterialsAdditionalSub">
+      <widget class="QPlainTextEdit" name="textEditMaterialsAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>89</y>
+         <y>100</y>
          <width>131</width>
-         <height>51</height>
+         <height>61</height>
         </rect>
        </property>
       </widget>
@@ -3574,6 +3598,9 @@ Material</string>
         <width>130</width>
         <height>20</height>
        </rect>
+      </property>
+      <property name="prefix">
+       <string>£ </string>
       </property>
       <property name="singleStep">
        <double>0.010000000000000</double>

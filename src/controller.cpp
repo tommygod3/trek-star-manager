@@ -30,6 +30,10 @@ namespace SDI
 	void controller::populateListOfProjects()
 	{
 		std::ifstream projectsIn(projectsFilename);
+		if (!projectsIn.is_open())
+		{
+			throw std::runtime_error("Error with project list file - cannot find " + projectsFilename);
+		}
 		string parser;
 		getline(projectsIn, parser);
 		if (parser == "")

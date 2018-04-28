@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QMessageBox>
+#include <QTimer>
 #include <QMainWindow>
 
 #include "controller.h"
@@ -118,6 +120,7 @@ private:
 	void resetEditProjectInput();
 	void resetAddMaterialInput();
 	void resetEditMaterialInput();
+	void showMessage(std::string text);
 };
 
 #endif // MAINWINDOW_H

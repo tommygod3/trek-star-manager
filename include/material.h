@@ -96,8 +96,8 @@ namespace SDI
 		void setSideTwoDetails(string sideTwoDetailsIn);
 		void resetSideTwoDetails();
 		void setMovieList(vector<string> movieListIn);
-		void addToMovieList(string movieIn);
 		void resetMovieList();
+		void addToMovieList(string movieIn);
 		//Calculations:
 		void setFromFile(string inFromFile, unsigned int attribute);
 	};

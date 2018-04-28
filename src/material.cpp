@@ -28,7 +28,10 @@ namespace SDI
 	void material::loadIn()
 	{
 		std::ifstream materialIn(materialFilename);
-
+		if (!materialIn.is_open())
+		{
+			throw std::runtime_error("Error with material file - cannot find " + materialFilename);
+		}
 		string parser;
 		getline(materialIn, parser);
 
