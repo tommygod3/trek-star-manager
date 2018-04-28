@@ -101,6 +101,7 @@ namespace SDI
 		void setCast(vector<string> castIn);
 		void addCast(string castIn);
 		void setTicketSales(unsigned int ticketSalesIn);
+		void resetTicketSales();
 		//Calculations:
 		unsigned long long getNextMaterialId();
 		void setCurrentMaterial(unsigned long long materialId);

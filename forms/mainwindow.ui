@@ -42,7 +42,7 @@
      </size>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="pageHome">
      <property name="minimumSize">
@@ -2326,7 +2326,7 @@ Material</string>
         <x>10</x>
         <y>10</y>
         <width>250</width>
-        <height>27</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -2335,7 +2335,7 @@ Material</string>
        </font>
       </property>
       <property name="text">
-       <string>Edit Projects</string>
+       <string>View and Edit Project</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="textEditProjSummary">
@@ -2826,6 +2826,24 @@ Material</string>
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="buttonBackEditProj">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>10</y>
+        <width>80</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Back</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pageEditMaterials">
      <property name="minimumSize">
@@ -2834,7 +2852,7 @@ Material</string>
        <height>600</height>
       </size>
      </property>
-     <widget class="QLineEdit" name="textEditMaterialSubtitles">
+     <widget class="QLineEdit" name="textEditMaterialsSubtitles">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -2921,7 +2939,7 @@ Material</string>
         <string>First Side Details</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="textEditMaterialSecondSide">
+      <widget class="QPlainTextEdit" name="textEditMaterialsSecondSide">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -2931,7 +2949,7 @@ Material</string>
         </rect>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="textEditMaterialFirstSide">
+      <widget class="QPlainTextEdit" name="textEditMaterialsFirstSide">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -2960,7 +2978,7 @@ Material</string>
        </property>
       </widget>
      </widget>
-     <widget class="QRadioButton" name="radioButtonlEditMaterialsDVD">
+     <widget class="QRadioButton" name="radioButtonEditMaterialsDVD">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -2996,7 +3014,7 @@ Material</string>
        <string>Material Type</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboEditMaterialAudioFormat">
+     <widget class="QComboBox" name="comboEditMaterialsAudioFormat">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3031,7 +3049,7 @@ Material</string>
        </property>
       </item>
      </widget>
-     <widget class="QRadioButton" name="radioButtonlEditMaterialsDoubleDVD">
+     <widget class="QRadioButton" name="radioButtonEditMaterialsDoubleDVD">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -3055,7 +3073,7 @@ Material</string>
         <x>10</x>
         <y>10</y>
         <width>250</width>
-        <height>27</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="font">
@@ -3064,10 +3082,10 @@ Material</string>
        </font>
       </property>
       <property name="text">
-       <string>Edit Materials</string>
+       <string>View and Edit Material</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButtonlEditMaterialsVHS">
+     <widget class="QRadioButton" name="radioButtonEditMaterialsVHS">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3085,7 +3103,7 @@ Material</string>
        <string>VHS</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="textEditMaterialLanguage">
+     <widget class="QLineEdit" name="textEditMaterialsLanguage">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3103,7 +3121,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QLineEdit" name="textEditMaterialFormat">
+     <widget class="QLineEdit" name="textEditMaterialsFormat">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3121,7 +3139,7 @@ Material</string>
        <string/>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButtonlEditMaterialsCombo">
+     <widget class="QRadioButton" name="radioButtonEditMaterialsCombo">
       <property name="geometry">
        <rect>
         <x>290</x>
@@ -3157,7 +3175,7 @@ Material</string>
        <string>Retail Price</string>
       </property>
      </widget>
-     <widget class="QRadioButton" name="radioButtonlEditMaterialBluray">
+     <widget class="QRadioButton" name="radioButtonEditMaterialsBluray">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -3173,24 +3191,6 @@ Material</string>
       </property>
       <property name="text">
        <string>Blu-ray</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="textlEditMaterialIDNumber">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>200</y>
-        <width>130</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="labelEditMaterialsLanguage">
@@ -3211,7 +3211,7 @@ Material</string>
        <string>Language</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboEditMaterialPackaging">
+     <widget class="QComboBox" name="comboEditMaterialsPackaging">
       <property name="geometry">
        <rect>
         <x>270</x>
@@ -3295,10 +3295,10 @@ Material</string>
        <string>Packaging</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="textEditMaterialTitle">
+     <widget class="QLineEdit" name="textEditMaterialsTitle">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>90</x>
         <y>200</y>
         <width>130</width>
         <height>20</height>
@@ -3329,24 +3329,6 @@ Material</string>
       </property>
       <property name="text">
        <string>Home</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="labelEditMaterialsIDNumber">
-      <property name="geometry">
-       <rect>
-        <x>90</x>
-        <y>170</y>
-        <width>100</width>
-        <height>35</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>ID Number</string>
       </property>
      </widget>
      <widget class="QLabel" name="labelEditMaterialsRuntime">
@@ -3382,7 +3364,7 @@ Material</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPlainTextEdit" name="textEditMaterialMovieList">
+      <widget class="QPlainTextEdit" name="textEditMaterialsMovieList">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3411,7 +3393,7 @@ Material</string>
        </property>
       </widget>
      </widget>
-     <widget class="QLineEdit" name="textEditMaterialFrameAspect">
+     <widget class="QLineEdit" name="textEditMaterialsFrameAspect">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3432,7 +3414,7 @@ Material</string>
      <widget class="QLabel" name="labelEditMaterialsTitle">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>90</x>
         <y>170</y>
         <width>100</width>
         <height>35</height>
@@ -3480,7 +3462,7 @@ Material</string>
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPlainTextEdit" name="textEditMaterialBonusFeatures">
+      <widget class="QPlainTextEdit" name="textEditMaterialsBonusFeatures">
        <property name="geometry">
         <rect>
          <x>180</x>
@@ -3526,7 +3508,7 @@ Material</string>
         <string>Additional Subtitles</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="textEditMaterialAdditionalLang">
+      <widget class="QLineEdit" name="textEditMaterialsAdditionalLang">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3562,7 +3544,7 @@ Material</string>
         <string>Bonus Features</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="textEditMaterialAdditionalSub">
+      <widget class="QLineEdit" name="textEditMaterialsAdditionalSub">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -3581,7 +3563,7 @@ Material</string>
        </property>
       </widget>
      </widget>
-     <widget class="QTimeEdit" name="timeEditMaterialRuntime">
+     <widget class="QTimeEdit" name="timeEditMaterialsRuntime">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3591,7 +3573,7 @@ Material</string>
        </rect>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="spinBoxEditMaterialRetailPrice">
+     <widget class="QDoubleSpinBox" name="spinBoxEditMaterialsRetailPrice">
       <property name="geometry">
        <rect>
         <x>90</x>
@@ -3602,6 +3584,24 @@ Material</string>
       </property>
       <property name="singleStep">
        <double>0.010000000000000</double>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="buttonBackEditMaterials">
+      <property name="geometry">
+       <rect>
+        <x>720</x>
+        <y>10</y>
+        <width>80</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Back</string>
       </property>
      </widget>
     </widget>
@@ -3696,27 +3696,26 @@ Material</string>
   <tabstop>textAddMaterialsSecondSide</tabstop>
   <tabstop>buttonAddMaterialsSave</tabstop>
   <tabstop>buttonHomeAddMaterials</tabstop>
-  <tabstop>radioButtonlEditMaterialsDVD</tabstop>
-  <tabstop>radioButtonlEditMaterialsDoubleDVD</tabstop>
-  <tabstop>radioButtonlEditMaterialsCombo</tabstop>
-  <tabstop>radioButtonlEditMaterialsVHS</tabstop>
-  <tabstop>radioButtonlEditMaterialBluray</tabstop>
-  <tabstop>textlEditMaterialIDNumber</tabstop>
-  <tabstop>textEditMaterialFormat</tabstop>
-  <tabstop>timeEditMaterialRuntime</tabstop>
-  <tabstop>spinBoxEditMaterialRetailPrice</tabstop>
-  <tabstop>textEditMaterialFrameAspect</tabstop>
-  <tabstop>textEditMaterialTitle</tabstop>
-  <tabstop>comboEditMaterialAudioFormat</tabstop>
-  <tabstop>textEditMaterialLanguage</tabstop>
-  <tabstop>textEditMaterialSubtitles</tabstop>
-  <tabstop>comboEditMaterialPackaging</tabstop>
-  <tabstop>textEditMaterialAdditionalLang</tabstop>
-  <tabstop>textEditMaterialAdditionalSub</tabstop>
-  <tabstop>textEditMaterialFirstSide</tabstop>
-  <tabstop>textEditMaterialMovieList</tabstop>
-  <tabstop>textEditMaterialBonusFeatures</tabstop>
-  <tabstop>textEditMaterialSecondSide</tabstop>
+  <tabstop>radioButtonEditMaterialsDVD</tabstop>
+  <tabstop>radioButtonEditMaterialsDoubleDVD</tabstop>
+  <tabstop>radioButtonEditMaterialsCombo</tabstop>
+  <tabstop>radioButtonEditMaterialsVHS</tabstop>
+  <tabstop>radioButtonEditMaterialsBluray</tabstop>
+  <tabstop>textEditMaterialsFormat</tabstop>
+  <tabstop>timeEditMaterialsRuntime</tabstop>
+  <tabstop>spinBoxEditMaterialsRetailPrice</tabstop>
+  <tabstop>textEditMaterialsFrameAspect</tabstop>
+  <tabstop>textEditMaterialsTitle</tabstop>
+  <tabstop>comboEditMaterialsAudioFormat</tabstop>
+  <tabstop>textEditMaterialsLanguage</tabstop>
+  <tabstop>textEditMaterialsSubtitles</tabstop>
+  <tabstop>comboEditMaterialsPackaging</tabstop>
+  <tabstop>textEditMaterialsAdditionalLang</tabstop>
+  <tabstop>textEditMaterialsAdditionalSub</tabstop>
+  <tabstop>textEditMaterialsFirstSide</tabstop>
+  <tabstop>textEditMaterialsMovieList</tabstop>
+  <tabstop>textEditMaterialsBonusFeatures</tabstop>
+  <tabstop>textEditMaterialsSecondSide</tabstop>
   <tabstop>buttonEditMaterialsSave</tabstop>
   <tabstop>buttonHomeEditMaterials</tabstop>
   <tabstop>buttonHomeMaintenance</tabstop>

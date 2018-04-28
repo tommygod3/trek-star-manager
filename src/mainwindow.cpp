@@ -219,11 +219,14 @@ void MainWindow::on_buttonHomeEditProj_clicked()
 void MainWindow::on_buttonHomeEditMaterials_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+
+	resetEditMaterialInput();
 }
 
 void MainWindow::on_buttonBrowseProjEditMaterial_clicked()
 {
     ui->stackedWidget->setCurrentIndex(6);
+	//Load in current proj to boxes
 }
 
 void MainWindow::on_radioButtonEditProjNowPlaying_clicked()
@@ -250,8 +253,8 @@ void MainWindow::on_radioButtonlEditMaterialsDVD_clicked()
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(false);
     ui->buttonEditMaterialsSave->setGeometry(680,250,130,40);
-    ui->comboEditMaterialPackaging->clear();
-    ui->comboEditMaterialPackaging->addItem("Plastic box");
+    ui->comboEditMaterialsPackaging->clear();
+    ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
 void MainWindow::on_radioButtonlEditMaterialsDoubleDVD_clicked()
@@ -261,8 +264,8 @@ void MainWindow::on_radioButtonlEditMaterialsDoubleDVD_clicked()
     ui->frameEditMaterialsSides->setVisible(true);
     ui->frameEditMaterialsSides->setGeometry(500,380,131,111);
     ui->buttonEditMaterialsSave->setGeometry(680,450,130,40);
-    ui->comboEditMaterialPackaging->clear();
-    ui->comboEditMaterialPackaging->addItem("Plastic box");
+    ui->comboEditMaterialsPackaging->clear();
+    ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
 void MainWindow::on_radioButtonlEditMaterialsCombo_clicked()
@@ -272,8 +275,8 @@ void MainWindow::on_radioButtonlEditMaterialsCombo_clicked()
     ui->frameEditMaterialsMovieList->setVisible(true);
     ui->frameEditMaterialsMovieList->setGeometry(500,250,131,111);
     ui->buttonEditMaterialsSave->setGeometry(680,320,130,40);
-    ui->comboEditMaterialPackaging->clear();
-    ui->comboEditMaterialPackaging->addItem("Cardboard box");
+    ui->comboEditMaterialsPackaging->clear();
+    ui->comboEditMaterialsPackaging->addItem("Cardboard box");
 }
 
 void MainWindow::on_radioButtonlEditMaterialsVHS_clicked()
@@ -283,9 +286,9 @@ void MainWindow::on_radioButtonlEditMaterialsVHS_clicked()
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(false);
     ui->buttonEditMaterialsSave->setGeometry(680,250,130,40);
-    ui->comboEditMaterialPackaging->clear();
-    ui->comboEditMaterialPackaging->addItem("Cardboard box");
-    ui->comboEditMaterialPackaging->addItem("Plastic box");
+    ui->comboEditMaterialsPackaging->clear();
+    ui->comboEditMaterialsPackaging->addItem("Cardboard box");
+    ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
 void MainWindow::on_radioButtonlEditMaterialBluray_clicked()
@@ -294,8 +297,8 @@ void MainWindow::on_radioButtonlEditMaterialBluray_clicked()
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(false);
     ui->buttonEditMaterialsSave->setGeometry(680,250,130,40);
-    ui->comboEditMaterialPackaging->clear();
-    ui->comboEditMaterialPackaging->addItem("Plastic box");
+    ui->comboEditMaterialsPackaging->clear();
+    ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
 
 void MainWindow::on_buttonAddProjectsSave_clicked()
@@ -317,10 +320,12 @@ void MainWindow::on_buttonAddProjectsSave_clicked()
 	if (ui->radioButtonAddProjReleased->isChecked())
 	{
 		newProject->setProjectStatus(0);
+		newProject->resetTicketSales();
 	}
 	else if (ui->radioButtonAddProjUnreleased->isChecked())
 	{
 		newProject->setProjectStatus(1);
+		newProject->resetTicketSales();
 	}
 	else if (ui->radioButtonAddProjNowPlaying->isChecked())
 	{
@@ -355,56 +360,94 @@ void MainWindow::on_buttonAddProjectsSave_clicked()
 void MainWindow::on_buttonAddMaterialsSave_clicked()
 {
 	//Making new material
-	//SDI::material* newMaterial = new SDI::material(backend->projectList.at(backend->currentProjectIndex)->getNextMaterialId(), false);
-	/*
-	newProject->setTitle(ui->textAddProjTitle->text().toStdString());
-	newProject->setSummary(ui->textAddProjSummary->text().toStdString());
-	newProject->setGenre(ui->textAddProjGenre->text().toStdString());
-	newProject->setReleaseDate(QString(ui->dateAddProjReleaseDate->date().toString("dd.MM.yyyy")).toStdString());
-	newProject->setLanguage(ui->textAddProjLanguage->text().toStdString());
-	QString allLocations = ui->textAddProjFilmingLocations->toPlainText();
-	QStringList locationList = allLocations.split("\n");
-	for (unsigned int i = 0; i < locationList.size(); i++)
+	SDI::material* newMaterial = new SDI::material(backend->projectList.at(backend->currentProjectIndex)->getNextMaterialId(), false);
+	if (ui->radioButtonAddMaterialsDVD->isChecked())
 	{
-		newProject->addFilmingLocation(locationList.at(i).toStdString());
+		newMaterial->setMaterialType(0);
 	}
-	if (ui->radioButtonAddProjReleased->isChecked())
+	else if (ui->radioButtonAddMaterialsDoubleDVD->isChecked())
 	{
-		newProject->setProjectStatus(0);
+		newMaterial->setMaterialType(1);
 	}
-	else if (ui->radioButtonAddProjUnreleased->isChecked())
+	else if (ui->radioButtonAddMaterialsCombo->isChecked())
 	{
-		newProject->setProjectStatus(1);
+		newMaterial->setMaterialType(2);
 	}
-	else if (ui->radioButtonAddProjNowPlaying->isChecked())
+	else if (ui->radioButtonAddMaterialsVHS->isChecked())
 	{
-		newProject->setProjectStatus(2);
-		newProject->setTicketSales(ui->spinBoxAddProjTicketSale->value());
+		newMaterial->setMaterialType(3);
 	}
-	newProject->setRuntime(ui->timeAddProjRuntime->time().toString().toStdString());
-	newProject->setProducer(ui->textAddProjProducer->text().toStdString());
-	newProject->setDirector(ui->textAddProjDirector->text().toStdString());
-	newProject->setWriter(ui->textAddProjWriter->text().toStdString());
-	QString allKeywords = ui->textAddProjKeywords->toPlainText();
-	QStringList keywordList = allKeywords.split("\n");
-	for (unsigned int i = 0; i < keywordList.size(); i++)
+	else if (ui->radioButtonAddMaterialsBluray->isChecked())
 	{
-		newProject->addKeyword(keywordList.at(i).toStdString());
+		newMaterial->setMaterialType(4);
 	}
-	newProject->setEditor(ui->textAddProjEditor->text().toStdString());
-	newProject->setProductionDesigner(ui->textAddProjProductionDesigner->text().toStdString());
-	newProject->setSetDecorator(ui->textAddProjSetDecorator->text().toStdString());
-	newProject->setCostumeDesigner(ui->textAddProjCostumeDesigner->text().toStdString());
-	QString allCast = ui->textAddProjCast->toPlainText();
-	QStringList castList = allCast.split("\n");
-	for (unsigned int i = 0; i < castList.size(); i++)
-	{
-		newProject->addCast(castList.at(i).toStdString());
-	}
-	*/
+	newMaterial->setTitle(ui->textAddMaterialsTitle->text().toStdString());
+	newMaterial->setFormat(ui->textAddMaterialsFormat->text().toStdString());
+	newMaterial->setRuntime(ui->timeAddMaterialsRuntime->time().toString().toStdString());
+	newMaterial->setRetailPrice(ui->spinBoxAddMaterialsRetailPrice->value());
+	newMaterial->setFrameAspect(ui->textAddMaterialsFrameAspect->text().toStdString());
+	newMaterial->setAudioFormat(ui->comboAddMaterialsAudioFormat->currentText().toStdString());
+	newMaterial->setLanguage(ui->textAddMaterialsLanguage->text().toStdString());
+	newMaterial->setSubtitles(ui->textAddMaterialsSubtitles->text().toStdString());
+	newMaterial->setPackaging(ui->comboAddMaterialsPackaging->currentText().toStdString());
 
-	//backend->projectList.at(backend->currentProjectIndex)->myMaterials.push_back(newMaterial);
+	if (!ui->radioButtonAddMaterialsVHS->isChecked())
+	{
+		QString allLanguages = ui->textAddMaterialsAdditionalLang->toPlainText();
+		QStringList languageList = allLanguages.split("\n");
+		for (unsigned int i = 0; i < languageList.size(); i++)
+		{
+			newMaterial->addAdditionalLanguage(languageList.at(i).toStdString());
+		}
 
+		QString allSubtitles = ui->textAddMaterialsAdditionalSub->toPlainText();
+		QStringList subtitleList = allSubtitles.split("\n");
+		for (unsigned int i = 0; i < subtitleList.size(); i++)
+		{
+			newMaterial->addAdditionalSubtitle(subtitleList.at(i).toStdString());
+		}
+
+		QString bonusFeature = ui->textAddMaterialsBonusFeatures->toPlainText();
+		QStringList featureList = bonusFeature.split("\n");
+		std::string feature;
+		for (unsigned int i = 0; i < featureList.size(); i++)
+		{
+			feature += featureList.at(i).toStdString();
+		}
+		newMaterial->setBonusFeatures(feature);
+	}
+	
+	if (ui->radioButtonAddMaterialsDoubleDVD->isChecked())
+	{
+		QString firstSide = ui->textAddMaterialsFirstSide->toPlainText();
+		QStringList firstSideList = firstSide.split("\n");
+		std::string sideOne;
+		for (unsigned int i = 0; i < firstSideList.size(); i++)
+		{
+			sideOne += firstSideList.at(i).toStdString();
+		}
+		newMaterial->setSideOneDetails(sideOne);
+
+		QString secondSide = ui->textAddMaterialsSecondSide->toPlainText();
+		QStringList secondSideList = secondSide.split("\n");
+		std::string sideTwo;
+		for (unsigned int i = 0; i < secondSideList.size(); i++)
+		{
+			sideTwo += secondSideList.at(i).toStdString();
+		}
+		newMaterial->setSideTwoDetails(sideTwo);
+	}
+
+	if (ui->radioButtonAddMaterialsCombo->isChecked() || ui->radioButtonAddMaterialsDoubleDVD->isChecked())
+	{
+		QString allMovies = ui->textAddMaterialsMovieList->toPlainText();
+		QStringList movieList = allMovies.split("\n");
+		for (unsigned int i = 0; i < movieList.size(); i++)
+		{
+			newMaterial->addToMovieList(movieList.at(i).toStdString());
+		}
+	}
+	backend->projectList.at(backend->currentProjectIndex)->myMaterials.push_back(newMaterial);
 	resetAddMaterialInput();
 }
 
@@ -587,4 +630,28 @@ void MainWindow::resetAddMaterialInput()
 	ui->textAddMaterialsFirstSide->clear();
 	ui->textAddMaterialsSecondSide->clear();
 	ui->textAddMaterialsMovieList->clear();
+}
+
+void MainWindow::resetEditMaterialInput()
+{
+	ui->radioButtonEditMaterialsDVD->setChecked(false);
+	ui->radioButtonEditMaterialsDoubleDVD->setChecked(false);
+	ui->radioButtonEditMaterialsCombo->setChecked(false);
+	ui->radioButtonEditMaterialsVHS->setChecked(false);
+	ui->radioButtonEditMaterialsBluray->setChecked(false);
+	ui->textEditMaterialsTitle->clear();
+	ui->textEditMaterialsFormat->clear();
+	ui->timeEditMaterialsRuntime->setTime(QTime(00, 00));
+	ui->spinBoxEditMaterialsRetailPrice->setValue(0.00);
+	ui->textEditMaterialsFrameAspect->clear();
+	ui->comboEditMaterialsAudioFormat->setCurrentIndex(0);
+	ui->textEditMaterialsLanguage->clear();
+	ui->textEditMaterialsSubtitles->clear();
+	ui->comboEditMaterialsPackaging->setCurrentIndex(0);
+	ui->textEditMaterialsAdditionalLang->clear();
+	ui->textEditMaterialsAdditionalSub->clear();
+	ui->textEditMaterialsBonusFeatures->clear();
+	ui->textEditMaterialsFirstSide->clear();
+	ui->textEditMaterialsSecondSide->clear();
+	ui->textEditMaterialsMovieList->clear();
 }

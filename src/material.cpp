@@ -291,6 +291,11 @@ namespace SDI
 		additionalLanguages = additionalLaguagesIn;
 	}
 
+	void material::resetAdditionalLanguages()
+	{
+		additionalLanguages = vector<string>();
+	}
+
 	void material::addAdditionalLanguage(string additionalLaguageIn)
 	{
 		additionalLanguages.push_back(additionalLaguageIn);
@@ -305,9 +310,19 @@ namespace SDI
 		bonusFeatures = bonusFeaturesIn;
 	}
 
+	void material::resetBonusFeatures()
+	{
+		bonusFeatures = "";
+	}
+
 	void material::setAdditionalSubtitles(vector<string> additionalSubtitlesIn)
 	{
 		additionalSubtitles = additionalSubtitlesIn;
+	}
+
+	void material::resetAdditionalSubtitles()
+	{
+		additionalSubtitles = vector<string>();
 	}
 
 	void material::addAdditionalSubtitle(string additionalSubtitleIn)
@@ -321,7 +336,13 @@ namespace SDI
 		{
 			throw std::invalid_argument("Side one details selection invalid: input empty");
 		}
+		//Add option in function call to specify from file so can be set to ""
 		sideOneDetails = sideOneDetailsIn;
+	}
+
+	void material::resetSideOneDetails()
+	{
+		sideOneDetails = "";
 	}
 
 	void material::setSideTwoDetails(string sideTwoDetailsIn)
@@ -333,6 +354,11 @@ namespace SDI
 		sideTwoDetails = sideTwoDetailsIn;
 	}
 
+	void material::resetSideTwoDetails()
+	{
+		sideTwoDetails = "";
+	}
+
 	void material::setMovieList(vector<string> movieListIn)
 	{
 		if (movieListIn.size() == 0)
@@ -340,6 +366,11 @@ namespace SDI
 			throw std::invalid_argument("Movie list selection invalid: input empty");
 		}
 		movieList = movieListIn;
+	}
+
+	void material::resetMovieList()
+	{
+		movieList = vector<string>();
 	}
 
 	void material::addToMovieList(string movieIn)
@@ -390,16 +421,37 @@ namespace SDI
 			addAdditionalLanguage(inFromFile);
 			break;
 		case 11:
-			setBonusFeatures(inFromFile);
+			if (inFromFile == "")
+			{
+				resetBonusFeatures();
+			}
+			else
+			{
+				setBonusFeatures(inFromFile);
+			}
 			break;
 		case 12:
 			addAdditionalSubtitle(inFromFile);
 			break;
 		case 13:
-			setSideOneDetails(inFromFile);
+			if (inFromFile == "")
+			{
+				resetSideOneDetails();
+			}
+			else
+			{
+				setSideOneDetails(inFromFile);
+			}
 			break;
 		case 14:
-			setSideTwoDetails(inFromFile);
+			if (inFromFile == "")
+			{
+				resetSideTwoDetails();
+			}
+			else
+			{
+				setSideTwoDetails(inFromFile);
+			}
 			break;
 		case 15:
 			addToMovieList(inFromFile);

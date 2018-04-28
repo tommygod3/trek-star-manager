@@ -113,6 +113,7 @@ private:
 	void resetAddProjectInput();
 	void resetEditProjectInput();
 	void resetAddMaterialInput();
+	void resetEditMaterialInput();
 };
 
 #endif // MAINWINDOW_H

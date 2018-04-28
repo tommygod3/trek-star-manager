@@ -63,10 +63,12 @@ namespace SDI
 			{
 				int currentAttribute = counter;
 				unsigned int quantity = std::stoul(attributeIn);
+				
+				
 				parser.erase(0, position + deliminator.length());
 				for (unsigned int i = 0; i < quantity; i++)
 				{
-					
+
 					position = parser.find(deliminator);
 					attributeIn = parser.substr(0, position);
 					setFromFile(attributeIn, currentAttribute);
@@ -79,6 +81,8 @@ namespace SDI
 				{
 					break;
 				}
+				
+				
 			}
 			setFromFile(attributeIn, counter);
 			parser.erase(0, position + deliminator.length());
@@ -492,9 +496,14 @@ namespace SDI
 	{
 		if (projectStatus != 2)
 		{
-			//throw std::invalid_argument("Ticket sales selection invalid: cannot set ticket sales when not \"Now Playing\"");
+			throw std::invalid_argument("Ticket sales selection invalid: cannot set ticket sales when not \"Now Playing\"");
 		}
 		ticketSales = ticketSalesIn;
+	}
+
+	void project::resetTicketSales()
+	{
+		ticketSales = 0;
 	}
 
 	//Calculations:
@@ -582,7 +591,14 @@ namespace SDI
 			addCast(inFromFile);
 			break;
 		case 17:
-			setTicketSales(std::stoul(inFromFile));
+			if (inFromFile == "0")
+			{
+				resetTicketSales();
+			}
+			else
+			{
+				setTicketSales(std::stoul(inFromFile));
+			}
 			break;
 		case 18:
 			material * readMaterial = new material(std::stoi(inFromFile), true);

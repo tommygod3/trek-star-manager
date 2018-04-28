@@ -84,14 +84,20 @@ namespace SDI
 		void setFrameAspect(string frameAspectIn);
 		void setPackaging(string packagingIn);
 		void setAdditionalLanguages(vector<string> additionalLaguagesIn);
+		void resetAdditionalLanguages();
 		void addAdditionalLanguage(string additionalLaguageIn);
 		void setBonusFeatures(string bonusFeaturesIn);
+		void resetBonusFeatures();
 		void setAdditionalSubtitles(vector<string> additionalSubtitlesIn);
+		void resetAdditionalSubtitles();
 		void addAdditionalSubtitle(string additionalSubtitleIn);
 		void setSideOneDetails(string sideOneDetailsIn);
+		void resetSideOneDetails();
 		void setSideTwoDetails(string sideTwoDetailsIn);
+		void resetSideTwoDetails();
 		void setMovieList(vector<string> movieListIn);
 		void addToMovieList(string movieIn);
+		void resetMovieList();
 		//Calculations:
 		void setFromFile(string inFromFile, unsigned int attribute);
 	};
