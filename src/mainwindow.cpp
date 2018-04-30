@@ -121,7 +121,7 @@ void MainWindow::on_radioButtonAddMaterialsVHS_clicked()
     ui->frameAddMaterialsAdditional->setVisible(false);
     ui->frameAddMaterialsSides->setVisible(false);
     ui->frameAddMaterialsSidesMovieList->setVisible(false);
-    ui->buttonAddMaterialsSave->setGeometry(680,250,130,40);
+    ui->buttonAddMaterialsSave->setGeometry(680,270,130,40);
     ui->comboAddMaterialsPackaging->clear();
     ui->comboAddMaterialsPackaging->addItem("Cardboard box");
     ui->comboAddMaterialsPackaging->addItem("Plastic box");
@@ -132,7 +132,7 @@ void MainWindow::on_radioButtonAddMaterialsDVD_clicked()
     ui->frameAddMaterialsAdditional->setVisible(true);
     ui->frameAddMaterialsSides->setVisible(false);
     ui->frameAddMaterialsSidesMovieList->setVisible(false);
-    ui->buttonAddMaterialsSave->setGeometry(680,250,130,40);
+    ui->buttonAddMaterialsSave->setGeometry(680,270,130,40);
     ui->comboAddMaterialsPackaging->clear();
     ui->comboAddMaterialsPackaging->addItem("Plastic box");
 
@@ -143,7 +143,7 @@ void MainWindow::on_radioButtonAddMaterialsBluray_clicked()
     ui->frameAddMaterialsAdditional->setVisible(true);
     ui->frameAddMaterialsSides->setVisible(false);
     ui->frameAddMaterialsSidesMovieList->setVisible(false);
-    ui->buttonAddMaterialsSave->setGeometry(680,250,130,40);
+    ui->buttonAddMaterialsSave->setGeometry(680,270,130,40);
     ui->comboAddMaterialsPackaging->clear();
     ui->comboAddMaterialsPackaging->addItem("Plastic box");
 }
@@ -153,7 +153,7 @@ void MainWindow::on_radioButtonAddMaterialsDoubleDVD_clicked()
     ui->frameAddMaterialsAdditional->setVisible(true);
     ui->frameAddMaterialsSides->setVisible(true);
     ui->frameAddMaterialsSidesMovieList->setVisible(true);
-    ui->frameEditMaterialsSides->setGeometry(500,250,131,111);
+    ui->frameEditMaterialsSides->setGeometry(500,250,311,111);
     ui->frameAddMaterialsSidesMovieList->setGeometry(500,390,131,111);
     ui->buttonAddMaterialsSave->setGeometry(680,460,130,40);
     ui->comboAddMaterialsPackaging->clear();
@@ -165,8 +165,8 @@ void MainWindow::on_radioButtonAddMaterialsCombo_clicked()
     ui->frameAddMaterialsAdditional->setVisible(true);
     ui->frameAddMaterialsSides->setVisible(false);
     ui->frameAddMaterialsSidesMovieList->setVisible(true);
-    ui->frameAddMaterialsSidesMovieList->setGeometry(500,250,131,111);
-    ui->buttonAddMaterialsSave->setGeometry(680,320,130,40);
+    ui->frameAddMaterialsSidesMovieList->setGeometry(500,270,131,111);
+    ui->buttonAddMaterialsSave->setGeometry(680,270,130,40);
     ui->comboAddMaterialsPackaging->clear();
     ui->comboAddMaterialsPackaging->addItem("Cardboard box");
 }
@@ -436,7 +436,7 @@ void MainWindow::on_radioButtonEditMaterialsDVD_clicked()
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(false);
-    ui->buttonEditMaterialsSave->setGeometry(680,250,130,40);
+    ui->buttonEditMaterialsSave->setGeometry(680,270,130,40);
     ui->comboEditMaterialsPackaging->clear();
     ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
@@ -446,7 +446,7 @@ void MainWindow::on_radioButtonEditMaterialsDoubleDVD_clicked()
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsMovieList->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(true);
-    ui->frameEditMaterialsSides->setGeometry(500,250,131,111);
+    ui->frameEditMaterialsSides->setGeometry(500,270,311,111);
     ui->frameEditMaterialsMovieList->setGeometry(500,390,131,111);
     ui->buttonEditMaterialsSave->setGeometry(680,460,130,40);
     ui->comboEditMaterialsPackaging->clear();
@@ -458,8 +458,8 @@ void MainWindow::on_radioButtonEditMaterialsCombo_clicked()
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(true);
-    ui->frameEditMaterialsMovieList->setGeometry(500,250,131,111);
-    ui->buttonEditMaterialsSave->setGeometry(680,320,130,40);
+    ui->frameEditMaterialsMovieList->setGeometry(500,270,131,111);
+    ui->buttonEditMaterialsSave->setGeometry(680,270,130,40);
     ui->comboEditMaterialsPackaging->clear();
     ui->comboEditMaterialsPackaging->addItem("Cardboard box");
 }
@@ -470,7 +470,7 @@ void MainWindow::on_radioButtonEditMaterialsVHS_clicked()
     ui->frameEditMaterialsAdditional->setVisible(false);
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(false);
-    ui->buttonEditMaterialsSave->setGeometry(680,250,130,40);
+    ui->buttonEditMaterialsSave->setGeometry(680,270,130,40);
     ui->comboEditMaterialsPackaging->clear();
     ui->comboEditMaterialsPackaging->addItem("Cardboard box");
     ui->comboEditMaterialsPackaging->addItem("Plastic box");
@@ -481,7 +481,7 @@ void MainWindow::on_radioButtonEditMaterialsBluray_clicked()
     ui->frameEditMaterialsAdditional->setVisible(true);
     ui->frameEditMaterialsSides->setVisible(false);
     ui->frameEditMaterialsMovieList->setVisible(false);
-    ui->buttonEditMaterialsSave->setGeometry(680,250,130,40);
+    ui->buttonEditMaterialsSave->setGeometry(680,270,130,40);
     ui->comboEditMaterialsPackaging->clear();
     ui->comboEditMaterialsPackaging->addItem("Plastic box");
 }
