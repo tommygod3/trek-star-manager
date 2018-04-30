@@ -13,7 +13,8 @@ SOURCES += \
         ../src/controller.cpp \
         ../src/project.cpp \
 	../src/material.cpp \
-	../src/logger.cpp
+	../src/logger.cpp \ 
+	../src/sbst.cpp
 
 INCLUDEPATH += ../include
 
@@ -24,7 +25,8 @@ HEADERS += \
         ../include/controller.h \
         ../include/project.h \
 	../include/material.h \
-	../include/logger.h
+	../include/logger.h \
+	../include/sbst.h
 
 FORMS += \
         ../forms/mainwindow.ui
