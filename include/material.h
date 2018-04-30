@@ -1,18 +1,10 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include <string>
-#include <vector>
-#include <stdexcept>
-#include <fstream>
-#include <cstdio>
-#include <algorithm>
+#include "sbst.h"
 
 namespace SDI
 {
-	using std::vector;
-	using std::string;
-
 	class material
 	{
 	private:
@@ -36,7 +28,7 @@ namespace SDI
 		vector<string> additionalSubtitles;
 		string sideOneDetails = "";
 		string sideTwoDetails = "";
-		vector<string> movieList;
+		stringBinarySearchTree movieList;
 		//Whether this should be saved
 		bool toBeSaved = 1;
 
@@ -93,7 +85,6 @@ namespace SDI
 		void resetSideOneDetails();
 		void setSideTwoDetails(string sideTwoDetailsIn);
 		void resetSideTwoDetails();
-		void setMovieList(vector<string> movieListIn);
 		void resetMovieList();
 		void addToMovieList(string movieIn);
 		//Calculations:

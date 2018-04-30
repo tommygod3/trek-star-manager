@@ -5,6 +5,7 @@ namespace SDI
 	material::material(unsigned long long idIn, bool exists)
 	{
 		this->setMaterialId(idIn);
+		//If set in constructor, load in info from file
 		if (exists)
 		{
 			materialFilename = "../data/material" + std::to_string(idIn) + ".txt";
@@ -27,6 +28,7 @@ namespace SDI
 
 	void material::loadIn()
 	{
+		//Load in details from file
 		std::ifstream materialIn(materialFilename);
 		if (!materialIn.is_open())
 		{
@@ -80,6 +82,7 @@ namespace SDI
 
 	void material::saveOut()
 	{
+		//Save material info to database
 		remove(materialFilename.c_str());
 		materialFilename = "../data/material" + std::to_string(getMaterialId()) + ".txt";
 		std::ofstream materialOut(materialFilename);
@@ -98,10 +101,12 @@ namespace SDI
 			materialOut << additionalSubtitles.at(i) << csv;
 		}
 		materialOut << getSideOneDetails() << csv << getSideTwoDetails() << csv;
-		materialOut << movieList.size() << csv;
-		for (unsigned int i = 0; i < movieList.size(); i++)
+		vector<string> movies;
+		movieList.vecInOrder(movieList.root, movies);
+		materialOut << movies.size() << csv;
+		for (unsigned int i = 0; i < movies.size(); i++)
 		{
-			materialOut << movieList.at(i) << csv;
+			materialOut << movies.at(i) << csv;
 		}
 		materialOut.close();
 	}
@@ -194,7 +199,9 @@ namespace SDI
 
 	vector<string> material::getMovieList()
 	{
-		return movieList;
+		vector<string> movies;
+		movieList.vecInOrder(movieList.root, movies);
+		return movies;
 	}
 
 	//Setters:
@@ -455,25 +462,10 @@ namespace SDI
 		sideTwoDetails = "";
 	}
 
-	void material::setMovieList(vector<string> movieListIn)
-	{
-		if (movieListIn.size() == 0)
-		{
-			throw std::invalid_argument("Movie list selection invalid: input empty");
-		}
-		for (unsigned int i = 0; i < movieListIn.size(); i++)
-		{
-			if (movieListIn.at(i).find(",") != string::npos)
-			{
-				throw std::invalid_argument("Movie list selection invalid: cannot use comma");
-			}
-		}
-		movieList = movieListIn;
-	}
-
 	void material::resetMovieList()
 	{
-		movieList = vector<string>();
+
+		movieList = stringBinarySearchTree();
 	}
 
 	void material::addToMovieList(string movieIn)
@@ -486,7 +478,7 @@ namespace SDI
 		{
 			throw std::invalid_argument("Movie selection invalid: cannot use comma");
 		}
-		movieList.push_back(movieIn);
+		movieList.insertNode(movieIn, movieList.root);
 	}
 
 	//Calc functions:

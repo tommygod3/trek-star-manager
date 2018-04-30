@@ -196,6 +196,7 @@
     <ClCompile Include="..\src\mainwindow.cpp" />
     <ClCompile Include="..\src\material.cpp" />
     <ClCompile Include="..\src\project.cpp" />
+    <ClCompile Include="..\src\sbst.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\include\mainwindow.h">
@@ -228,6 +229,7 @@
     <ClInclude Include="..\include\logger.h" />
     <ClInclude Include="..\include\material.h" />
     <ClInclude Include="..\include\project.h" />
+    <ClInclude Include="..\include\sbst.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

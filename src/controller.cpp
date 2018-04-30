@@ -99,9 +99,19 @@ namespace SDI
 
 	vector<unsigned long long> controller::getProjectsTitleFilter(string titleFilter, vector<unsigned long long>& listIn)
 	{
+		//Take in ids and remove those that do not contain title filter
+		//Case insensitive
 		vector<unsigned long long> filteredIds;
+		for (unsigned int i = 0; i < titleFilter.size(); i++)
+		{
+			titleFilter.at(i) = std::tolower(titleFilter.at(i));
+		}
 		for (unsigned int i = 0; i < listIn.size(); i++)
 		{
+			for (unsigned int j = 0; j < getNameFromId(listIn.at(i)).size(); j++)
+			{
+				getNameFromId(listIn.at(i)).at(j) = std::tolower(getNameFromId(listIn.at(i)).at(j));
+			}
 			if (getNameFromId(listIn.at(i)).find(titleFilter) != string::npos)
 			{
 				filteredIds.push_back(listIn.at(i));
@@ -112,13 +122,23 @@ namespace SDI
 
 	vector<unsigned long long> controller::getProjectsActorFilter(string actorFilter, vector<unsigned long long>& listIn)
 	{
+		//Take in ids and remove those that do not contain actor filter
+		//Case insensitive
 		vector<unsigned long long> filteredIds;
+		for (unsigned int i = 0; i < actorFilter.size(); i++)
+		{
+			actorFilter.at(i) = std::tolower(actorFilter.at(i));
+		}
 		for (unsigned int i = 0; i < listIn.size(); i++)
 		{
 			vector<string> cast = getActorsFromId(listIn.at(i));
 			unsigned long long added;
 			for (unsigned int j = 0; j < cast.size(); j++)
 			{
+				for (unsigned int k = 0; k < cast.at(j).size(); k++)
+				{
+					cast.at(j).at(k) = std::tolower(cast.at(j).at(k));
+				}
 				if ((cast.at(j).find(actorFilter) != string::npos)&&(added!= listIn.at(i)))
 				{
 					filteredIds.push_back(listIn.at(i));
@@ -131,6 +151,7 @@ namespace SDI
 
 	vector<unsigned long long> controller::getProjectsMaterialFilter(unsigned int materialFilter, vector<unsigned long long>& listIn)
 	{
+		//Take in ids and remove those that do not contain material type
 		vector<unsigned long long> filteredIds;
 		for (unsigned int i = 0; i < listIn.size(); i++)
 		{
@@ -144,6 +165,7 @@ namespace SDI
 
 	string controller::getNameFromId(unsigned long long id)
 	{
+		//Takes an ID and returns the projects name
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			if (projectList.at(i)->getProjectId() == id)
@@ -156,6 +178,7 @@ namespace SDI
 
 	vector<string> controller::getActorsFromId(unsigned long long id)
 	{
+		//Takes an ID and returns the projects actors/cast
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			if (projectList.at(i)->getProjectId() == id)
@@ -168,6 +191,7 @@ namespace SDI
 
 	bool controller::checkProjectHasMaterialType(unsigned long long id, unsigned int type)
 	{
+		//Takes an ID and returns true if project has certain type of material
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
 			if (projectList.at(i)->getProjectId() == id)
@@ -183,6 +207,7 @@ namespace SDI
 
 	void controller::removeProject(unsigned long long id)
 	{
+		//Remove project from the data structure, adding it to the "to be removed" structure
 		int indexToRemove = -1;
 		for (unsigned int i = 0; i < projectList.size(); i++)
 		{
@@ -199,6 +224,7 @@ namespace SDI
 	//Calculations:
 	unsigned long long controller::getNextProjectId()
 	{
+		//Project id of last project + 1000, first project id is 1
 		if (projectList.size() > 0)
 		{
 			return (projectList.at(projectList.size() - 1)->getProjectId()) + 1000;

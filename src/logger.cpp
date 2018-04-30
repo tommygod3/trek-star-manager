@@ -89,6 +89,7 @@ namespace SDI
 		}
 	}
 
+	//Functions to add relevant info to log when something happens
 	void logger::logNewProject(string time, string name)
 	{
 		todaysLog.push_back("New project made at time " + time + " - Title: " + name);

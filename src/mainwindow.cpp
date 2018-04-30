@@ -229,7 +229,11 @@ void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
 
 void MainWindow::on_buttonBrowseProjAddMaterial_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(2);
+	if (backend->currentProjectIndex != -1)
+	{
+		ui->stackedWidget->setCurrentIndex(2);
+	}
+    
 }
 
 void MainWindow::on_buttonBrowseProjViewProj_clicked()
@@ -856,7 +860,7 @@ void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
 
 void MainWindow::on_comboBrowseProjProjResults_currentIndexChanged(int index)
 {
-	//Set list of materials to match the current selected project's list
+	//When currently selected project on list is changed, change the backend so the currently selected index matches and set material list to be its materials
 	if (ui->comboBrowseProjProjResults->count() > 0)
 	{
 		unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();
@@ -886,13 +890,12 @@ void MainWindow::on_comboBrowseProjProjResults_currentIndexChanged(int index)
 	{
 		backend->setCurrentProjectIndex(-1);
 		ui->comboBrowseProjProjMaterials->clear();
-		
 	}
-	
 }
 
 void MainWindow::on_comboBrowseProjProjMaterials_currentIndexChanged(int index)
 {
+	//Set the backends currently selected projects' currently selected material to match what is currently selected by combo box
 	if (ui->comboBrowseProjProjMaterials->count() > 0)
 	{
 		unsigned long long materialId = ui->comboBrowseProjProjMaterials->itemData(ui->comboBrowseProjProjMaterials->currentIndex()).toULongLong();
@@ -906,31 +909,37 @@ void MainWindow::on_comboBrowseProjProjMaterials_currentIndexChanged(int index)
 
 void MainWindow::on_checkBoxBrowseProjDVD_stateChanged(int arg1)
 {
+	//Reapply filter
 	filterAllBrowsePage();
 }
 
 void MainWindow::on_checkBoxBrowseProjDoubleDVD_stateChanged(int arg1)
 {
+	//Reapply filter
 	filterAllBrowsePage();
 }
 
 void MainWindow::on_checkBoxBrowseProjCombo_stateChanged(int arg1)
 {
+	//Reapply filter
 	filterAllBrowsePage();
 }
 
 void MainWindow::on_checkBoxBrowseProjVHS_stateChanged(int arg1)
 {
+	//Reapply filter
 	filterAllBrowsePage();
 }
 
 void MainWindow::on_checkBoxBrowseProjBluray_stateChanged(int arg1)
 {
+	//Reapply filter
 	filterAllBrowsePage();
 }
 
 void MainWindow::resetAddProjectInput()
 {
+	//Clear add project page
 	ui->textAddProjTitle->clear();
 	ui->textAddProjSummary->clear();
 	ui->textAddProjGenre->clear();
@@ -955,6 +964,7 @@ void MainWindow::resetAddProjectInput()
 
 void MainWindow::resetEditProjectInput()
 {
+	//Clear edit project page
 	ui->textEditProjTitle->clear();
 	ui->textEditProjSummary->clear();
 	ui->textEditProjGenre->clear();
@@ -979,6 +989,7 @@ void MainWindow::resetEditProjectInput()
 
 void MainWindow::resetAddMaterialInput()
 {
+	//Clear add material page
 	ui->radioButtonAddMaterialsDVD->setChecked(false);
 	ui->radioButtonAddMaterialsDoubleDVD->setChecked(false);
 	ui->radioButtonAddMaterialsCombo->setChecked(false);
@@ -1003,6 +1014,7 @@ void MainWindow::resetAddMaterialInput()
 
 void MainWindow::resetEditMaterialInput()
 {
+	//Clear edit material page
 	ui->radioButtonEditMaterialsDVD->setChecked(false);
 	ui->radioButtonEditMaterialsDoubleDVD->setChecked(false);
 	ui->radioButtonEditMaterialsCombo->setChecked(false);
@@ -1040,6 +1052,7 @@ void MainWindow::on_buttonBackEditMaterials_clicked()
 
 void MainWindow::showMessage(std::string text)
 {
+	//Create standard error message box to be shown when user makes an error
 	QString message = QString::fromStdString(text);
 	QMessageBox msg;
 	msg.setText("Error");

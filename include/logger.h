@@ -18,7 +18,9 @@ namespace SDI
 	public:
 		logger(string date);
 		~logger();
+		//The log
 		vector<string> todaysLog;
+		//Functions to add relevant info to the log
 		void logNewProject(string time, string name);
 		void logEditProject(string time, string name);
 		void logDeleteProject(string time, string name);

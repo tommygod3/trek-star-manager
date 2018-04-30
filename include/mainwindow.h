@@ -22,6 +22,7 @@ public:
 	SDI::controller* backend;
 	SDI::logger* logger;
 
+	//Slots (triggered automatically by the gui)
 private slots:
     void on_buttonToAddProjects_clicked();
 

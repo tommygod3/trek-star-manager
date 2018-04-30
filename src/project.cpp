@@ -5,6 +5,7 @@ namespace SDI
 	project::project(unsigned long long id, bool exists)
 	{
 		this->setProjectId(id);
+		//If set in constructor, load in info from file
 		if (exists)
 		{
 			projectFilename = "../data/project" + std::to_string(id) + ".txt";
@@ -38,6 +39,7 @@ namespace SDI
 		
 	}
 
+	//Load in exisiting material info from disk
 	void project::loadIn()
 	{
 		std::ifstream detailsIn(projectFilename);
@@ -97,6 +99,7 @@ namespace SDI
 
 	void project::saveOut()
 	{
+		//Save project to file
 		remove(projectFilename.c_str());
 		projectFilename = "../data/project" + std::to_string(getProjectId()) + ".txt";
 		std::ofstream projectOut(projectFilename);
@@ -191,6 +194,7 @@ namespace SDI
 
 	string project::getMaterialNameFromId(unsigned long long id)
 	{
+		//Enter id of mterial and get its name
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
 			if (myMaterials.at(i)->getMaterialId() == id)
@@ -203,6 +207,7 @@ namespace SDI
 
 	bool project::hasMaterialType(unsigned int type)
 	{
+		//Check if this project has a certain material type
 		for (unsigned int i = 0; i < myMaterials.size(); i++)
 		{
 			if (myMaterials.at(i)->getMaterialType() == type)
