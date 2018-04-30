@@ -321,6 +321,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Title selection invalid: input empty");
 		}
+		if (titleIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Title selection invalid: cannot use comma");
+		}
 		title = titleIn;
 	}
 
@@ -329,6 +333,10 @@ namespace SDI
 		if (summaryIn.size() == 0)
 		{
 			throw std::invalid_argument("Summary selection invalid: input empty");
+		}
+		if (summaryIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Summary selection invalid: cannot use comma");
 		}
 		summary = summaryIn;
 	}
@@ -339,6 +347,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Genre selection invalid: input empty");
 		}
+		if (genreIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Genre selection invalid: cannot use comma");
+		}
 		genre = genreIn;
 	}
 
@@ -347,6 +359,10 @@ namespace SDI
 		if (releaseDateIn.size() == 0)
 		{
 			throw std::invalid_argument("Release date selection invalid: input empty");
+		}
+		if (releaseDateIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Release date selection invalid: cannot use comma");
 		}
 		releaseDate = releaseDateIn;
 	}
@@ -357,6 +373,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Language selection invalid: input empty");
 		}
+		if (languageIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Language selection invalid: cannot use comma");
+		}
 		language = languageIn;
 	}
 
@@ -365,6 +385,13 @@ namespace SDI
 		if (filmingLocationsIn.size() == 0)
 		{
 			throw std::invalid_argument("Filming locations selection invalid: input empty");
+		}
+		for (unsigned int i = 0; i < filmingLocationsIn.size(); i++)
+		{
+			if (filmingLocationsIn.at(i).find(",") != string::npos)
+			{
+				throw std::invalid_argument("Filming locations selection invalid: cannot use comma");
+			}
 		}
 		filmingLocations = filmingLocationsIn;
 	}
@@ -379,6 +406,10 @@ namespace SDI
 		if (filmingLocationIn.size() == 0)
 		{
 			throw std::invalid_argument("Filming location selection invalid: input empty");
+		}
+		if (filmingLocationIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Filming location selection invalid: cannot use comma");
 		}
 		filmingLocations.push_back(filmingLocationIn);
 	}
@@ -398,6 +429,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Runtime selection invalid: input empty");
 		}
+		if (runtimeIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Runtime selection invalid: cannot use comma");
+		}
 		runtime = runtimeIn;
 	}
 
@@ -406,6 +441,10 @@ namespace SDI
 		if (producerIn.size() == 0)
 		{
 			throw std::invalid_argument("Producer selection invalid: input empty");
+		}
+		if (producerIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Producer selection invalid: cannot use comma");
 		}
 		producer = producerIn;
 	}
@@ -416,6 +455,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Director selection invalid: input empty");
 		}
+		if (directorIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Director selection invalid: cannot use comma");
+		}
 		director = directorIn;
 	}
 
@@ -425,6 +468,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Writer selection invalid: input empty");
 		}
+		if (writerIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Writer selection invalid: cannot use comma");
+		}
 		writer = writerIn;
 	}
 
@@ -433,6 +480,13 @@ namespace SDI
 		if (keywordsIn.size() == 0)
 		{
 			throw std::invalid_argument("Keywords selection invalid: input empty");
+		}
+		for (unsigned int i = 0; i < keywordsIn.size(); i++)
+		{
+			if (keywordsIn.at(i).find(",") != string::npos)
+			{
+				throw std::invalid_argument("Keywords selection invalid: cannot use comma");
+			}
 		}
 		keywords = keywordsIn;
 	}
@@ -448,6 +502,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Keywords selection invalid: input empty");
 		}
+		if (keywordIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Keywords selection invalid: cannot use comma");
+		}
 		keywords.push_back(keywordIn);
 	}
 
@@ -456,6 +514,10 @@ namespace SDI
 		if (editorIn.size() == 0)
 		{
 			throw std::invalid_argument("Editor selection invalid: input empty");
+		}
+		if (editorIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Editor selection invalid: cannot use comma");
 		}
 		editor = editorIn;
 	}
@@ -466,6 +528,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Production designer selection invalid: input empty");
 		}
+		if (productionDesignerIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Production designer selection invalid: cannot use comma");
+		}
 		productionDesigner = productionDesignerIn;
 	}
 
@@ -474,6 +540,10 @@ namespace SDI
 		if (setDecoratorIn.size() == 0)
 		{
 			throw std::invalid_argument("Set decorator selection invalid: input empty");
+		}
+		if (setDecoratorIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Set decorator selection invalid: cannot use comma");
 		}
 		setDecorator = setDecoratorIn;
 	}
@@ -484,6 +554,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Costume designer selection invalid: input empty");
 		}
+		if (costumeDesignerIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Costume designer selection invalid: cannot use comma");
+		}
 		costumeDesigner = costumeDesignerIn;
 	}
 
@@ -492,6 +566,13 @@ namespace SDI
 		if (castIn.size() == 0)
 		{
 			throw std::invalid_argument("Cast selection invalid: input empty");
+		}
+		for (unsigned int i = 0; i < castIn.size(); i++)
+		{
+			if (castIn.at(i).find(",") != string::npos)
+			{
+				throw std::invalid_argument("Cast selection invalid: cannot use comma");
+			}
 		}
 		cast = castIn;
 	}
@@ -506,6 +587,10 @@ namespace SDI
 		if (castIn.size() == 0)
 		{
 			throw std::invalid_argument("Cast selection invalid: input empty");
+		}
+		if (castIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Cast selection invalid: cannot use comma");
 		}
 		cast.push_back(castIn);
 	}

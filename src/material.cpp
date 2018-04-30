@@ -218,6 +218,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Title selection invalid: input empty");
 		}
+		if (titleIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Title selection invalid: cannot use comma");
+		}
 		title = titleIn;
 	}
 
@@ -226,6 +230,10 @@ namespace SDI
 		if (formatIn.size() == 0)
 		{
 			throw std::invalid_argument("Format selection invalid: input empty");
+		}
+		if (formatIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Format selection invalid: cannot use comma");
 		}
 		format = formatIn;
 	}
@@ -236,6 +244,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Audio format selection invalid: input empty");
 		}
+		if (audioFormatIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Audio format selection invalid: cannot use comma");
+		}
 		audioFormat = audioFormatIn;
 	}
 
@@ -245,6 +257,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Runtime selection invalid: input empty");
 		}
+		if (runtimeIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Runtime selection invalid: cannot use comma");
+		}
 		runtime = runtimeIn;
 	}
 
@@ -253,6 +269,10 @@ namespace SDI
 		if (languageIn.size() == 0)
 		{
 			throw std::invalid_argument("Language selection invalid: input empty");
+		}
+		if (languageIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Language selection invalid: cannot use comma");
 		}
 		language = languageIn;
 	}
@@ -268,6 +288,10 @@ namespace SDI
 		{
 			throw std::invalid_argument("Subtitles selection invalid: input empty");
 		}
+		if (subtitlesIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Subtitles selection invalid: cannot use comma");
+		}
 		subtitles = subtitlesIn;
 	}
 
@@ -276,6 +300,10 @@ namespace SDI
 		if (frameAspectIn.size() == 0)
 		{
 			throw std::invalid_argument("Frame aspect selection invalid: input empty");
+		}
+		if (frameAspectIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Frame aspect selection invalid: cannot use comma");
 		}
 		frameAspect = frameAspectIn;
 	}
@@ -286,11 +314,26 @@ namespace SDI
 		{
 			throw std::invalid_argument("Packaging selection invalid: input empty");
 		}
+		if (packagingIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Packaging selection invalid: cannot use comma");
+		}
 		packaging = packagingIn;
 	}
 
 	void material::setAdditionalLanguages(vector<string> additionalLaguagesIn)
 	{
+		if (additionalLaguagesIn.size() == 0)
+		{
+			throw std::invalid_argument("Additional Languages selection invalid: input empty");
+		}
+		for (unsigned int i = 0; i < additionalLaguagesIn.size(); i++)
+		{
+			if (additionalLaguagesIn.at(i).find(",") != string::npos)
+			{
+				throw std::invalid_argument("Additional Languages selection invalid: cannot use comma");
+			}
+		}
 		additionalLanguages = additionalLaguagesIn;
 	}
 
@@ -301,6 +344,14 @@ namespace SDI
 
 	void material::addAdditionalLanguage(string additionalLaguageIn)
 	{
+		if (additionalLaguageIn.size() == 0)
+		{
+			throw std::invalid_argument("Additional Languages selection invalid: input empty");
+		}
+		if (additionalLaguageIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Additional Languages selection invalid: cannot use comma");
+		}
 		additionalLanguages.push_back(additionalLaguageIn);
 	}
 
@@ -309,6 +360,14 @@ namespace SDI
 		if (bonusFeaturesIn.size() == 0)
 		{
 			throw std::invalid_argument("Bonus features selection invalid: input empty");
+		}
+		if (bonusFeaturesIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Bonus features selection invalid: cannot use comma");
+		}
+		if (bonusFeaturesIn.find("\n") != string::npos)
+		{
+			throw std::invalid_argument("Bonus features selection invalid: cannot be on seperate lines");
 		}
 		bonusFeatures = bonusFeaturesIn;
 	}
@@ -320,6 +379,17 @@ namespace SDI
 
 	void material::setAdditionalSubtitles(vector<string> additionalSubtitlesIn)
 	{
+		if (additionalSubtitlesIn.size() == 0)
+		{
+			throw std::invalid_argument("Additional Subtitles selection invalid: input empty");
+		}
+		for (unsigned int i = 0; i < additionalSubtitlesIn.size(); i++)
+		{
+			if (additionalSubtitlesIn.at(i).find(",") != string::npos)
+			{
+				throw std::invalid_argument("Additional Subtitles selection invalid: cannot use comma");
+			}
+		}
 		additionalSubtitles = additionalSubtitlesIn;
 	}
 
@@ -330,6 +400,14 @@ namespace SDI
 
 	void material::addAdditionalSubtitle(string additionalSubtitleIn)
 	{
+		if (additionalSubtitleIn.size() == 0)
+		{
+			throw std::invalid_argument("Additional Subtitles selection invalid: input empty");
+		}
+		if (additionalSubtitleIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Additional Subtitles selection invalid: cannot use comma");
+		}
 		additionalSubtitles.push_back(additionalSubtitleIn);
 	}
 
@@ -339,7 +417,14 @@ namespace SDI
 		{
 			throw std::invalid_argument("Side one details selection invalid: input empty");
 		}
-		//Add option in function call to specify from file so can be set to ""
+		if (sideOneDetailsIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Side one selection invalid: cannot use comma");
+		}
+		if (sideOneDetailsIn.find("\n") != string::npos)
+		{
+			throw std::invalid_argument("Side one selection invalid: cannot be on seperate lines");
+		}
 		sideOneDetails = sideOneDetailsIn;
 	}
 
@@ -353,6 +438,14 @@ namespace SDI
 		if (sideTwoDetailsIn.size() == 0)
 		{
 			throw std::invalid_argument("Side two details selection invalid: input empty");
+		}
+		if (sideTwoDetailsIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Side two selection invalid: cannot use comma");
+		}
+		if (sideTwoDetailsIn.find("\n") != string::npos)
+		{
+			throw std::invalid_argument("Side two features selection invalid: cannot be on seperate lines");
 		}
 		sideTwoDetails = sideTwoDetailsIn;
 	}
@@ -368,6 +461,13 @@ namespace SDI
 		{
 			throw std::invalid_argument("Movie list selection invalid: input empty");
 		}
+		for (unsigned int i = 0; i < movieListIn.size(); i++)
+		{
+			if (movieListIn.at(i).find(",") != string::npos)
+			{
+				throw std::invalid_argument("Movie list selection invalid: cannot use comma");
+			}
+		}
 		movieList = movieListIn;
 	}
 
@@ -381,6 +481,10 @@ namespace SDI
 		if (movieIn.size() == 0)
 		{
 			throw std::invalid_argument("Movie selection invalid: input empty");
+		}
+		if (movieIn.find(",") != string::npos)
+		{
+			throw std::invalid_argument("Movie selection invalid: cannot use comma");
 		}
 		movieList.push_back(movieIn);
 	}
