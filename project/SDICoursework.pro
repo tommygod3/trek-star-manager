@@ -12,7 +12,8 @@ SOURCES += \
         ../src/mainwindow.cpp \
         ../src/controller.cpp \
         ../src/project.cpp \
-	../src/material.cpp
+	../src/material.cpp \
+	../src/logger.cpp
 
 INCLUDEPATH += ../include
 
@@ -22,7 +23,8 @@ HEADERS += \
         ../include/mainwindow.h \
         ../include/controller.h \
         ../include/project.h \
-	../include/material.h
+	../include/material.h \
+	../include/logger.h
 
 FORMS += \
         ../forms/mainwindow.ui
