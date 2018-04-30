@@ -8,8 +8,6 @@
 #include <cstdio>
 #include <algorithm>
 
-#include <iostream>
-
 namespace SDI
 {
 	using std::vector;

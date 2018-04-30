@@ -3,15 +3,19 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
+	//Set up window with correct size, title and icon
     ui->setupUi(this);
     ui->stackedWidget->setCurrentIndex(0);
 	this->setFixedSize(900, 600);
 	this->setWindowIcon(QIcon("../resources/film.png"));
 	this->setWindowTitle("Trek Star Pictures Project Manager");
+	//Try to create new controller and logger
 	try
 	{
 		backend = new SDI::controller();
+		logger = new SDI::logger(QDate::currentDate().toString().toStdString());
 	}
+	//If they throw because database could not be read, show this in pop up and close mainwindow
 	catch (std::runtime_error &r)
 	{
 		showMessage(r.what());
@@ -21,8 +25,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow()
 {
+	//Clean up by deleting pointer objects
     delete ui;
 	delete backend;
+	delete logger;
 }
 
 void MainWindow::on_buttonToAddProjects_clicked()
@@ -34,7 +40,8 @@ void MainWindow::on_buttonToAddProjects_clicked()
 void MainWindow::on_buttonToBrowseProjects_clicked()
 {
     ui->stackedWidget->setCurrentIndex(3);
-
+	//Everytime we click in the page to view projects, update its combobox to include all projects alphabetically sorted by title
+	//Add their unique id as the data so we know which project we have currently selecting, as title is not primary key in project list, project id is
 	ui->comboBrowseProjProjResults->clear();
 	std::vector<unsigned long long> idAlpha = backend->getAlphabeticProjects();
 	for (unsigned int i = 0; i < idAlpha.size(); i++)
@@ -46,25 +53,35 @@ void MainWindow::on_buttonToBrowseProjects_clicked()
 
 void MainWindow::on_buttonToMaintenance_clicked()
 {
+	//Set current date for title and read in todays log from logger class
+	ui->labelMaintenanceDate->setText("Date: " + QDate::currentDate().toString());
+	std::string log = "";
+	for (unsigned int i = 0; i < logger->todaysLog.size(); i++)
+	{
+		log += logger->todaysLog.at(i) + "\n";
+	}
+	ui->textMaintenance->setText(QString::fromStdString(log));
     ui->stackedWidget->setCurrentIndex(4);
 }
 
 void MainWindow::on_buttonAddProjHome_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-
+	//Clear screen when exiting
 	resetAddProjectInput();
 }
 
 void MainWindow::on_buttonHomeAddMaterials_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+	//Clear screen when exiting
 	resetAddMaterialInput();
 }
 
 void MainWindow::on_buttonHomeBrowseProj_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+	//Clear screen when exiting
 	ui->textBrowseProjSearchByActor->clear();
 	ui->textBrowseProjSearchByProj->clear();
 	ui->comboBrowseProjProjMaterials->clear();
@@ -156,19 +173,21 @@ void MainWindow::on_radioButtonAddMaterialsCombo_clicked()
 
 void MainWindow::filterAllBrowsePage()
 {
+	//Filters the project in the combo box with additional filters
 	ui->comboBrowseProjProjResults->clear();
-	
+	//First project list is obtained in alphabetical order in whole
 	std::vector<unsigned long long> idAlpha = backend->getAlphabeticProjects();
 	if (idAlpha.size() == 0)
 	{
 		return;
 	}
 	std::string filterTitle = ui->textBrowseProjSearchByProj->text().toStdString();
-	//Filter by title
+	//Next filter by title by deleting projects that don't contain "title"
 	std::vector<unsigned long long> idFiltered = backend->getProjectsTitleFilter(filterTitle, idAlpha);
 	std::string filterActor = ui->textBrowseProjSearchByActor->text().toStdString();
-	//Then filter by actor on top
+	//Then filter by actor by deleting projects that don't contain "actor"
 	idFiltered = backend->getProjectsActorFilter(filterActor, idFiltered);
+	//Then filter by what types of materials are available by deleting those in list that don't have to desired material type
 	if (ui->checkBoxBrowseProjDVD->isChecked())
 	{
 		idFiltered = backend->getProjectsMaterialFilter(0, idFiltered);
@@ -189,8 +208,6 @@ void MainWindow::filterAllBrowsePage()
 	{
 		idFiltered = backend->getProjectsMaterialFilter(4, idFiltered);
 	}
-
-
 	for (unsigned int i = 0; i < idFiltered.size(); i++)
 	{
 		ui->comboBrowseProjProjResults->addItem(QString::fromStdString(backend->getNameFromId(idFiltered.at(i))), QVariant((idFiltered.at(i))));
@@ -200,11 +217,13 @@ void MainWindow::filterAllBrowsePage()
 
 void MainWindow::on_buttonBrowseProjSearchByProj_clicked()
 {
+	//Reset list when returning to browse page
 	filterAllBrowsePage();
 }
 
 void MainWindow::on_buttonBrowseProjSearchByActor_clicked()
 {
+	//Reset list when returning to browse page
 	filterAllBrowsePage();
 }
 
@@ -284,14 +303,14 @@ void MainWindow::on_buttonBrowseProjViewProj_clicked()
 void MainWindow::on_buttonHomeEditProj_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-	
+	//Clear screen when exiting
 	resetEditProjectInput();
 }
 
 void MainWindow::on_buttonHomeEditMaterials_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
-
+	//Clear screen when exiting
 	resetEditMaterialInput();
 }
 
@@ -465,7 +484,8 @@ void MainWindow::on_radioButtonEditMaterialsBluray_clicked()
 
 void MainWindow::on_buttonAddProjectsSave_clicked()
 {
-	//Making new project
+	//Making new project, add it to the backends list of projects
+	//Add this detail to log
 	try
 	{
 		SDI::project* newProject = new SDI::project(backend->getNextProjectId(), false);
@@ -517,7 +537,8 @@ void MainWindow::on_buttonAddProjectsSave_clicked()
 			newProject->addCast(castList.at(i).toStdString());
 		}
 		backend->projectList.push_back(newProject);
-
+		logger->logNewProject(QTime::currentTime().toString().toStdString(), newProject->getTitle());
+		//Clear screen when exiting
 		resetAddProjectInput();
 	}
 	catch (std::invalid_argument &e)
@@ -528,7 +549,8 @@ void MainWindow::on_buttonAddProjectsSave_clicked()
 
 void MainWindow::on_buttonAddMaterialsSave_clicked()
 {
-	//Making new material
+	//Making new material, add it to the currently selected projects material list
+	//Add this detail to log
 	try
 	{
 		SDI::material* newMaterial = new SDI::material(backend->projectList.at(backend->currentProjectIndex)->getNextMaterialId(), false);
@@ -619,6 +641,8 @@ void MainWindow::on_buttonAddMaterialsSave_clicked()
 			}
 		}
 		backend->projectList.at(backend->currentProjectIndex)->myMaterials.push_back(newMaterial);
+		logger->logNewMaterial(QTime::currentTime().toString().toStdString(), newMaterial->getTitle(), backend->projectList.at(backend->currentProjectIndex)->getTitle());
+		//Clear screen when exiting
 		resetAddMaterialInput();
 	}
 	catch (std::invalid_argument &e)
@@ -630,6 +654,7 @@ void MainWindow::on_buttonAddMaterialsSave_clicked()
 void MainWindow::on_buttonEditProjSave_clicked()
 {
 	//Save changes on viewed project
+	//Add this detail to log
 	try
 	{
 		SDI::project* currProj = backend->projectList.at(backend->currentProjectIndex);
@@ -683,6 +708,7 @@ void MainWindow::on_buttonEditProjSave_clicked()
 		{
 			currProj->addCast(castList.at(i).toStdString());
 		}
+		logger->logEditProject(QTime::currentTime().toString().toStdString(), currProj->getTitle());
 	}
 	catch (std::invalid_argument &e)
 	{
@@ -694,6 +720,7 @@ void MainWindow::on_buttonEditProjSave_clicked()
 void MainWindow::on_buttonEditMaterialsSave_clicked()
 {
 	//Save changes on currently viewed material
+	//Add this detail to log
 	try
 	{
 		SDI::material* currMat = backend->projectList.at(backend->currentProjectIndex)->myMaterials.at(backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex);
@@ -787,6 +814,8 @@ void MainWindow::on_buttonEditMaterialsSave_clicked()
 				currMat->addToMovieList(movieList.at(i).toStdString());
 			}
 		}
+
+		logger->logEditMaterial(QTime::currentTime().toString().toStdString(), currMat->getTitle(), backend->projectList.at(backend->currentProjectIndex)->getTitle());
 	}
 	catch (std::invalid_argument &e)
 	{
@@ -798,9 +827,12 @@ void MainWindow::on_buttonEditMaterialsSave_clicked()
 void MainWindow::on_buttonBrowseProjDeleteProj_clicked()
 {
 	//Delete selected project
+	//Add this detail to log
 	if (backend->currentProjectIndex > -1)
 	{
+		logger->logEditProject(QTime::currentTime().toString().toStdString(), backend->projectList.at(backend->currentProjectIndex)->getTitle());
 		backend->removeProject(backend->projectList.at(backend->currentProjectIndex)->getProjectId());
+		
 		filterAllBrowsePage();
 	}
 }
@@ -808,11 +840,14 @@ void MainWindow::on_buttonBrowseProjDeleteProj_clicked()
 void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
 {
 	//Delete selected material
+	//Add this detail to log
 	if (backend->currentProjectIndex > -1)
 	{
 		if (backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex > -1)
 		{
+			logger->logDeleteMaterial(QTime::currentTime().toString().toStdString(), backend->projectList.at(backend->currentProjectIndex)->myMaterials.at(backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex)->getTitle(), backend->projectList.at(backend->currentProjectIndex)->getTitle());
 			backend->projectList.at(backend->currentProjectIndex)->removeMaterial(backend->projectList.at(backend->currentProjectIndex)->myMaterials.at(backend->projectList.at(backend->currentProjectIndex)->currentMaterialIndex)->getMaterialId());
+			
 			filterAllBrowsePage();
 		}
 		
@@ -821,6 +856,7 @@ void MainWindow::on_buttonBrowseProjDeleteMaterial_clicked()
 
 void MainWindow::on_comboBrowseProjProjResults_currentIndexChanged(int index)
 {
+	//Set list of materials to match the current selected project's list
 	if (ui->comboBrowseProjProjResults->count() > 0)
 	{
 		unsigned long long currentId = ui->comboBrowseProjProjResults->itemData(ui->comboBrowseProjProjResults->currentIndex()).toULongLong();

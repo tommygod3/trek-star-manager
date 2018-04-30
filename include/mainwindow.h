@@ -6,6 +6,7 @@
 #include <QMainWindow>
 
 #include "controller.h"
+#include "logger.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,6 +20,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 	SDI::controller* backend;
+	SDI::logger* logger;
 
 private slots:
     void on_buttonToAddProjects_clicked();

@@ -47,12 +47,6 @@ namespace SDI
 		unsigned long long getNextProjectId();
 		void setCurrentProject(unsigned long long projectId);
 		void setCurrentProjectIndex(int index);
-		
-
 	};
-
-
 }
-
-
 #endif
