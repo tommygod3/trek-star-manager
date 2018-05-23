@@ -1,12 +1,11 @@
-# Software Design & Implementation (SDI) Coursework
+# trek-star-manager
 ## What is this repository?
-This repository is for the group coursework task I am doing for my second year module, SDI.  
-## Group
-Derbados
-## Group Members
+This repository contains the source code and assets for Group Derbados' SDI project: a management software  
+for a fictional movie company, Trek Star Pictures. We worked as part of a group to complete the system  
+which was for our second year module Software Design & Implementation.  
+## Group Derbados Members
 Tommy Godfrey  
 Tyler Knowles  
-Christen Al Jarad  
 Suraj Mistry  
-## Tutor
-Pedro Trindade / Tao Chen
+Christen Al Jarad  
+
